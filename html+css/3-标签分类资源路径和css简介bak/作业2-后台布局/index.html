@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .border-red {
+            border: 5px solid red;
+        }
+
+        .border-green {
+            border: 5px solid green;
+        }
+
+        .border-blue {
+            border: 5px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border-red" style="height: 150px;">
+        header
+    </div>
+    <div style="width: 100%">
+        <div class="border-blue" style="display: inline-block; width: calc(30% - 25px); height: 500px">sidebar</div>
+        <div class="border-green" style="display: inline-block; width: 70%; height: 500px">
+            content
+        </div>
+    </div>
+    <div class="border-red" style="height: 50px;">
+        footer
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 标签分类 -->
+    <!-- 标签大致分为以下类型: -->
+
+    <!-- 行内元素 -->
+    <!-- 不会占用一整行，在同一行中显示的元素 -->
+    <span>这是span标签</span>
+    <br />
+    <b>这是b标签</b><i>这是i标签</i><u>这是u标签</u>
+    <ins>ins</ins><del>del</del><sup>sup</sup><sub>sub</sub>
+    <!-- 特点 -->
+    <!-- 很多处理文本的标签都是行内元素 -->
+    <!-- 行内元素内容宽高，也就是width和height属性，只受内容影响，内容有多大，行内元素的content就有多大 -->
+    <!-- 行内元素的内边距和外边距，只有横向受影响，纵向不受影响 -->
+
+    <!-- 块级元素 -->
+    <!-- 独占一整行的元素 -->
+    <div style="border: 5px solid red; margin: 50px; padding: 50px; height: 100px; width: 100px;">div标签</div>
+    <div style="border: 5px solid red; margin: 50px; padding: 50px; height: 100px; width: 100px;">div标签</div>
+    <h1>h1标签</h1>
+    <p>p标签</p>
+    <!-- 特点 -->
+    <!-- 独占一整行 -->
+    <!-- 盒子模型的所有属性均能修改 -->
+
+    <!-- 行内块级元素 -->
+    <!-- 即具备行内元素的部分特征，又具备块级元素的部分特征 -->
+    <img src="sample.png" width="50" />
+    <img src="sample.png" width="50" />
+    <img src="sample.png" width="50" />
+    <button>点我</button>
+    <!-- 特点 -->
+    <!-- 和行内元素一样，不会占用一整行，会在一行中显示 -->
+    <!-- 具备部分块级元素的特点，能够修改盒子模型 -->
+
+    <!-- 标签类型转换 -->
+    <!-- 可以是用css样式中的display进行转换 -->
+    <!-- display的待选项有：
+        block: 显示为块级元素
+        inline: 显示为行内元素
+        inline-block: 显示为行内块级元素
+        flex: 启用flex布局
+        none: 隐藏元素，但元素任存在于文档中
+    -->
+    <div style="display: inline">这个div行内元素</div>
+</body>
+
+</html>

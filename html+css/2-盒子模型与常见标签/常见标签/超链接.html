@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 超链接：引入当前页面的一个外部的内容(资源)，内容包括：另一个网站地址、一个文件下载地址、发送电子邮件等 -->
+    <!-- 使用a标签创建一个超链接 -->
+    <!-- 使用href(hyper-refrence)属性，定义a标签关联的资源 -->
+
+    <!-- 跳转链接 -->
+    <a href="http://www.baidu.com">百度搜索</a>
+    <!-- 下载文件 -->
+    <a href="./1.zip">1.zip</a>
+
+    <!-- target属性: 作用是指定a标签跳转资源连接的窗口 -->
+    <!-- 当属性 target 为 _blank 时，点击a标签后，会新启一个窗口然后跳转到指定地址 -->
+    <a href="http://www.bilibili.com" target="_blank">哔哩哔哩</a>
+    <a href="./1.zip" target="_blank">1.zip blank</a>
+    <a href="./2.zip" target="_self">2.zip blank</a>
+    <!-- target 为 _self，点击a标签后，会在当前窗口跳转到指定网址，默认不写target时，相当于就是_self的效果 -->
+    <a href="http://www.youku.com" target="_self">优酷</a>
+
+    <iframe src="http://www.baidu.com" name="child-window"></iframe>
+    <!-- target 为 iframe 标签的 name 属性时，可以跳转 iframe 标签内的网页 -->
+    <a href="http://www.bilibili.com" target="child-window">跳转到b站</a>
+
+    <!-- href中写如javascript:;可以屏蔽a标签的跳转功能 -->
+    <a href="javascript:;">我是a标签，不跳转</a>
+</body>
+
+</html>

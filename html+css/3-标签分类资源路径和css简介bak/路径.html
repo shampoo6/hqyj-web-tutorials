@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 目录就是文件夹，文件夹就是目录 -->
+
+    <!-- 绝对路径 -->
+    <!-- 完整的路径，如果是本地文件，就包含盘符 -->
+
+    <!-- 本地文件的绝对路径 -->
+    <!-- img 标签可以识别文件协议 -->
+    <img src="file:///D:/projects/学校/hqyj-web-tutorials/html+css/3-标签分类资源路径和css简介/sample.png"/>
+    <!-- 网络路径的绝对路径 -->
+    <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3395864961,1527657332&fm=26&gp=0.jpg"/>
+
+    <!-- 绝对路径前是协议头 如：http:// file:/// https:// -->
+    <!-- 在windows系统中 以盘符开头的也是绝对路径 如：D:/opt/ss-fly -->
+    <!-- 在linux系统中 以斜杠开头的也是绝对路径 如：/opt/ss-fly -->
+
+    <!-- 相对路径 -->
+    <!-- 相对的东西都有参考物 -->
+    <!-- 在html中，相对的参考路径是，当前html文件所在的目录
+        以下路径的含义是：《路径.html》文件所在文件夹中的《a》文件夹中的《2.png》   
+    -->
+    <img src="a/2.png"/>
+
+    <!-- ./ 开头的相对路径，代表当前文件所在文件夹 -->
+    <!-- ../ 开头的相对路径，代表上一级目录 -->
+    <!-- ./ 开头的相对路径，可以省略./ 但不建议省略 -->
+    <!-- / 斜杠开头的路径，代表的是服务器应用上下文（application context）
+        简单的理解就是以斜杠开头的路径是省略了服务器的域名地址，例如：
+        百度有个页面，地址是：http://www.baidu.com/hello/world.html
+        那么在这个world.html文件中的图片地址，就可以写成 /img/1.png
+        它代表的完整路径是 http://www.baidu.com/img/1.png
+
+        例子请参考《应用上下文路径demo》
+    -->
+</body>
+
+</html>

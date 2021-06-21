@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 标签选择器 */
+        /* 选择器名称就是标签的名称 */
+        /* 作用：选中页面中所有该标签 */
+        li {
+            /* 字体大小 */
+            font-size: 32px;
+        }
+
+        ul {
+            padding: 20px;
+        }
+
+        div {
+            margin: 20px;
+        }
+
+        /* id 选择器 */
+        /* 选择页面元素中指定id属性的元素 */
+        #li1 {
+            font-size: 64px;
+        }
+
+        /* 类class选择器 */
+        .bg {
+            background-color: pink;
+        }
+
+        .color {
+            color: orange;
+        }
+
+        /* 属性选择器 */
+        /* 作用：选中指定属性为指定值的元素 */
+        /* 语法：selector[attrName=attrValue] */
+        .inp[name=age] {
+            color: green;
+        }
+
+        .inp[name=name] {
+            color: pink;
+        }
+
+        /* 派生选择器 */
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <!-- id属性是元素的唯一标识 -->
+            <!-- 元素的id属性必须唯一，整个页面中不能重复 -->
+            <!-- 一般来说，id在页面中出现次数越少越好 -->
+            <li id="li1">2</li>
+            <li>3</li>
+            <li class="color">4</li>
+        </ul>
+    </div>
+    <div>
+        <ol>
+            <!-- class属性是元素的样式的类型 -->
+            <!-- 元素的class属性是可以重复出现的 -->
+            <!-- class属性中可以应用多个类型，中间用空格隔开 -->
+            <li class="bg color">一</li>
+            <li class="bg">二</li>
+            <li>三</li>
+            <li>四</li>
+        </ol>
+    </div>
+    <div>
+        <div>
+            姓名：<input class="inp" name="name" />
+        </div>
+        <div>
+            年龄：<input class="inp" name="age" />
+        </div>
+    </div>
+</body>
+
+</html>
