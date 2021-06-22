@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            /* calc() 计算函数
+                函数中可以由任意单位的尺寸进行运算
+                请注意计算的符号左右有空格
+            */
+
+            /* 计算属性常用于设置元素宽高 或 设置元素位置 */
+
+            /* 设置元素宽度 */
+            width: calc(100% - 4em);
+            height: 100%;
+            border: 1px solid black;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+
+            /* 使用计算函数设置位置 */
+            left: calc(50% - 100px / 2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>
