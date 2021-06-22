@@ -1,8 +1,8 @@
 debug.log
 .vscode
 .idea
-*/miniprogram_npm
-*/node_modules
+**/*/miniprogram_npm
+**/*/node_modules
 
 
 

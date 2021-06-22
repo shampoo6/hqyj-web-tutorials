@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 参考
+        https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form
+        表单的作用：接收用户输入，并将输入信息发送到指定网址
+    -->
+    <!-- 
+        表单中的属性：
+        method：请求方法
+        action: 设置数据传输的目的地
+        target: 跳转页面的方式，可以设置打开新页面进行跳转
+        onsubmit: 当提交时触发的事件
+     -->
+    <!-- <form method="get" action="http://127.0.0.1:1024/myGet" onsubmit="return false"> -->
+    <form method="post" action="http://127.0.0.1:1024/myGet" onsubmit="return false">
+        <!-- 增加表单元素 -->
+        <!-- 在表单元素上 使用 name 属性 给参数指定名称 -->
+        <input type="text" name="myParam" />
+        <!-- 当点击按钮进行提交后，默认情况下页面会跳转到请求的action地址上 -->
+        <!-- 若想在提交后页面不跳转，可以在form上增加 onsubmit 属性 -->
+        <button onclick="onSubmit()">提交</button>
+    </form>
+</body>
+
+<script>
+
+    let onSubmit = () => {
+        let xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://127.0.0.1:1024/myGet', true)
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.addEventListener('load', ev => {
+            console.log(ev.currentTarget.responseText)
+        })
+        xhr.send('a=1')
+    }
+</script>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 派生选择器 */
+        /* 在基础选择器的基础上衍生出来的选择器 */
+
+
+        /* 后代选择器
+            选择后代元素的选择器
+        */
+        /* 语法 selector selector selector ... */
+        /* form div label input {
+            border: 5px solid violet;
+        } */
+
+        /* html body form div input {
+            border: 5px solid black;
+        } */
+
+        /* .form-item input {
+            border: 5px solid black;
+        }
+
+        form div input {
+            border: 5px solid violet;
+        } */
+
+        /* 子代选择器
+            选择子代元素的选择器
+        */
+        /* 语法：selector>selector ...  */
+
+        /* label>input {
+            border: 5px solid violet;
+        } */
+
+        /* form>div {
+            border: 5px solid green;
+        }
+
+        form>div>label>input {
+            border: 5px solid violet;
+        } */
+
+        /* 混合使用派生选择器 */
+        /* 选择body标签中的后代的label的子代的input */
+        body label>input {
+            border: 5px solid gold;
+        }
+
+        /* 兄弟选择器
+            选择复合条件的兄弟级别的下一个元素
+        */
+        /* 语法：selector+selector */
+        /* .item2+.item1 {
+            border: 5px solid gold;
+        } */
+
+        /* 选择所有的兄弟节点 */
+        /* 选择class为item2的标签的兄弟标签，且该兄弟标签出现在item2后面，且是所有的class为item1的标签 */
+        .item2~.item1 {
+            border: 5px solid gold;
+        }
+
+
+        /* 类选择器的派生 */
+        .box {
+            width: 100px;
+            /* 宽 */
+            height: 50px;
+            /* 高 */
+            border: 5px solid blue;
+        }
+
+        /* 选择一个class中即存在box又存在active的元素 */
+        .box.active {
+            border: 5px solid greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="form-item">
+            <label>
+                姓名：<input />
+            </label>
+        </div>
+        <div>
+            <label>
+                性别：<input />
+            </label>
+        </div>
+        <div>
+            <label>
+                年龄：<input />
+            </label>
+        </div>
+    </form>
+
+    <ul>
+        <li>
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item1">3</div>
+            <div class="item1">4</div>
+        </li>
+        <li>
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>
+            <div class="item1">4</div>
+        </li>
+        <li>
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item1">3</div>
+            <div class="item1">4</div>
+        </li>
+    </ul>
+    <div>
+        <div class="box">1</div>
+        <div class="box active">2</div>
+    </div>
+</body>
+
+</html>

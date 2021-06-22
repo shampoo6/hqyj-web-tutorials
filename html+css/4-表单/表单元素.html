@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 表单元素 -->
+    <!-- 表单元素用于获取用户录入的数据 -->
+    <form method="get" action="https://www.bilibili.com">
+        <!-- 输入框 -->
+        <!-- type: text：文本输入框；password：密码输入框 -->
+        <!-- placeholder: 占位符，不输入内容时候的提示信息 -->
+        <!-- name: 传递数据时的参数名称 -->
+        <!-- value: 代表input中的输入值 -->
+        <input type="text" placeholder="请输入信息" name="n" value="你好" />
+
+        <!-- 数字输入框 -->
+        <input type="number" />
+
+        <!-- 隐藏域 -->
+        <!-- 隐藏的输入框，用于存储一些不希望用户看见的数据 -->
+        <input type="hidden" />
+        <!-- 使用label的input框 -->
+        <div>
+            <label>姓名：<input /></label>
+        </div>
+
+        <!-- 单选 -->
+        <!-- 单选框使用input标签，type属性为radio -->
+        <!-- 使用name属性对单选框进行分组 -->
+        <!-- 使用value规定选中该项时代表的参数值 -->
+        <!-- 使用checked属性规定哪个单选被选中了 -->
+        <div>
+            性别：
+            <label>男：<input type="radio" name="sex" value="male" /></label>
+            <label>女：<input checked type="radio" name="sex" value="female" /></label>
+            <label>其他：<input type="radio" name="sex" value="other" /></label>
+            <label>value1：<input type="radio" name="otherGroup" value="value1" /></label>
+            <label>value2：<input checked type="radio" name="otherGroup" value="value2" /></label>
+        </div>
+
+        <!-- 复选框/多选框 -->
+        <!-- 所有属性和radio单选框相同 -->
+        <!-- 不同之处在于type的值为checkbox，多选框的一组选项中可以选择多个元素 -->
+        <div>
+            爱好:
+            <label>手办：<input checked type="checkbox" name="hobby" value="model" /></label>
+            <label>骑行：<input checked type="checkbox" name="hobby" value="riding" /></label>
+            <label>cosplay：<input checked type="checkbox" name="hobby" value="cos" /></label>
+        </div>
+
+        <!-- 文件上传 -->
+        <!-- type属性为file，可以进行文件上传 -->
+        <div>
+            <input type="file" />
+        </div>
+
+        <div>
+            <!-- 按钮 -->
+            <!-- 属性type为button时，input就变成了按钮，按钮上的文字要写在value属性中 -->
+            <input type="button" value="这是input框cos的按钮" />
+        </div>
+
+        <div>
+            <!-- 提交按钮 -->
+            <input type="submit"/>
+        </div>
+
+        <div>
+            <!-- 重置按钮 -->
+            <input type="reset"/>
+        </div>
+
+        <div>
+            <!-- 取色器 -->
+            <input type="color"/>
+        </div>
+
+        <div>
+            <!-- 日期选择 -->
+            <input type="date"/>
+            <input type="datetime-local"/>
+        </div>
+
+        <!-- 禁用表单元素 -->
+        <input disabled type="text" />
+        <input disabled type="radio" />
+        <input disabled type="checkbox" />
+        <button disabled>被禁用的按钮</button>
+
+        <!-- 选择框 -->
+        <!-- 使用select和option标签来构建下拉选择框 -->
+        <!-- select和option是一组，必须同时出现 -->
+        <!-- select是选框，option是待选项 -->
+        <div>
+            <label>所在城市：
+                <!-- 使用multiple属性可以让选择框变成多选 -->
+                <select name="city" multiple>
+                    <!-- 在option上规定value，该value就是传给服务器的值 -->
+                    <option value="CQ">重庆</option>
+                    <option value="BJ">北京</option>
+                    <!-- 使用selected属性来确定默认选项 -->
+                    <option selected value="CD">成都</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- 文本域 -->
+        <div>
+            <!-- rows: 规定文本域显示行数 -->
+            <!-- placeholder: 提示占位符 -->
+            <textarea name="description" rows="4" placeholder="请输入">这是textarea的默认值</textarea>
+        </div>
+
+        <div>
+            <button>确定</button>
+        </div>
+    </form>
+</body>
+
+</html>

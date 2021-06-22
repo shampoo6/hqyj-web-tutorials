@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 伪类选择器
+            伪类指的是一类标签但是，这类标签不一定需要具备class属性
+        */
+
+        /* hover: 鼠标悬停时的伪类 */
+        /* 语法：selecor:hover */
+        .box {
+            border: 5px solid black;
+            width: 200px;
+            height: 100px;
+        }
+
+        /* 当鼠标悬停到.box上的选择器 */
+        .box:hover {
+            border: 5px solid pink;
+        }
+
+
+        /* link 元素中的连接样式，这里指的是a标签中的文本 */
+        .baidu:link {
+            /* 去掉a标签的底部装饰线 */
+            text-decoration: none;
+            background-color: green;
+        }
+
+        .baidu:visited {
+            color: pink;
+        }
+
+        .baidu:hover {
+            color: gold;
+        }
+
+        /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/:visited */
+        /* visited 的样式有所限制，可以查看mdn了解详情 */
+        .bsite:visited {
+            color: red;
+        }
+
+        /* active 元素激活时的伪类(鼠标点住不放) */
+        .baidu:active {
+            background-color: indigo;
+        }
+
+        .box:active {
+            background-color: gold;
+        }
+
+        /* 使用注意：对于a标签链接的处理，active必须在hover后，hover必须在link和visited后 */
+
+
+        /* nth-child(n) 选择某个选择器所指标签的指定位置的子标签 */
+        /* 该函数的参数，代表第几个子节点 */
+        /* ul li:nth-child(2) {
+            color: gold;
+        } */
+
+        /* first-child 第一个子节点 */
+        /* ul li:first-child {
+            color: red;
+        } */
+
+        /* last-child 最后个子节点 */
+        /* ul li:last-child {
+            color: red;
+        } */
+
+        /* nth-of-type(n) 第几个指定类型的节点 */
+        ul li:nth-of-type(2) {
+            color: blue;
+        }
+
+        /* nth-child 和 nth-of-type 的区别 */
+        /* nth-child 先找到指定位置的节点，再判断节点是否是指定类型 */
+        /* nth-of-type 先找指定类型的元素，再判断位置是第几个节点 */
+
+        /* nth-child 和 nth-of-type 可以使用n来代表所有的子元素 */
+        ol li:nth-child(2n-1) {
+            color: greenyellow;
+        }
+
+
+        /* empty 代表空元素（标签体是空的标签） */
+        div:empty {
+            background-color: black;
+        }
+
+        /* 根节点 */
+        :root {
+            border: 10px solid goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">hello world</div>
+    <div>
+        <a class="baidu" href="https://www.baidu.com">百度</a>
+        <a class="bsite" href="https://www.bilibili.com">b站</a>
+    </div>
+    <ul>
+        <li>1</li>
+        <div>2</div>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ol>
+
+    <div class="box">hello</div>
+    <div class="box"></div>
+    <div class="box">world</div>
+</body>
+
+</html>

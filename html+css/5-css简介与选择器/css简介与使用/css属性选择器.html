@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 属性选择器 */
+        /* 语法: selector[attrname=value] */
+
+
+        /* 从左到右读选择器，该选择器的含义为：input标签中含有name属性且属性值为name的标签 */
+        input[name='name'] {
+            border: 5px solid pink;
+        }
+
+        /* 选择input标签中包含name属性，且属性值以ag开头的所有标签 */
+        input[name^='ag'] {
+            border: 5px solid rgb(0, 238, 255);
+        }
+
+        /* 选择input标签中包含name属性，且属性值以end结尾的所有标签 */
+        input[name$='end'] {
+            border: 5px solid rgb(255, 153, 0);
+        }
+
+        /* 若同为属性选择器，优先级取决于前面的selector的基础选择器类型 */
+        .de[name*='good'] {
+            border: 5px solid rgb(245, 11, 11);
+        }
+
+        /* 选择input标签中包含name属性，且属性值包含good的所有标签 */
+        input[name*='good'] {
+            border: 5px solid rgb(245, 11, 225);
+        }
+
+        /* 优先级相同的选择器，写在后面的样式会覆盖前面的样式 */
+        /* input[name^='good'] {
+            border: 5px solid rgb(11, 245, 42);
+        } */
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label>
+                姓名：<input name="name" />
+            </label>
+        </div>
+        <div>
+            <label>
+                age：<input name="age" />
+                <input name="agc" />
+                <input name="agb" />
+            </label>
+        </div>
+        <div>
+            <label>
+                班级：<input name="legend" />
+                <input name="agend" />
+                <input name="lagend" />
+            </label>
+        </div>
+        <div>
+            <label>
+                部门：<input name="goodfoot" />
+                <input class="de" name="handgood" />
+                <input name="hegoodad" />
+            </label>
+        </div>
+    </form>
+</body>
+
+</html>

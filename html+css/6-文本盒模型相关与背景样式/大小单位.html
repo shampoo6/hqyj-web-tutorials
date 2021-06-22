@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .bg {
+            border: 10px solid red;
+        }
+
+        /* 参考：https://www.w3schools.com/css/css_units.asp
+            https://www.w3schools.cn/css/css_units.asp
+        */
+        .box {
+            /* px：代表像素，指的是屏幕上的发光小点 */
+            width: 100px;
+            height: 500px;
+        }
+
+        .box2 {
+            /* %百分比：百分比是一个相对长度单位，相对的是父节点 */
+            width: 50%;
+            /* 50%的含义是：相对于父节点的宽度，占父节点宽50% */
+            height: 25%;
+            /* 25%的含义是：相对于父节点的高度，占父节点高25% */
+            box-sizing: border-box;
+        }
+
+        .box3 {
+            width: 100%;
+            /* em: 相对字体大小的单位，1em = 一个字符的宽度 */
+            text-indent: 2em;
+
+            /* ex: 1ex = 一个字符的半高 */
+            /* text-indent: 2ex; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box bg">
+        <div class="box2 bg" style="border-color: black">
+
+        </div>
+        <div class="box3">
+            安神颗粒哈善良的咖啡碱撒砥砺奋进阿飞噶风格阿瑟人噶色弱各色枫哥哥
+        </div>
+    </div>
+</body>
+
+</html>

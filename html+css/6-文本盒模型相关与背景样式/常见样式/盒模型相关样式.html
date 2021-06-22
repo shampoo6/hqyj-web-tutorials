@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            background-color: gray;
+            color: white;
+
+            /* 盒子模型相关属性 */
+            /* content, padding, border, margin */
+
+            /* 修改content的属性有： */
+            /* 内容宽度 */
+            width: 200px;
+            /* 内容高度 */
+            height: 200px;
+
+            /* 使用padding修改内边距 */
+            /* 分别可一给左右上下内边距赋值，如下： */
+            /* padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px; */
+
+            /* 若只有一个值，会给4个方向赋相同值 */
+            padding: 50px;
+            /* 若有两个值，第一个会给上下方向赋值，第二个会给左右方向赋值 */
+            padding: 50px 20px;
+            /* 赋值方向：上右下左，顺时针赋值 */
+            padding: 40px 30px 20px;
+            /* 若只有三个值，左内边距将去第二个值的大小 */
+            padding: 40px 30px 20px 10px;
+
+
+            /* 边框，边框分别由 样子+粗细+颜色 构成 */
+            /* border: 5px solid red; */
+
+            /* 样子 */
+            /* 待选项：
+                dashed: 虚线
+                dotted: 圆点
+                double: 双实线
+                groove: 槽
+                outset: 突起
+                ridge: 岭
+                solid: 单实线
+             */
+            border-style: solid;
+
+            /* 粗细 */
+            border-width: 20px;
+            border-top-width: 20px;
+            border-bottom-width: 20px;
+            border-left-width: 20px;
+            border-right-width: 20px;
+
+            border-width: 40px;
+            border-width: 40px 30px;
+            border-width: 40px 30px 20px;
+            border-width: 40px 30px 20px 10px;
+
+            /* 颜色 */
+            border-color: greenyellow;
+            /* 颜色可以分别给四个方向赋值 */
+            border-color: red green blue violet;
+            /* border-top-color: red;
+            border-bottom-color: red;
+            border-left-color: red;
+            border-right-color: red; */
+
+            /* 可以单独设置某个方向的边框 */
+            border-top: 5px solid red;
+            /* 可以用来做下划线，或竖线，用于分割文本 */
+
+            /* 要让边框出现，必须要有border-style属性 */
+
+            /* border: 15px ridge blue; */
+
+            /* 边框的圆角半径 */
+            /* border-radius: 15px; */
+
+
+            /* 外边距，基本上和内边距相同 */
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            margin: 30px;
+            margin: 40px 20px;
+            margin: 40px 30px 20px;
+            margin: 40px 30px 20px 10px;
+
+
+            /* box-sizing */
+            /* 参考：https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing */
+            /* box-sizing 可以改变 width和height属性所代表的含义 */
+            /* 待选项：
+                content-box: width/height 代表内容宽度/高度
+                border-box: width/height 代表 2*border+2*padding+content
+             */
+            box-sizing: content-box;
+
+
+            /* 主要用在加了边框的元素，且该元素width设置为100%，就可以使用box-sizing: border-box，让元素放进窗口中 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        hello world
+    </div>
+
+    <div>
+        hello world2
+    </div>
+</body>
+
+</html>

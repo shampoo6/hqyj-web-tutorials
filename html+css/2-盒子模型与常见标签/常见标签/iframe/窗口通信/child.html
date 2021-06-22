@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    这是child.html
+</body>
+<script>
+    // message 事件，将在接收窗口消息时被触发
+    window.addEventListener('message', ev => {
+        console.log(ev)
+
+        // 向父窗口发消息
+        // 获取父窗口
+        let parent = window.parent
+        parent.postMessage('收到父窗口消息，child给出回应')
+    })
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
+
+        .box1 {
+            /* 参考: https://www.w3schools.com/css/css_colors.asp
+                https://www.w3schools.cn/css/css_colors.asp
+            */
+
+            /* 颜色值的表达方式有多种： */
+
+            /* 预置文本: 代表颜色的英文单词 */
+            /* transparent: 透明 */
+            background-color: red;
+
+            /* rgb值: 在计算机图形学中，红(red)绿(green)蓝(blue)是计算机的三原色 */
+            /* 使用rgb函数来定义一个颜色值，其中第一个参数代表红色，第二个参数代表绿色，第三个参数代表蓝色 */
+            /* 每个参数的取值范围是：0~255 (256是一个字节的大小Byte)*/
+            background-color: rgb(67, 255, 42);
+
+            /* rgba值: rgb代表红绿蓝，a(alpha通道)代表透明度，取值范围0~1，值越大，越不透明 */
+            background-color: rgba(67, 255, 42, 1);
+
+            /* HSL值: H色调 S饱和度（灰度） L代表亮度 */
+            background-color: hsl(0, 0%, 0%);
+
+            /* 十六进制值: 以井号开头 */
+            /* 十六进制数由1~10超过10的部分由A~F表示 */
+            /* 前两个数代表红色，中间两个数代表绿色，最后两个数代表蓝色 */
+            /* background-color: #0000ff; */
+            /* background-color: #2233ff; 如果颜色值成对出现，可以简写为： #23f */
+            background-color: #fd5433;
+        }
+
+        .box2 {
+            background-color: red;
+        }
+
+        .box3 {
+            /* 透明属性，可以设置元素透明度，值在0~1之间 */
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">
+
+    </div>
+    <div class="box box2">
+
+    </div>
+    <div class="box box3">
+
+    </div>
+</body>
+
+</html>

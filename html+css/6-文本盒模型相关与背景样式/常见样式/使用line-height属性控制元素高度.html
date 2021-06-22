@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            /* 使用line-height规定内容高度的同时，使文本上下居中 */
+            /* 但是内容中的其他块级元素并不会上下居中，行内元素会居中 */
+            line-height: 100px;
+            border: 5px solid red;
+        }
+
+        .box-s {
+            width: 50px;
+            height: 50px;
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- hello world -->
+        <!-- <div class="box-s">123</div> -->
+        <span>123</span>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 搜索栏 -->
+    <div>
+        <input id="kw" /><button onclick="search()">搜索</button>
+    </div>
+    <!-- 查询结果 -->
+    <div>
+        <iframe id="result" width="800" height="600"></iframe>
+    </div>
+</body>
+
+<script>
+    let search = () => {
+        // 获取输入框中的值
+        let inp = document.getElementById('kw')
+        let kw = inp['value']
+
+        // 获取 iframe 并设置 src
+        let result = document.getElementById('result')
+        result['src'] = 'https://www.baidu.com/s?wd=' + kw
+    }
+</script>
+
+</html>

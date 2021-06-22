@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            width: 100%;
+            height: 200px;
+            border: 5px solid red;
+            background-color: blue;
+
+            /* 若不使用 box-sizing 宽度为100% 时，会超出页面宽度 */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="box">box</div>
+    </div>
+</body>
+
+</html>

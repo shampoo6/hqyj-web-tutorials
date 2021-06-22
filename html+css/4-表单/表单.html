@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 参考：
+        https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form
+    -->
+    <!-- 表单 -->
+    <!-- 属性如下：
+        method: 请求方法，可以理解为服务器接收网络数据的频道，该属性待选项有：get/post
+        action: 通信地址，也就是定义数据发送到的地方
+        target: 定义数据提交后，哪个页面发生跳转，待选项：_self当前窗口发生跳转；_blank新开窗口发生跳转
+    -->
+    <!-- 特点：表单中的按钮，点击以后，默认会发生页面跳转 -->
+    <!-- 添加 onsubmit="return false" 以后，表单中的按钮点击后就不会再跳转了 -->
+    <!-- <form method="get" action="https://www.baidu.com" target="_blank" onsubmit="return false"> -->
+    <form method="get" action="https://www.baidu.com">
+        <fieldset>
+            <legend>姓名</legend>
+            <input name="n"/>
+            <input name="age"/>
+        </fieldset>
+        <button>提交</button>
+    </form>
+    <!-- method为get时，会用以下方式传递参数 -->
+    <!-- 点击按钮以后，数据将被发送到action指定的地址，且格式如下：?n=sdfgre4&age=15 -->
+    <!-- 参数传递时，用?问好开头，后面参数是 key=value 格式的键值对，如果有多组参数，以&且符号连接 -->
+</body>
+
+</html>

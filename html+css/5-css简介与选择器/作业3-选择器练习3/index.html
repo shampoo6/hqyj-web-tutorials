@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            border: 5px solid black;
+        }
+
+        ul>li {
+            border: 5px solid pink;
+        }
+
+        ol>li:first-child+li {
+            border: 5px solid red;
+        }
+
+        ol>li:first-child+li~li {
+            border: 5px solid grey;
+        }
+
+        ul:hover {
+            background-color: yellow;
+        }
+
+        a:link {
+            color: green;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:hover {
+            color: gold;
+        }
+
+        /* ul>li:nth-child(3) {
+            color: blue;
+        } */
+
+        ul>li:nth-of-type(2) {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 请使用选择器，完成以下元素的选择 -->
+    <!-- 1. 使用后代选择器，修改所有li的边框 -->
+    <!-- 2. 使用子代选择器，修改所有ul下的li的边框 -->
+    <!-- 3. 使用兄弟选择器，修改b的边框 -->
+    <!-- 4. 使用兄弟选择器，修改c d的边框 -->
+    <!-- 5. 使用伪类选择器，修改ul悬停时的背景色 -->
+    <!-- 6. 创建a标签，使用伪类修改其link，visited，hover时的文本颜色 -->
+    <!-- 7. 使用伪类选择器nth-child，修改2的文本颜色 -->
+    <!-- 8. 使用伪类选择器nth-of-child，修改2的文本颜色 -->
+    <ul>
+        <li>1</li>
+        <div>
+            <ol>
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+                <li>d</li>
+            </ol>
+        </div>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <a href="https://www.iqiyi.com">iqy</a>
+</body>
+
+</html>

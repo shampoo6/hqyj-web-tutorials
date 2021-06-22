@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 50px solid red;
+            padding: 50px;
+
+            /* 修改元素背景 */
+
+            /* 设置背景色 */
+            background-color: green;
+
+            /* 设置背景图 */
+            /* background-image: url('../img/1.jpg') */
+            background-image: url('http://img.alicdn.com/tfscom/i4/654230132/O1CN011CqUjXBxyNTXTMy_!!654230132.jpg_180x180xzq90.jpg_.webp');
+
+            /* 背景图的重复方式 */
+            /* 待选项：
+                no-repeat: 不重复
+                repeat: 横纵方向都重复
+                repeat-x: 横向重复
+                repeat-y: 纵向重复
+                round: 让图片正好填充满整个背景，但图片可能被拉伸
+                space: 有间距的铺满背景，但图片不会拉伸也不会被裁剪
+             */
+            background-repeat: no-repeat;
+
+            /* 背景图尺寸 */
+            /* 待选项：
+                auto: 保持图片原始大小
+                cover: 让图片完整覆盖整个背景，但宽高比不变
+                    cover的特点：图片的最短边等于背景的最长边
+                contain: 让背景完全包含整个图片，但宽高比不变
+                    contain的特点：背景的最短边等于图片的最长边
+             */
+            background-size: auto;
+
+            /* 图片左上角对齐的位置 */
+            /* 待选项：
+                content-box: 图片左上角对齐内容区域的左上角
+                padding-box: 图片左上角对齐内边距的左上角
+                border-box: 图片左上角对边框的左上角
+                若不设置概述性，默认情况是padding-box
+             */
+            background-origin: padding-box;
+
+            /* 设置背景图的裁剪区域，超过该区域的不部分将被裁剪掉 */
+            /* 待选项：
+                content-box: 超出内容区域的部分将被裁剪掉
+                padding-box: 超出内边距区域的部分将被裁剪掉
+                border-box: 超出边框区域的部分将被裁剪掉
+             */
+            /* background-clip: content-box; */
+
+            /* 设置背景图在背景中的位置 */
+            /* 待选项：
+                top: 向上对齐左右居中
+                bottom: 向下对齐左右居中
+                left: 向左对齐上下居中
+                right: 向右对齐上下居中
+                center: 居中
+                数字：第一个数字代表图片左上角x坐标，第二个数字代表图片左上角y坐标
+             */
+            background-position: 20px 50px;
+            /* 可以使用background-position-x和background-position-y分别设置图片的横纵坐标 */
+
+            /* 背景是个复合属性，可以添加多个值 */
+            background: red url('../img/1.jpg') repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        hello world!!!
+    </div>
+</body>
+
+</html>

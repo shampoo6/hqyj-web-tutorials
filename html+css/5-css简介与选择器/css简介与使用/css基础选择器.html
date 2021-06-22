@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 基础选择器 */
+
+        /* 标签选择器：选中相同标签的所有元素 */
+        li {
+            border: 5px solid red;
+        }
+
+        /* id 选择器：选中元素中id值为该选择器的元素 */
+        #box {
+            border: 5px solid black;
+        }
+
+        /* 类选择器: 选中相同类名的所有元素 */
+        .list-item {
+            border: 5px solid green;
+        }
+
+        #id-list {
+            border: 5px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- id 属性在页面中是不可重复命名的 -->
+    <div id="box">hello</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol>
+        <!-- class: 给标签分门别类，指定类别
+            有时一个元素不止一个类，多个类的情况，中间用空格隔开
+        -->
+        <li id="id-list" class="list-item list-box">1</li>
+        <li>2</li>
+        <li class="list-item">3</li>
+    </ol>
+</body>
+
+</html>

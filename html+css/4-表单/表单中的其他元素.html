@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <form method="get" action="">
+        <!-- label标签，用于提示用户输入 -->
+        <!-- for: 可以绑定一个id值为for所规定的表单元素 -->
+        <div><label for="age">年龄</label></div>
+        <div>
+            <label>姓名：<input name="name" /></label>
+        </div>
+        <div>
+            <input id="age" type="number" name="age" />
+        </div>
+
+        <!-- fieldset 作用是给表单项进行分组 -->
+        <fieldset>
+            <!-- 规定分组的名称 -->
+            <legend>家庭成员</legend>
+            <label>爸爸：<input name="father"/></label>
+            <label>妈妈：<input name="mother"/></label>
+        </fieldset>
+    </form>
+</body>
+
+</html>

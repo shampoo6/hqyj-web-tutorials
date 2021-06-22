@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        img {
+            display: none;
+        }
+
+        /* 选择器的含义是： */
+        /* 选择所有按钮中的第一个在按住时同级的id为img1的元素 */
+        button:first-child:active~#img1 {
+            display: block;
+        }
+
+        /* 选择器的含义是： */
+        /* 选择第二个按钮点住状态时的同级的所有img标签的第二个img标签 */
+        button:nth-of-type(2):active~img:nth-of-type(2) {
+            display: block;
+        }
+
+        button:nth-of-type(3):active~img:nth-of-type(3) {
+            display: block;
+        }
+
+        /* 结论： */
+        /* 读取或书写一个复杂的css选择器时，应该从左到右逐一分析 */
+    </style>
+</head>
+
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <img id="img1" src="./img/1.png" />
+    <img src="./img/2.png" />
+    <img src="./img/3.png" />
+</body>
+
+</html>

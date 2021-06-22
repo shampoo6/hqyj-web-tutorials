@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 使用边框构造三角形 */
+        .box {
+            /* 宽高必须为0 */
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 50px;
+            /* border-color: red green blue violet; */
+
+            /* 除了需要保留的三角型意外，其余部分颜色设为透明 */
+            border-color: transparent transparent transparent red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

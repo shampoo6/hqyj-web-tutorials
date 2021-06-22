@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: red;
+        }
+
+        div>label {
+            border: 5px solid black;
+        }
+
+        select[name='city']>option:first-child+option {
+            background-color: violet;
+        }
+
+        select[name='city']>option:first-child+option~option {
+            background-color: blue;
+        }
+
+        select[name=country]>option:nth-child(3n) {
+            background-color: blue;
+        }
+
+        select[name=country]>option:nth-child(2n-1) {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 请使用选择器，完成以下元素的选择 -->
+    <!-- 1. 使用基础选择器，修改标题的文本颜色 -->
+    <!-- 2. 使用子代选择器，给每个label添加边框 -->
+    <!-- 3. 使用兄弟选择器，修改option为2的背景色 -->
+    <!-- 4. 使用兄弟选择器，修改option为3的背景色 -->
+    <!-- 5. 使用伪类选择器，修改option为6和9的背景色 -->
+    <!-- 6. 使用伪类选择器，修改option为4，6和8的背景色 -->
+    <h1>早安重庆</h1>
+    <form>
+        <div>
+            <label>
+                姓名<input name="name" />
+            </label>
+        </div>
+        <div>
+            <label>
+                age<input name="name" type="number" />
+            </label>
+        </div>
+        <div>
+            <label>
+                城市
+                <select name="city">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>3</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                国家
+                <select name="country">
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </label>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .form {
+            background-color: white;
+            border-radius: 20px;
+            width: 350px;
+            height: 400px;
+            margin-left: 25px;
+        }
+
+        .form-item {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        .form-item input[type=text],
+        .form-item input[type=number],
+        .form-item textarea {
+            width: 230px;
+        }
+
+        .check-item {
+            display: flex;
+        }
+
+        .check-item>div:nth-of-type(2) {
+            display: flex;
+        }
+
+        .check-item>div:nth-of-type(2)>div {
+            padding-right: 10px;
+        }
+
+        .m-textarea {
+            display: flex;
+        }
+
+        .btn {
+            float: right;
+            position: relative;
+            right: 36px;
+            width: 50px;
+            height: 25px;
+            border-radius: 5px;
+            background-color: #009aff;
+            border-color: #009aff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+
+        <h1 style="text-align:center; padding-top: 20px;">员工信息录入框</h1>
+        <form method="get" action="">
+            <div class="form-item"><label>姓名：<input type="text" name="name" /></label></div>
+            <div class="form-item"><label>年龄：<input type="number" name="age" /></label></div>
+            <div class="form-item check-item">
+                <div>性别：</div>
+                <div>
+                    <div><label>男：<input type="radio" name="sex" value="male" /></label></div>
+                    <div><label>女：<input type="radio" name="sex" value="female" /></label></div>
+                    <div><label>其他：<input type="radio" name="sex" value="other" /></label></div>
+                </div>
+            </div>
+            <div class="form-item check-item">
+                <div>工作：</div>
+                <div>
+                    <div><label>吃饭：<input type="checkbox" name="job" value="eat" /></label></div>
+                    <div><label>睡觉：<input type="checkbox" name="job" value="sleep" /></label></div>
+                    <div><label>耍朋友：<input type="checkbox" name="job" value="playFriend" /></label></div>
+                </div>
+            </div>
+            <div class="form-item">
+                <label>
+                    部门：
+                    <select name="department">
+                        <option value="hr">人事部</option>
+                        <option value="money">财务部</option>
+                        <option value="it">IT部</option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-item m-textarea">
+                <div><label for="desc">简介：</label></div>
+                <div><textarea id="desc" rows="4" name="description"></textarea></div>
+            </div>
+            <div><input class="btn" type="submit" /></div>
+        </form>
+
+    </div>
+</body>
+
+</html>

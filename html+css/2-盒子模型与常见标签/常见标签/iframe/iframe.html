@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <!-- iframe -->
+        <!-- 作用：用于内嵌一个外部的页面 -->
+        <!-- src: 嵌入页面的地址 -->
+        <!-- name: 该属性可以给iframe起一个名称，用于a标签或者form标签，页面跳转时指定窗口 -->
+        <iframe name="win1" src="https://www.bilibili.com"></iframe>
+
+        <!-- 可以嵌入本地文件 -->
+        <iframe name="win2" src="./other.html"></iframe>
+
+        <!-- 特点 -->
+        <!-- 1. 是一个行内块级元素 -->
+        <!-- 2. 默认自带边框，如果要去掉边框，可以增加 border: none -->
+
+        <a href="https://www.baidu.com" target="win1">win1跳转到百度</a>
+        <a href="https://www.baidu.com" target="win2">win2跳转到百度</a>
+    </body>
+</html>

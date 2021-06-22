@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box1 {
+            /* 文本对齐方式 */
+            /* 待选项：
+                left: 文本靠左对齐
+                center: 文本居中
+                right: 文本靠右对齐
+            */
+            /* text-align: center; */
+
+            /* 修改字体 */
+            /* font-family的值是字体名称，必须是操作系统中或浏览器中存在的字体 */
+            font-family: '微软雅黑';
+
+            /* 修改文本粗细 */
+            /* 待选项：
+                数字：数字越大越粗
+                normal: 正常粗细 
+                bolder: 加粗
+            */
+            font-weight: 5;
+
+            /* 修改文本颜色 */
+            /* 常见：red black white green blue */
+            color: red;
+
+            /* 不常见样式 */
+            /* 单词间距离，指的是英文单词 */
+            /* word-spacing: 100px; */
+
+            /* 字符间距 */
+            /* letter-spacing: 25px; */
+
+            /* 段落缩进 */
+            text-indent: 2em;
+
+            /* 修改英文的大小写 */
+            /* 待选项：
+                uppercase: 所有字母大写
+                lowercase: 所有字母小写
+                capitalize: 单词的首字母大写
+            */
+            text-transform: uppercase;
+
+        }
+
+        .btn1 {
+            height: 100px;
+        }
+
+        .btn2 {
+            /* 纵向对齐 */
+            /* 待选项：
+                top: 向上对齐
+                middle: 居中
+                bottom: 向下对齐
+            */
+            vertical-align: middle;
+        }
+
+        .box2 {
+
+
+            /* 文本装饰线 */
+            /* 文本上出现的装饰用的横线 */
+            /* 装饰线由以下几部分组成：样子 + 位置 + 颜色 */
+
+            /* 样子 */
+            /* 待选项：
+                dashed: 虚线
+                dotted: 圆点
+                doubled: 双实线
+                solid: 单实线
+                wavy: 波浪线
+             */
+            /* text-decoration-style: wavy; */
+            /* 位置 */
+            /* 待选项：
+                overline: 文本上面
+                underline: 文本下面
+                line-through: 文本中间
+                none: 隐藏装饰线
+             */
+            /* text-decoration-line: line-through; */
+            /* 颜色 */
+            /* text-decoration-color: red; */
+
+            /* 复合属性（缩写） */
+            /* 复合属性的特点：位置可以随意调整，值的个数可以由任意个 */
+            /* text-decoration: red overline dashed; */
+            /* text-decoration: dashed red overline; */
+            text-decoration: underline;
+
+            /* 必须设置 位置 装饰线才会出现 */
+
+            /* 装饰线是否遮挡文本 */
+            /* 待选项：
+                auto: 装饰线不会遮挡文本
+                none: 装饰线会遮挡文本
+             */
+            text-decoration-skip-ink: auto;
+
+
+
+
+
+            /* 有时候会有以下需求：要求文本内容在一行内显示，显示不下的内容由省略号代替 */
+            /* 可以使用以下样式满足上述需求 */
+            width: 100px;
+            border: 5px solid black;
+            padding: 10px;
+            /* 内容溢出的显示方式 */
+            overflow: hidden;
+            /* 文本溢出的显示方式 */
+            text-overflow: ellipsis;
+            /* 让内容强制不换行 */
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">hElLo woRlD!!! 你好啊世界！！！</div>
+    <div>
+        <button class="btn1">hello</button>
+        <button class="btn2">world</button>
+    </div>
+    <div class="box2">
+        祖国万岁!!! help program
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        img {
+            display: none;
+        }
+
+        /* 该选择器的含义：当鼠标悬停在按钮时的下一个兄弟节点图片元素 */
+        button:hover+img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button>鼠标悬停出现图片</button>
+    <img src="./sample.png" />
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        .frame {
+            width: 22px;
+            height: 22px;
+            border: 2px solid red;
+            background-image: url('./sprite.png');
+        }
+
+        /* .wb {
+            background-position-x: 0;
+        } */
+
+        .tx {
+            /* calc 是计算函数，括号里面可以用来计算长度值 */
+            background-position-x: calc(-1*22px);
+        }
+
+        .fb {
+            background-position-x: calc(-2*22px);
+        }
+
+        .tw {
+            background-position-x: calc(-3*22px);
+        }
+
+        .in {
+            background-position-x: calc(-4*22px);
+        }
+
+        .wb:hover,
+        .tx:hover,
+        .fb:hover,
+        .tw:hover,
+        .in:hover {
+            background-position-y: -22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame wb"></div>
+    <div class="frame tx"></div>
+    <div class="frame fb"></div>
+    <div class="frame tw"></div>
+    <div class="frame in"></div>
+</body>
+
+</html>

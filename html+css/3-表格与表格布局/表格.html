@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>简单的三行三列表格</h1>
+    <!-- table 代表表格 -->
+    <!-- border 表格边框，该属性可以不写属性值 -->
+    <!-- 当使用table tr td三种标签构成基础表格时，浏览器会自动将 tr td 内容包裹在 tbody 标签中，tbody 是必不可少的 -->
+    <table border>
+        <!-- tr 标签代表行 td 标签代表列 -->
+        <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+            <td>3-3</td>
+        </tr>
+    </table>
+
+
+    <h1>完整表格</h1>
+
+    <table border>
+        <!-- caption 表格名称 -->
+        <caption>学生信息表</caption>
+        <!-- 表头：说明每个单元格的作用 -->
+        <thead>
+            <tr>
+                <!-- th 代表 表头种的列 -->
+                <th>学号</th>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>分数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 表体中的每一行，理论上应该和表头的长度保持一致 -->
+            <tr>
+                <td>1</td>
+                <td>王某</td>
+                <td>1班</td>
+                <td>65</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>刘某</td>
+                <td>2班</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>陈某</td>
+                <td>3班</td>
+                <td>90</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>平均分：</td>
+                <td>80</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <h1>合并单元格</h1>
+
+    <!-- 横向合并单元格，称为：跨列（colspan） -->
+    <table border>
+        <tr>
+            <!-- colspan写在td上 -->
+            <td colspan="3">1-1</td>
+        </tr>
+        <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+        </tr>
+    </table>
+
+    <table border>
+        <tr>
+            <!-- 纵向合并单元格，称为：跨行（rowspan） -->
+            <td rowspan="3">1-1</td>
+            <td>1-2</td>
+        </tr>
+        <tr>
+            <td>2-2</td>
+        </tr>
+        <tr>
+            <td>3-2</td>
+        </tr>
+    </table>
+
+    <h1>调整表格单元格的间距</h1>
+
+    <!-- cellpadding: 单元格内的内边距 -->
+    <table border cellpadding="25" cellspacing="15">
+        <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+            <td>3-3</td>
+        </tr>
+    </table>
+
+    <table border style="border-spacing: 25px">
+        <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+            <td>3-3</td>
+        </tr>
+    </table>
+</body>
+
+</html>

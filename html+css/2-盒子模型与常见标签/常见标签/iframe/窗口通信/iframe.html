@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- iframe 标签：页面中用于嵌套子页面 
+        width: 宽度
+        height: 高度
+        src: 内嵌网页的地址
+        style='border:none' 去掉边框
+    -->
+    <iframe style="border: none;" width="500" height="300" src="http://www.bilibili.com"></iframe>
+    <iframe id="child" width="500" height="300" src="./child.html"></iframe>
+
+    <!-- iframe 的使用场景
+        1. 内嵌自己的子页面
+        2. 内嵌外部视频网站的视频播放器
+        3. 内嵌外部地图网站的地图
+    -->
+
+    <div>
+        <h1>iframe 充当页面跳转的窗口</h1>
+        <!-- iframe 需要添加name属性 -->
+        <iframe name="win1" src="./child.html"></iframe>
+        <iframe name="win2" src="./child.html"></iframe>
+        <!-- 再 a 或 form 标签 添加target属性 -->
+        <a href="https://www.baidu.com" target="win1">win1跳转百度</a>
+        <a href="https://www.baidu.com" target="win2">win2跳转百度</a>
+    </div>
+
+    <div>
+        <button onclick="post()">向子窗口发消息</button>
+    </div>
+</body>
+<script>
+    // 窗口间通信：父窗口向子窗口传递消息，或子窗口向父窗口传递消息
+
+    // 注意：若希望通信过程能够成功，那么当前这个html文件需要放在服务器上进行访问
+    // 可以使用 vscode 的 live server 来创建服务器运行该页面
+
+    let post = () => {
+        // 找到子窗口对象
+        let iframe = document.getElementById('child')
+        let win = iframe.contentWindow // iframe 中嵌套页面的窗口
+        // 对子窗口发送消息
+        win.postMessage('这是父窗口发来的消息')
+    }
+
+    // 添加消息监听器，否则就获取不到子窗口传来的消息
+    window.addEventListener('message', ev => {
+        console.log(ev.data)
+    })
+</script>
+
+</html>
