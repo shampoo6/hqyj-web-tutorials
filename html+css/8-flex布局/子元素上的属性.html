@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 参考：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
+
+        .rv {
+            border: 5px solid black;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            /* 使用flex，一定要在容器中加入flex属性 */
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 5px solid red;
+        }
+
+        .el1 {
+            /* 排序 */
+            /* 数字越小排在越前面 */
+            order: 2;
+            /* 让元素填充满一行中空余部分 */
+            /* flex-grow: 1; */
+
+            /* 当元素占满整行时才能看出效果 */
+            /* 该属性的效果是当元素沾满整行时压缩元素 */
+            /* 值为0: 不压缩 */
+            /* 大于零的值，元素将被压缩，且值越大压缩得越厉害 */
+            /* flex-shrink: 0; */
+
+            /* 设置元素在flex容器中的宽度或高度 */
+            /* 待选项：
+                0: 不设置元素宽或高
+                auto: 元素本身的宽或高
+                其他长度: 设置元素宽或高，优先级高于width或height
+             */
+            /* 在flex当中直接将其作为宽或高使用即可 */
+            /* flex-basis: 0; */
+
+            /* flex 复合属性，代表了 flex-grow; flex-shrink; flex-basis */
+            /* 赋值顺序不可调换 */
+            /* 待选项:
+                auto: (1 1 auto)
+                none: (0 0 auto)
+                任意其他值 
+             */
+            /* flex: 1 0 200px; */
+
+            /* 设置子元素在次要轴上的排布方式 */
+            /* 其待选项和 align-items 相同 */
+            align-self: flex-end;
+        }
+
+        .el2 {
+            order: 0;
+            /* flex-grow: 1; */
+        }
+
+        .el3 {
+            order: 1;
+            /* flex-grow 数字越大，所分得的空间越大 */
+            /* flex-grow: 2; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container rv">
+        <div class="box el1">2</div>
+        <div class="box el2">0</div>
+        <div class="box el3">1</div>
+        <!-- <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div> -->
+    </div>
+</body>
+
+</html>

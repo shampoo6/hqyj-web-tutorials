@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 700px;
+            background-color: blanchedalmond;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sidebar>a {
+            display: block;
+            line-height: 80px;
+            border-bottom: 2px solid grey;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar>a:hover {
+            background-color: white;
+            color: orange;
+        }
+
+        iframe[name=win] {
+            border: none;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- sidebar 侧边栏 -->
+        <div class="sidebar">
+            <a href="./page1.html" target="win">到Page1</a>
+            <a href="./page2.html" target="win">到Page2</a>
+            <a href="./page3.html" target="win">到Page3</a>
+        </div>
+        <!-- content 内容区域 -->
+        <iframe name="win" src="./page1.html"></iframe>
+    </div>
+</body>
+
+</html>

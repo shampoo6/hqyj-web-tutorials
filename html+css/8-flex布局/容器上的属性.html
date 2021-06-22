@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 参考：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
+
+        .rv {
+            border: 5px solid black;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            /* 使用flex，一定要在容器中加入flex属性 */
+            display: flex;
+            /* 规定主要轴 */
+            /* 默认情况，主要轴就是横轴 */
+            /* 待选项：
+                row: 默认值，规定横向为主轴
+                column: 规定纵向为主轴
+                row-reverse: 规定横向为主轴，同时反向
+                column-reverse: 规定纵向为主轴，同时反向
+             */
+            /* flex-direction: row; */
+
+            /* 设置换行方式 */
+            /* 待选项：
+                wrap: 换行
+                nowrap: 不换行
+                wrap-reverse: 换行且反向
+             */
+            flex-wrap: wrap;
+
+            /* 这个属性是 flex-direction + flex-wrap */
+            /* flex-flow: nowrap column; */
+
+            /* 定义元素在主要轴上的排列方式 */
+            /* 待选项：
+                flex-start: 对齐主轴起始点
+                flex-end: 对齐主轴结束点
+                center: 在主轴上居中
+                space-around: 每个子元素两侧的间隔相等
+                space-between: 两端对齐，中间平均分布
+                space-evenly: 平均分布
+             */
+            justify-content: space-evenly;
+
+            /* 定义元素在次要轴上的排列方式 */
+            /* 待选项：
+                flex-start: 对齐次要轴起始点
+                flex-end: 对齐次要轴结束点
+                center: 在次要轴上居中居中
+                baseline: 根据子元素中的文本进行文本高度对齐
+                stretch: 当不设置宽或高时，子元素的宽度或高度会自动占满整个容器
+             */
+            align-items: center;
+
+            /* 使用条件：子元素在主轴上必须换行 */
+            /* 作用：多行子元素在次要轴上的对齐方式 */
+            /* 待选项和 justify-content 相同 */
+            align-content: center;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            border: 5px solid red;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container rv">
+        <div class="box1">123</div>
+        <span>hello world</span>
+        <button class="btn">这是各按钮</button>
+        <div class="box1">321</div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+    </div>
+</body>
+
+</html>

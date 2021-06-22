@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 5px solid red;
+        }
+
+        /* 伪元素： */
+        /* 在html文档中，并非真实的文档元素，而是一个 "::" 由两个冒号组成的符号，具备了部分文档元素的功能 */
+
+        /* 特点：伪元素默认情况是个行内元素 */
+
+        /* 伪元素 before */
+        /* before 会出现在标签体中内容的前面 */
+        .box::before {
+            /* before 必须写content属性，否则不显示 */
+            content: '';
+            background-color: pink;
+            display: block;
+            width: 30px;
+            height: 30px;
+        }
+
+        /* 伪元素 after */
+        /* after 会出现在标签体中内容的后面 */
+        .box::after {
+            content: '123';
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <!-- li 标签 前面的 ::marker 也是个伪元素 -->
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="box">
+        <div>
+            hello world
+        </div>
+        <div>
+            中国万岁
+        </div>
+    </div>
+</body>
+
+</html>

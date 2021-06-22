@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .rv {
+            border: 5px solid black;
+        }
+
+        .box1 {
+            background-color: red;
+        }
+
+        .box1,
+        .box3 {
+            height: 100px;
+        }
+
+        .box2 {
+            background-color: green;
+            /* 除了给下一个元素添加clear清除浮动外，可以给容器添加如下样式： */
+            overflow: hidden;
+        }
+
+        .little-box {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box3 {
+            background-color: blue;
+            /* clear 属性为清除浮动 */
+            /* 清除浮动：让浮动元素占据原有的高度 */
+            /* 待选项：
+                left: 清除左侧浮动
+                right: 清除右侧浮动
+                both: 两侧都清除浮动
+             */
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1 rv">
+        header
+    </div>
+
+    <!-- 由于box2没有设置高度，所以当box2中的元素全部浮动以后，box2的高度就为0了 -->
+    <div class="box2 rv">
+        <div class="little-box rv" style="height: 200px;"></div>
+        <div class="little-box rv"></div>
+        <div class="little-box rv" style="height: 300px; float: right"></div>
+    </div>
+
+    <!-- 由于box2中的子元素全部浮动了，所以box3跑到box2的位置进行了填充 -->
+    <div class="box3 rv">
+        footer
+    </div>
+
+    <!-- 解决以上问题，可以使用清除浮动 clearfix -->
+</body>
+
+</html>

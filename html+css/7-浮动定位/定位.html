@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 定位 */
+        /* 什么是定位？ */
+        /* 定位是css中用于确定元素位置的属性 */
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+
+        .box1 {
+            background-color: red;
+            /* position 值为 absolute 时 这是绝对定位
+                绝对定位时元素参考的是窗口可见区域（视口viewport）的上下左右边框
+                绝对定位的元素会脱离文档结构，会让出绝对定位前的位置，后续元素会上前补位
+
+                关于视口的文档：https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts
+             */
+            position: absolute;
+            /* 定位配合 top bottom left right 属性进行使用 */
+            /* top bottom left right 分别代表元素距离窗口上下左右的距离 */
+            /* top bottom 不要同时使用 */
+            /* left right 不要同时使用 */
+
+            /* demo：使用绝对定位，让元素居中 */
+            left: calc(50% - 100px);
+            /* 计算属性中运算符左右要打上空格 */
+
+            /* 绝对定位的元素，会像浮动元素一样浮出文档，不受文档结构的影响 */
+        }
+
+        .box2 {
+            background-color: green;
+            position: absolute;
+            top: 250px;
+            left: 250px;
+        }
+
+        .little-box {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-top: 25px;
+            margin-left: 30px;
+
+            /* 相对定位 */
+            /* 相对定位的参考系是父节点 */
+            /* 相对定位的原点，就是相对父节点没有添加定位时的初始位置 */
+            position: relative;
+            /* 
+                top: 增加top值会让元素向下移动，反之向上
+                left: 增加left值会让元素向右移动，反之向左
+                bottom: 增加bottom值会让元素向上移动，反之向下
+                right: 增加right值会让元素向左移动，反之向右
+             */
+        }
+
+        .to-fixed {
+            /* 固钉元素 */
+            /* 固钉元素距离父节点的位置，当滚动条发生滚动时，该位置不变 */
+            position: fixed;
+            /* 使用 top bottom left right 来定义元素固定在父节点中距离上下左右的位置 */
+            top: 25px;
+            left: 30px;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            overflow: scroll;
+        }
+
+        .content {
+            width: 400px;
+            height: 400px;
+            background-color: hotpink;
+        }
+
+        .box3 {
+            background-color: gold;
+            position: absolute;
+            bottom: 0;
+
+            /* 使用 z-index 调整因为定位而重叠的两个元素 */
+            /* z-index 数值大的元素会覆盖数值小的元素 */
+            /* 若两个元素 z-index 相同，且属于同级元素，那么后面一个元素覆盖前一个元素 */
+            /* 即使子元素 z-index 值非常大，其渲染顺寻还是受父元素的 z-index 控制 */
+            z-index: 5;
+        }
+
+        .box4 {
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1"></div>
+
+    <div class="box box2">
+        <div class="little-box">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <button class="to-fixed">这是一个fixed的按钮</button>
+        </div>
+    </div>
+
+    <div class="box box3"></div>
+    <div>
+        <div class="box box4" style="z-index: 9999"></div>
+    </div>
+</body>
+
+</html>

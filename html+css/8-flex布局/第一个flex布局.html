@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .rv {
+            border: 5px solid black;
+        }
+
+        .container {
+            width: 400px;
+            height: 200px;
+            /* 使用flex，一定要在容器中加入flex属性 */
+            display: flex;
+            /* 纵向居中 */
+            align-items: center;
+            /* 横向分边排列 */
+            justify-content: space-between;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container rv">
+        <div class="box1"></div>
+        <span>hello world</span>
+        <button class="btn">这是各按钮</button>
+    </div>
+</body>
+
+</html>

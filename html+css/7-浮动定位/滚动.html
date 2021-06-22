@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .content {
+            width: 500px;
+            height: 300px;
+        }
+
+        /* 当内容大小，大于了容纳内容的容器的大小时，就可以考虑溢出部分如何显示 */
+        .container {
+            width: 300px;
+            height: 200px;
+
+            /* 使用 overflow 属性，规定溢出部分的显示规则 */
+            /* 待选项：
+                visible: 可见的
+                hidden: 隐藏溢出部分
+                scroll: 使用滚动条显示溢出部分
+            */
+            overflow: scroll;
+            /* 横向溢出 */
+            /* overflow-x: scroll; */
+            /* 纵向溢出 */
+            /* overflow-y: hidden; */
+        }
+
+        /* 自定义滚动条 */
+        /* 以下使用两个冒号的一批伪类，来修改滚动条 */
+
+        /* ::-webkit-scrollbar 修改滚动条整体样式 */
+        /* .container::-webkit-scrollbar {
+            width: 25px;
+            height: 30px;
+        } */
+
+        /* 修改滚动条样式，必须有::-webkit-scrollbar属性，否则滚动条不显示 */
+        .container::-webkit-scrollbar {
+            /* 纵向滚动条的宽度 */
+            width: 25px;
+            /* 横向滚动条的高度 */
+            height: 40px;
+        }
+
+        /* 滚动条上的按钮 */
+        .container::-webkit-scrollbar-button {
+            /* 横向滚动条上按钮的宽度 */
+            width: 25px;
+            /* 纵向滚动条上按钮的高度 */
+            height: 30px;
+            /* 可以修改背景相关属性，如：颜色，图片等 */
+            background-color: orange;
+            background-image: url('./img/r-trig.png');
+            background-size: cover;
+        }
+
+        /* 修改滑块 */
+        .container::-webkit-scrollbar-thumb {
+            /* 横向滚动条滑块长度 */
+            width: 50px;
+            /* 纵向滚动条滑块长度 */
+            height: 60px;
+            background-color: black;
+            background-image: url('./img/No1.png');
+            border-radius: 5px;
+        }
+
+        /* 修改滑轨 */
+        .container::-webkit-scrollbar-track {
+            background-image: url('./img/No2.png');
+        }
+
+        /* 修改右下角 */
+        .container::-webkit-scrollbar-corner {
+            background-color: pink;
+            border-radius: 15px;
+            border: 5px solid red;
+        }
+
+        /* 滚动条的样式属性是非标准化的 */
+        /* 建议少使用非标准化的属性 */
+        /* 如果非要使用，请一定要做好浏览器的兼容工作 */
+
+        /* 我们学习的滚动条样式修改，是基于webkit内核的浏览器才能识别 */
+
+
+        /* 若要修改ie浏览器下的滚动条，参考以下代码 */
+        /* 由于ie浏览器5.5已经很老旧了，基本没人用了，以下属性只做了解 */
+        /* IE特有属性 IE5.5+：
+            scrollbar-base-color		设置 滚动条整体的主色调
+            scrollbar-track-color		设置 除了滚动方块剩余部分 的颜色 
+            scrollbar-face-color		设置 滚动方块的 背景颜色 
+            scrollbar-shadow-color		设置 滚动方块的 边框颜色 
+            scrollbar-arrow-color		设置 滚动方向箭头 的颜色
+        */
+
+        /* 若要修改 mozila浏览器内核的滚动条的样式，请参考：
+            https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Scrollbars */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。
+            若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落而石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。
+            至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥。酿泉为酒，泉香而酒洌；山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。
+            已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。
+        </div>
+    </div>
+</body>
+
+</html>

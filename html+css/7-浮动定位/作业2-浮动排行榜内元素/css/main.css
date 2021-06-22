@@ -1,0 +1,69 @@
+body {
+    background-color: #ececec;
+}
+
+.card {
+    width: 300px;
+    height: 500px;
+    background-color: white;
+    padding: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url('../jd/r-trig.png');
+    display: inline-block;
+}
+
+.tag-list {
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    height: 2ex;
+    background-color: #ececec;
+    border-radius: 2ex;
+    padding: 10px;
+}
+
+.rank, .desc {
+    display: inline-block;
+}
+
+.desc {
+    float: left;
+    margin-top: 27px;
+}
+
+.rank {
+    /* background-image: url('../jd/No1.png'); */
+    background: url('../jd/No1.png') no-repeat;
+    background-size: cover;
+    padding: 1px;
+    float: left;
+    margin-top: 18px;
+    margin-right: 12px;
+}
+
+.rank-text {
+    text-align: center;
+    color: white;
+}
+
+.goods-img {
+    width: 100px;
+    float: left;
+    margin-right: 12px;
+}
+
+.goods-item {
+    margin-bottom: 20px;
+    clear: both;
+}
