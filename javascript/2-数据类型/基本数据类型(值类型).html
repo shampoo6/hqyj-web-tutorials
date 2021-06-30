@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 基本数据类型
+    // 数据类型是什么？js中对不同种类数据的一个类型分类
+
+
+    // 布尔型 boolean
+    let b = true // 真
+    b = false // 假
+
+    // 判断一个数据的类型，可以使用 typeof 表达式
+    // typeof 将返回后面变量的类型
+    let t = typeof true
+    console.log(t) // ---> boolean
+    console.log(typeof b)
+
+    // 数字 number
+    const pi = 3.1415926
+    console.log(typeof pi)
+
+    // 字符串 string (字符串可以当作字符数组使用)
+    // 一串字符组成的一个数据体，这个数据体是一个字符串
+    // 声明方法：使用双引号或单引号声明一个字符串
+    let message = 'hello world' // 推荐使用单引号
+    console.log(typeof message)
+
+    message = '这就是所谓的"真相"'
+    console.log(message)
+    message = "这就是所谓的'真相'"
+    console.log(message)
+    
+    // 在双引号中显示引号这个字符，我们需要使用斜杠进行转义
+    message = "这就是所谓的\"真相\""
+    console.log(message)
+    
+    // 常见的转义字符
+    // \r回车 \n换行 \t制表符
+    message = '\t我爱你\n祖国'
+    console.log(message)
+
+    // 拼接字符串
+    // 可以将多个字符串链接在一起，用 + 加号进行链接
+    let str1 = '中华人名共和国'
+    let str2 = '万岁'
+    let str3 = str1 + str2
+
+    console.log(str1)
+    console.log(str2)
+    console.log(str3)
+</script>
+
+</html>

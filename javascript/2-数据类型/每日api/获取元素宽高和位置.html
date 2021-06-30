@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 150px;
+            background-color: black;
+            padding: 25px;
+            border: 5px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 获取元素宽高
+
+    // 获取元素
+    let box = document.querySelector('.box')
+    // 获取元素宽度，该宽度等于 padding + content的宽度
+    console.log(box.clientWidth)
+    // 获取元素高度，该高度等于 padding + content的高度
+    console.log(box.clientHeight)
+
+    // clientWidth 和 clientHeight 是只读属性
+
+
+
+    // 获取元素的位置
+    console.log(box.offsetTop) // 距离窗口顶部的偏移
+    console.log(box.offsetLeft) // 距离窗口左边的偏移
+</script>
+
+</html>

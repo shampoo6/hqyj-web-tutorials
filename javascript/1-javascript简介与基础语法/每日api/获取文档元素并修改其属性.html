@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div>
+        <input id="inp" />
+    </div>
+    <div class="box">1</div>
+    <div class="box">2</div>
+</body>
+<script>
+    // 获取文档元素有以下几种方法:
+
+    // 通过document.querySelector()函数获取文档元素
+    // 圆括号中的字符串是一个css选择器
+    let el = document.querySelector('div>input')
+    console.log(el)
+    // 使用console.dir()函数查看文档元素中的具体属性
+    console.dir(el)
+
+    // 修改input类型
+    el.type = 'password'
+    // 修改输入框中的内容
+    el.value = '祖国万岁'
+
+    
+
+    // 使用 document.querySelectorAll 查询所有符合选择器条件的元素
+    let elAll = document.querySelectorAll('.box')
+    console.log(elAll)
+
+
+
+
+
+    // 使用document.getElementById()函数，通过标签的id获取文档元素
+    // 圆括号中填入id名称
+    let el2 = document.getElementById('inp')
+    // el2 = document.querySelector('#inp') 等价
+    console.log(el2)
+
+    // 使用 document.getElementsByClassName 获取具有指定class名称的元素集合
+    // 圆括号中填入类名称
+    let el3 = document.getElementsByClassName('box')
+    console.log(el3)
+
+    // 使用 document.getElementsByTagName 获取指定标签名称的元素集合
+    let el4 = document.getElementsByTagName('div')
+    console.log(el4)
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <h1 id="title">Title</h1>
+    <button id="btn">点我！！</button>
+</body>
+<script>
+    // 什么是事件
+    // 中文语境中就是指 事情 或 事项
+
+    let btn = document.querySelector('#btn')
+
+    // 给按钮添加点击事件
+    // 使用元素的addEventListener函数，添加一个事件处理程序
+    // 圆括号中第一个参数 click 是事件名称
+    btn.addEventListener('click', (ev) => {
+        // 在此花括号中，写事件发生后的处理程序
+        // alert('祖国万岁')
+        let h = document.getElementById('title')
+        // 修改标签体如下
+        h.innerHTML = '<span style="color:red">祖国</span>万岁'
+    })
+</script>
+
+</html>

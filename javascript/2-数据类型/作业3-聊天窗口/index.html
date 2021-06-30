@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            width: 500px;
+            height: 470px;
+            border: 5px solid black;
+            padding: 10px;
+        }
+
+        .info-window {
+            height: 400px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            border: 5px solid black;
+        }
+
+        .inp-container {
+            height: 50px;
+            border: 5px solid black;
+        }
+
+        input {
+            width: 439px;
+        }
+
+        .pop,
+        .pop-r {
+            padding: 10px;
+        }
+
+        .pop-r {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .xiao-ming,
+        .xiao-hong {
+            display: inline-block;
+            background-color: cornflowerblue;
+            border-radius: 10px;
+            color: white;
+            padding: 5px;
+
+            /* 设置最大宽度 */
+            max-width: 250px;
+        }
+
+        .xiao-hong {
+            background-color: pink;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 信息窗口 -->
+        <div class="info-window">
+            <!-- 创建html模板 -->
+            <!-- 小明 -->
+            <div class="pop">
+                <div class="xiao-ming">
+                    今天天气真好啊！
+                </div>
+            </div>
+            <div class="pop">
+                <div class="xiao-ming">
+                    今天天气真好啊！
+                </div>
+            </div>
+            <!-- 小红 -->
+            <div class="pop-r">
+                <div class="xiao-hong">
+                    你说得对
+                </div>
+            </div>
+            <div class="pop-r">
+                <div class="xiao-hong">
+                    你说得对
+                </div>
+            </div>
+        </div>
+        <!-- 输入部分 -->
+        <div class="inp-container">
+            <div><input name="xiaoMin" /><button>小明</button></div>
+            <div><input name="xiaoHong" /><button>小红</button></div>
+        </div>
+    </div>
+</body>
+<script>
+    // 获取按钮，绑定点击事件
+    let btn1 = document.querySelector('.inp-container input[name=xiaoMin]+button')
+    let btn2 = document.querySelector('.inp-container input[name=xiaoHong]+button')
+
+    btn1.addEventListener('click', () => {
+        // 获取输入框中的文本
+        let input = document.querySelector('.inp-container input[name=xiaoMin]')
+        let text = input.value
+        console.log(text)
+        // 构造html模板
+        let html = 
+            '<div class="pop">' +
+                '<div class="xiao-ming">' +
+                    text +
+                '</div>' +
+            '</div>'
+
+        // 将 html 模板插入消息框
+        let infoWindow = document.querySelector('.info-window')
+        infoWindow.innerHTML = infoWindow.innerHTML + html
+        input.value = ''
+    })
+    btn2.addEventListener('click', () => {
+        // 获取输入框中的文本
+        let input = document.querySelector('.inp-container input[name=xiaoHong]')
+        let text = input.value
+        console.log(text)
+        // 构造html模板
+        let html = 
+            '<div class="pop-r">' +
+                '<div class="xiao-hong">' +
+                    text +
+                '</div>' +
+            '</div>'
+
+        // 将 html 模板插入消息框
+        let infoWindow = document.querySelector('.info-window')
+        infoWindow.innerHTML = infoWindow.innerHTML + html
+        input.value = ''
+    })
+</script>
+
+</html>

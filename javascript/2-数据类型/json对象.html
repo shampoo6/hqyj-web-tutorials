@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 声明对象
+    // 使用一对花括号声明一个json对象
+    let obj = {
+        a: 'hello', // 对象内用 key: value 的形式声明 “属性”
+        b: 'world', // key：属性名 value：属性值
+        c: 16,      // 多个属性间用 “,” 逗号隔开，通常一个属性会独占一行
+        d: true     // 最后一个属性的末尾可以省略逗号
+    }
+
+    // 访问对象和对象中的属性
+    // 用对象名访问对象
+    console.log(obj)
+    // 用 “.” 点运算符访问对象中的属性
+    // 可以将 “.” 点 理解成中文助词 “的”
+    // 例如访问属性如下：
+    console.log(obj.a) // 这是访问 obj 对象的属性 a，那么将点运算符理解成“的”，结果就是 “访问obj对象的属性a”
+    // 访问到的属性可以进行赋值，哪怕该属性不存在
+    obj.e = 'e属性原本是不存在的'
+
+    // 访问属性还可以使用方括号以脚本形式访问
+    obj['f'] = '用脚本形式给不存在的属性f赋值'
+    console.log(obj['f'])
+    console.log(obj['g']) // 访问不存在的属性，结果是 undefined
+</script>
+</html>

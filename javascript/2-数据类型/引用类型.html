@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 引用类型包括 object 类型和 function 类型
+
+    // object（对象） 类型
+    // 变量赋值时使用的花括号包裹的数据类型，我们称为json对象
+    // json(JavaScript Object Notation, JS 对象简谱) : 轻量化js数据结构
+    let obj = {
+        name: '小红',
+        age: 15,
+        sex: 'female',
+        detailInfo: {
+            balance: 500
+        }
+    }
+
+    // 数组：用于批量存储一组数据的对象
+    let arr = [1, 2, 3]
+
+    // 验证obj和arr的数据类型
+    console.log(typeof obj)
+    console.log(typeof arr)
+
+    // null 是个对象类型的特殊值
+    // 代表空引用
+
+    obj = null
+    console.log(obj)
+
+    // 引用类型数据的特点：
+    // 引用类型数据真正存的是数据在内存中的地址，我们称这个地址叫引用地址
+
+
+
+
+
+
+    // function（函数） 类型
+    // 使用function声明的数据是函数类型
+    let add = function (a, b) {
+        return a + b
+    }
+
+    // 使用 => 箭头声明的数据是函数类型
+    let power = (x) => {
+        return x * x
+    }
+
+    console.log(typeof add)
+    console.log(typeof power)
+
+</script>
+
+</html>

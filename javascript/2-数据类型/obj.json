@@ -1,0 +1,9 @@
+{
+    "key": "value",
+    "name": "张三",
+    "age": 16,
+    "isMarry": true,
+    "detail": {
+        "money": 10000
+    }
+}

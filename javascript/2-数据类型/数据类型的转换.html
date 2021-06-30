@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 不同类型之间的数据是可以互相转换类型的，这个过程叫数据转换
+
+    // 数据转换的方法分为两种：显示转换，隐式转换
+    // 显示转换：在代码中有明确的代码用于转换类型
+    // 隐式转换：在代码中没有明确的代码用于转换类型
+
+    // boolean 转换成其他类型
+    let b = false
+    // 使用 Number() 函数，强制将其他类型转化为数字类型
+    let num = Number(b)
+    // 转换结果： true => 1  false => 0
+    console.log(num)
+    // 使用 String() 函数，强制将其他类型转化为字符串类型
+    let str = String(b)
+    // 字符串的隐式转换
+    str = b + ''
+    console.log(str)
+
+    // number 转换成其他类型
+    num = 5
+    // 转换成 boolean
+    // 使用 Boolean() 函数，强制将其他类型转化为布尔类型
+    b = Boolean(num)
+    // 结果：0 => false  非0 => true
+    console.log(b)
+    str = String(num)
+    console.log(str)
+
+    // string 转换成其他类型
+    str = 'hello world'
+    b = Boolean(str)
+    // 结果：空字符串 => false  非空字符串 => true
+    console.log(b)
+    num = Number(str)
+    // 将非数字的字符串转换为数字时，将得到 NaN (Not a Number)
+    // NaN 是数字类型中的一个特殊值，含义为：不是一个数字
+    // Infinity 数字类型，含义为：无限
+
+    // 若字符串本身是个数字的字符串，就能正确转换成数字
+    console.log(num)
+
+    // 使用 isNaN() 函数，用来判断变量是否不是数字
+    let result = isNaN(2233)
+    console.log(result)
+
+
+
+
+
+
+
+
+
+
+
+
+    // 将对象转换成其他类型
+    let obj = {
+        a: 1,
+        b: 2,
+        x: [ 'a', 'b' ]
+    }
+
+    // 对象转boolean
+    b = Boolean(obj)
+
+    // 结果：只要变量不是undefined或null，结果都为true，否则为false
+    console.log(b)
+
+    // 通过object转boolean，有一个实用的应用场景：用于判断一个对象（或对象属性或变量）是否存在
+
+
+
+
+    str = String(obj)
+    // 结果：如果对象存在，将转换为 [object Object] 这种固钉格式的字符串
+    console.log(str)
+
+    num = Number(obj)
+    console.log(num) // => NaN
+    // 当对象为null时，强转为数字时，结果为 0
+
+
+    // 总结：所有类型转字符串，几乎都是在原有值的基础上，在外层套上引号即可
+    // 例外：object类型的值如果存在，将转换为 [object Object]
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            background-color: pink;
+        }
+
+        .box2 {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+<script>
+    // 获取元素
+    let box1 = document.querySelector('.box1')
+    let box2 = document.querySelector('.box2')
+
+    // 随机高度
+    let height = Math.random() * 100
+    box1.style.height = height + 'px'
+
+    // 设置box2高度
+    // box2Height = windowHeight - box1Height
+    height = window.innerHeight - box1.clientHeight
+    // 给box2高度赋值
+    box2.style.height = height + 'px'
+</script>
+
+</html>

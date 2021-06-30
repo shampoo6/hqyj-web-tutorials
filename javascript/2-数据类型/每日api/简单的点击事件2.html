@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- onclick属性的值，可以直接输入js代码 -->
+    <!-- <button onclick="alert('我被点击了')">点我！</button> -->
+    <button>点我！</button>
+
+    <!-- onclick 属性可以在这里运行js表达式
+        paseParams('hello world', event) 这句话中的 event 变量，是html中隐式声明的事件对象
+    -->
+    <button onclick="paseParams('hello world', event)">点我传参</button>
+</body>
+<script>
+    // 获取元素
+    let btn = document.querySelector('button')
+    // 通过给onclick属性赋一个函数类型的值，来绑定click事件（不推荐使用）
+    btn.onclick = () => {
+        alert('我被点击了')
+    }
+
+    function paseParams(a, ev) {
+        console.log(a)
+        console.log(ev)
+    }
+</script>
+
+</html>

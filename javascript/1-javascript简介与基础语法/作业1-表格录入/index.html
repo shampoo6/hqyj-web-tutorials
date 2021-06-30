@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <table border>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <form onsubmit="return false">
+        <label>序号：<input name="id" /></label>
+        <label>姓名：<input name="name" /></label>
+        <label>班级：<input name="clazz" /></label>
+        <label>年龄：<input name="age" /></label>
+        <input type="submit" />
+    </form>
+</body>
+<script>
+    // 变量练习 四则运算
+    let x = 5
+    let y = 10
+    let result = x + y
+    console.log(result)
+    result = x - y
+    console.log(result)
+    result = x * y
+    console.log(result)
+    result = x / y
+    console.log(result)
+
+
+
+    // 对象练习
+    let amy = {
+        name: 'Amy',
+        age: 16,
+        clazz: '高一一班'
+    }
+
+    let bob = {
+        name: 'Bob',
+        age: 17,
+        clazz: '高一二班'
+    }
+
+    console.log(amy)
+    console.log(bob)
+
+
+    // 绑定事件，插入数据的练习
+    let submit = document.querySelector('form input[type=submit]')
+    submit.addEventListener('click', () => {
+
+        // 获取输入框中的值
+        let id = document.querySelector('form input[name=id]').value
+        let name = document.querySelector('form input[name=name]').value
+        let clazz = document.querySelector('form input[name=clazz]').value
+        let age = document.querySelector('form input[name=age]').value
+
+        // 使用 + 加号，来拼接多段字符串
+        let htmlTemplate = '<tr>' +
+            '<td>' + id + '</td>' +
+            '<td>' + name + '</td>' +
+            '<td>' + clazz + '</td>' +
+            '<td>' + age + '</td>' +
+            '</tr>'
+
+        // 获取 tbody 元素
+        let tbody = document.querySelector('table tbody')
+        // 存储原始 innerHTML 的值
+        let innerHTML = tbody.innerHTML
+        // 拼接原有字符串和新的htmlTemplate
+        innerHTML = innerHTML + htmlTemplate
+        // 给 tbody 插入标签体
+        tbody.innerHTML = innerHTML
+
+    })
+</script>
+
+</html>

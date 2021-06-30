@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .c1 {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <label>年份：
+            <select name="year">
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+            </select>
+        </label>
+        <label>月份：
+            <select name="month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </label>
+        <input type="submit" />
+    </form>
+    <!-- 通过js动态添加的元素，可以现在html中定义好 -->
+    <!-- 先定义好一个html模板 -->
+    <!-- <h1 class="c1">
+        2000年1月
+    </h1> -->
+</body>
+<script>
+    // 获取按钮
+    let submit = document.querySelector('form input[type=submit]')
+
+    // 绑定提交按钮点击事件
+    submit.addEventListener('click', () => {
+        // 获取表单中的选项值
+        let select = document.querySelector('form select[name=year]')
+        let year = select.value
+        select = document.querySelector('form select[name=month]')
+        let month = select.value
+
+        // 构造html内容
+        let html =
+            '<h1 class="c1">' +
+            year + '年' + month + '月' +
+            '</h1>'
+
+        // 插入文档
+        document.body.innerHTML = document.body.innerHTML + html
+    })
+</script>
+
+</html>

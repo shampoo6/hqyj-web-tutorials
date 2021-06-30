@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 100%;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+<script>
+    let box = document.querySelector('.box')
+    // 获取窗口高度
+    let height = window.innerHeight
+    // 给div的高度赋值
+    box.style.height = height + 'px'
+</script>
+
+</html>
