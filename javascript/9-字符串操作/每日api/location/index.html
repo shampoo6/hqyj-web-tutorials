@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>this is index</h1>
+    <button class="btn1">去Page1</button>
+    <form method="get" action="./page1.html">
+        <div><label>姓名：<input name="name" /></label></div>
+        <div><label>消息：<input name="msg" /></label></div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+</body>
+<script>
+    // location: 定位，此处的定位，指的是浏览器地址
+    // location，是存放在window对象中的一个对象
+
+    let btn1 = document.querySelector('.btn1')
+    btn1.addEventListener('click', () => {
+        // 跳转页面
+        location.href = './page1.html?x=1&y=2'
+    })
+</script>
+
+</html>

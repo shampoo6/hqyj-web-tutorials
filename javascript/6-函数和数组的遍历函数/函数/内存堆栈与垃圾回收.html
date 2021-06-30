@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 内存堆栈？
+    // 调用函数时，函数中的各种变量将存储在内存中，以堆栈的形式进行保存
+    // 堆栈形式指的是一种先进后出的数据格式
+
+    let a = (x, y) => {
+        let s = 0
+        return b(x)
+    }
+
+    let b = (x) => {
+        let num1 = 1
+        let num2 = 2
+        return c(num1, num2)
+    }
+
+    let c = (x, y) => {
+        let sum = x + y
+        return sum
+    }
+
+    let result = a(2, 3)
+    console.log(result)
+
+    // 总结：
+    // 查看堆栈的方法：可以在代码中加入debugger，然后再浏览器控制台中的Call Stack中查看
+    // 堆栈将在调用函数时创建数据并进入堆栈，这个过程称为入栈
+    // 函数调用结束后将函数中的数据将从堆栈中移除，这个过程称为出栈
+    // 出栈时候，释放内存中已经无用的数据的过程称为垃圾回收
+    // 函数调用时堆栈的存放顺序始终是先进后出
+</script>
+
+</html>

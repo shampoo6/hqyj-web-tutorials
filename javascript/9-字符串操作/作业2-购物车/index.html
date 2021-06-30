@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- html 模板 -->
+    <div class="goods-list">
+        <div class="item">
+            <span>牙膏</span>
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+            <span>单价：12.5RMB，</span>
+            <span>小计：￥12.5</span>
+        </div>
+    </div>
+    <div>
+        商品总数：<span class="total-count">12</span>，商品总价：<span class="total-price">5783.5</span>
+    </div>
+</body>
+<script>
+
+    // 获取商品列表
+    let gl = document.querySelector('.goods-list')
+    let totalCount = document.querySelector('.total-count')
+    let totalPrice = document.querySelector('.total-price')
+
+    // 声明商品类
+    class Goods {
+        index // 列表中的索引
+        name // 名称
+        count // 数量
+        price // 单价
+        total // 小计
+
+        constructor(_index, _name, _price) {
+            // 初始化全部属性
+            this.index = _index
+            this.name = _name
+            this.price = _price
+            this.count = 1
+            this.compute()
+        }
+
+        // 渲染函数，返回对应对象的html代码
+        render() {
+            let html = '<div class="item">' +
+                '<span>' + this.name + '</span>' +
+                '<button onclick="sub(' + this.index + ')">-</button>' +
+                '<span>' + this.count + '</span>' +
+                '<button onclick="add(' + this.index + ')">+</button>' +
+                '<span>单价：' + this.price + 'RMB，</span>' +
+                '<span>小计：￥' + this.total + '</span>' +
+                '</div>'
+            gl.innerHTML += html
+        }
+
+        // 计算总价
+        compute() {
+            this.total = this.price * this.count
+        }
+
+        // 添加数量
+        addCount() {
+            this.count++
+            this.compute()
+            renderer() // 重新渲染视图
+        }
+
+        // 减少数量
+        subCount() {
+            if (this.count === 1) {
+                return
+            }
+            this.count--
+            this.compute()
+            renderer()
+        }
+    }
+
+    let goodsList = [
+        new Goods(0, '牙膏', 12.5),
+        new Goods(1, '毛巾', 6),
+        new Goods(2, '电脑', 4999),
+        new Goods(3, '键盘', 150),
+        new Goods(4, '鼠标', 80),
+        new Goods(5, '牙刷', 10),
+        new Goods(6, '被子', 200),
+    ]
+
+    // 声明一个全局的渲染器函数
+    function renderer() {
+        gl.innerHTML = '' // 清空页面
+        goodsList.forEach(el => {
+            el.render()
+        })
+        updateTotal() // 渲染页面时更新总数
+    }
+
+    // 添加按钮
+    // index: goods-list 中的索引
+    function add(index) {
+        // 获取点击的商品对象
+        goodsList[index].addCount()
+    }
+
+    // 减少按钮
+    function sub(index) {
+        goodsList[index].subCount()
+    }
+
+    // 更新总价和总数量
+    function updateTotal() {
+        let totalP = 0 // 总价
+        let totalC = 0 // 总个数
+        goodsList.forEach(el => {
+            totalP += el.total
+            totalC += el.count
+        })
+        totalCount.innerHTML = totalC
+        totalPrice.innerHTML = totalP
+    }
+
+    renderer()
+</script>
+
+</html>

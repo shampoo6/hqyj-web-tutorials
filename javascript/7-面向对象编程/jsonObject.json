@@ -1,0 +1,13 @@
+{
+    "key": "value",
+    "name": "王麻子",
+    "age": 10,
+    "hobby": [
+        "琴棋书画",
+        "吹拉弹唱"
+    ],
+    "detailInfo": {
+        "grade": "四年级",
+        "clazz": "二班"
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是变量的作用域（Scope）？作用域值的是作用范围，范围内可以访问变量，超出范围则无法访问
+
+    // 全局变量
+    // 全局变量指的是作用域为全局（Global）的变量，代码中任何位置都能使用
+    // 给未定义的变量直接赋值，该变量会变成 自动全局变量，若在游览其中，该变量会被存到window对象里
+    coolGuy = { name: '张三' }
+
+    // 直接在函数外声明的变量也是全局作用域的变量
+    let a = 1
+
+    if (a > 0) {
+        let b = 2 // 使用let声明的变量，在花括号的代码块中有效，这是块级作用域
+    }
+
+    for (let i = 0; i < 5; i++) {
+        console.log(i)
+    }
+
+    function fn() { // 函数中的变量，无论使用var还是let定义的，都是函数作用域，在函数外无法访问
+        let c = 3
+        console.log(c)
+    }
+
+    fn()
+
+
+    // 总结：
+    // 函数外声明的变量 作用域是全局
+    // 函数内声明的变量 作用域是函数内
+    // let 声明的变量具备块级作用域
+</script>
+
+</html>

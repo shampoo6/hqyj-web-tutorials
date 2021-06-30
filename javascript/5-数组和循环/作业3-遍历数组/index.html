@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = []
+    for (let i = 0; i < 5; i++) {
+        // 随机一个 0~100 的数字并存入数组
+        arr.push(Math.floor(Math.random() * 100))
+    }
+    console.log(arr)
+
+    for (let el of arr) {
+        if (el % 2 !== 0) {
+            console.log(el)
+            break
+        }
+    }
+</script>
+
+</html>

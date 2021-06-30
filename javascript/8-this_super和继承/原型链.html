@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是原型链? 对象中的__proto__，如果存在上级，
+    // 那么当前对象的__proto__和原型中的__proto__ 形成的一种链式结构就是原型链
+
+    class A {
+        name
+    }
+
+    class B extends A {
+        sex
+    }
+
+    class C extends B {
+        age
+    }
+
+    let c = new C()
+
+    console.log(c)
+
+    // 可以通过链式调用获取到不同级的原型对象
+    console.log(c.__proto__)
+    console.log(c.__proto__.__proto__)
+    console.log(c.__proto__.__proto__.__proto__)
+    console.log(c.__proto__.__proto__.__proto__.__proto__)
+    console.log(c.__proto__.__proto__.__proto__.__proto__.__proto__)
+
+
+
+
+
+    function D() {
+        this.name = '我是D'
+    }
+
+    // 原型链的运行顺序：
+    // 当访问run函数时，浏览器会先从f对象中寻找run行数，若不存在
+    // 就会在父类中寻找，若父类中找不到，就会到父类的父类中寻找
+    // 直到找到为止
+    D.prototype.run = () => {
+        console.log('D在跑')
+    }
+
+    function E() {
+        this.sex = '男'
+        this.run = () => {
+            console.log('E在跑')
+        }
+    }
+
+    E.prototype = new D()
+
+    function F() {
+        this.age = 0
+    }
+
+    F.prototype = new E()
+
+    let f = new F()
+    console.log(f)
+    console.log(f.age)
+    console.log(f.sex)
+    console.log(f.name)
+
+    // 通过上述例子，可以看出在F中并不存在sex和name，但依然可以访问他们
+    // 因为浏览器在访问属性时的顺序如下：
+    // 先从自身类中寻找属性，若不存在就查找他的原型是否存在该属性，若还不存在，就查询原型的原型中是否存在，依次类推
+</script>
+
+</html>

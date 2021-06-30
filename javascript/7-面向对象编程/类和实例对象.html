@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是类 class
+    // 用于描述同类事物的类型叫做类，类型是抽象的
+
+    // 声明类型
+    // es5
+    // 类型名大写开头
+    function Human(_name, _sex, _age) { // 本质上 Human 函数是个构造函数，用于构造类实例的函数
+        // 在类里面需要描述同类事物共同属性和行为
+
+        // 属性和行为在声明的时候前面要加上 this.
+        // 属性可以当作变量使用
+        this.name = _name // 姓名
+        this.sex = _sex // 性别
+        this.age = _age // 年龄
+
+        // 定义类型的行为
+        // 类的行为本质上是函数，但是面向对象编程中思想中会称为“方法（method）”
+        this.eat = (food) => {
+            console.log(this.name + ' 正在吃 ' + food)
+        }
+
+        this.drink = (drinking) => {
+            console.log(this.name + ' 正在喝 ' + drinking)
+        }
+    }
+
+    // es6 语法定义类型如下：
+    class Computer {
+        // 属性不需要使用 this. 开头
+        pinPai // 品牌
+        cpu // 中央处理器
+        gpu // 图形处理器
+
+        // 构造函数
+        constructor(_pinPai, _cpu, _gpu) {
+            // 在类的内部访问属性或行为时，都要加上 this.
+            this.pinPai = _pinPai
+            this.cpu = _cpu
+            this.gpu = _gpu
+        }
+
+        // 定义行为如下
+        playGame() {
+            console.log('电脑正在运行游戏')
+        }
+    }
+
+
+    // 实例化类型
+    // 生成一个类型的个例的过程称为实例化
+    // 以下代码中 new Human() 这句话就是在实例化Human类
+    // 实例化的结果被存在了 zhangSan 变量中，
+    // 我们称实例化的结果为：实例，实例对象，类实例
+    let zhangSan = new Human('张三', 'male', 16)
+    // 实例和类的关系是：
+    // 类是实例的模板，实例是类的成品
+
+    console.log(Human)
+
+    console.log(zhangSan)
+
+
+    let com = new Computer('联想', 'i7', '3080ti')
+
+    console.log(com)
+
+    // 访问实例属性和行为
+    console.log(zhangSan.name + ' ' + zhangSan.sex + ' 今年 ' + zhangSan.age + ' 岁')
+    zhangSan.eat('米田共')
+    zhangSan.drink('马尿')
+</script>
+
+</html>

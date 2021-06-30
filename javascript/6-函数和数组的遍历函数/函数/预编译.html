@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 参考：https://juejin.cn/post/6844903575571677198
+
+    // 预编译是什么？
+    // 在浏览器执行js脚本前需要进行编译，有些代码在编译前将会率先被翻译执行并存入内存，这个过程称为预编译
+
+    // console.log(x + 1)
+    // 变量无法在声明之前访问它    
+    // let x = 1
+
+    console.log(sub(2, 1))
+    // 声明函数在调用之后
+    function sub(x, y) {
+        let a = 1
+        return x - y
+    }
+
+    // 上述调用函数不会报错，因为使用了 function 关键字声明的函数，将会被预编译
+
+    function fn(a) {
+        console.log(a);
+        var a = 123;
+        console.log(a);
+
+        function a() { };
+        console.log(a);
+
+        var b = function () { };
+        console.log(b);
+
+        function d() { };
+    }
+
+    //调用函数
+    fn(1);
+
+
+
+    // 总结：
+    // 哪些东西会被预编译：
+    // 1. 在 script 标签中的函数将会被预编译
+    // 2. 在调用函数时，函数内的 形参和函数内声明的变量和函数会被预编译
+    // js中只有函数会被预编译
+    // 预编译的顺序：
+    // 1. 寻找函数内的形参和变量，为其赋值undefined
+    // 2. 将实参传值给形参
+    // 3. 寻找函数声明
+
+    method(1, 2, 3)
+
+    function method(x, y, z) {
+        console.log(x) // => function(){}
+        console.log(y) // => 2
+        console.log(z) // => function(){}
+
+        var y = 0
+        console.log(y) // => 0
+
+        function z() { }
+        console.log(z) // => function(){}
+        z = 10
+        console.log(z) // => 10
+
+        function x() { }
+        console.log(x) // => function(){}
+    }
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // - 声明一个计时器类 Timer
+    // - Timer 中包含一个计时方法，接收两个参数如下：
+    // ```js
+    // // duration: 计时器的时长
+    // // callback: 当计时结束时调用的函数
+    // countTime(duration, callback) {
+
+    // }
+    // ```
+    // - 声明一个学生类 Student ，包含属性name，创建一个实例叫小明
+    // - Student 类具备一个计时方法，方法中使用计时器 Timer 进行计时，且计时结束时，打印该学生的姓名
+
+    class Timer {
+        // 计时方法
+        countTime(duration, callback) {
+            // 调用计时器计时
+            setTimeout(() => {
+                callback()
+            }, duration)
+        }
+    }
+
+    class Student {
+        name
+
+        constructor(name) {
+            this.name = name
+        }
+
+        // 学生的计时方法
+        // duration：计时时长
+        // timer: 计时器
+        countTime(duration, timer) {
+            // 方法一：
+            // 此处使用箭头函数作为回调函数，这样的话箭头函数中的this就可以用来代表自己这个对象实例
+            timer.countTime(duration, () => {
+                console.log(this.name)
+            })
+
+            // 方法二：不用箭头函数
+            // let callback = function () {
+            //     console.log(this.name)
+            // }
+            // callback = callback.bind(this)
+            // timer.countTime(duration, callback)
+        }
+    }
+
+    let stu = new Student('小明')
+    let timer = new Timer()
+    stu.countTime(3000, timer)
+
+</script>
+
+</html>

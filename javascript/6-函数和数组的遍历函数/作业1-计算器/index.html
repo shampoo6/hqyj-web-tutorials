@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .computer {
+            width: 500px;
+            height: 600px;
+            border: 5px solid black;
+            padding: 15px;
+        }
+
+        .display {
+            height: 90px;
+            line-height: 90px;
+            border: 5px solid black;
+            margin-bottom: 15px;
+            font-size: 2em;
+            padding-left: 10px;
+        }
+
+        .btns {
+            height: calc(100% - 125px);
+            border: 5px solid black;
+
+            display: flex;
+        }
+
+        .nums {
+            flex-grow: 1;
+            border: 5px solid black;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ops {
+            width: 110px;
+            border: 5px solid black;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            /* border: 5px solid red; */
+            height: 25%;
+
+            display: flex;
+        }
+
+        .btn {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 5px solid black;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 计算器外壳 -->
+    <div class="computer">
+        <!-- 显示器 -->
+        <div class="display"></div>
+        <!-- 按钮容器 -->
+        <div class="btns">
+            <!-- 数字按钮 -->
+            <div class="nums">
+                <div class="row">
+                    <div class="btn">1</div>
+                    <div class="btn">2</div>
+                    <div class="btn">3</div>
+                </div>
+                <div class="row">
+                    <div class="btn">4</div>
+                    <div class="btn">5</div>
+                    <div class="btn">6</div>
+                </div>
+                <div class="row">
+                    <div class="btn">7</div>
+                    <div class="btn">8</div>
+                    <div class="btn">9</div>
+                </div>
+                <div class="row">
+                    <div class="btn">0</div>
+                </div>
+            </div>
+            <!-- 运算符按钮 -->
+            <div class="ops">
+                <div class="btn">+</div>
+                <div class="btn">-</div>
+                <div class="btn">*</div>
+                <div class="btn">/</div>
+                <div class="btn">=</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 获取按钮
+    let numBtns = document.querySelectorAll('.nums .btn')
+    console.log(numBtns)
+    let opBtns = document.querySelectorAll('.ops .btn')
+    // 获取显示器
+    let display = document.querySelector('.display')
+
+    // 声明计算时需要使用的变量
+    let num1 = '' // 第一个数
+    let op // 运算符
+    let num2 = '' // 第二个数
+
+    // 通过循环绑定事件
+    numBtns.forEach((el) => {
+        // 每个成员 el 其实是个 dom 对象
+        console.log(el)
+        el.addEventListener('click', () => {
+            onNumClick(el)
+        })
+    })
+
+    opBtns.forEach((el, index) => {
+        if (index < opBtns.length - 1) {
+            el.addEventListener('click', () => {
+                // 四则运算符
+                onOpClick(el)
+            })
+        } else {
+            el.addEventListener('click', () => {
+                // 等于符号
+                equal()
+            })
+        }
+    })
+
+    // 数字按钮点击函数
+    const onNumClick = (dom) => {
+        // 获取点击的数字
+        let num = dom.innerText
+        console.log(num)
+        // 保存点击的数字
+        if (op) {
+            // 通过判断是否存在运算符，来决定数字应该追加给num1还是num2
+            num2 += num
+        } else {
+            num1 += num
+        }
+        // 显示点击的数字
+        display.innerHTML += num
+    }
+
+    // 运算符点击事件
+    const onOpClick = (dom) => {
+        // 记录用户点击的运算符
+        op = dom.innerText
+        // 显示到屏幕上
+        display.innerHTML += op
+    }
+
+    // 等于
+    const equal = () => {
+        // 方法一：
+        // let cmd = num1 + op + num2
+        // eval(cmd) 使用 eval 将字符串当作脚本执行
+
+        // 方法二：
+        let result
+        // 将字符串转数字
+        num1 = Number(num1)
+        num2 = Number(num2)
+        switch (op) {
+            case '+':
+                result = num1 + num2
+                break;
+            case '-':
+                result = num1 - num2
+                break;
+            case '*':
+                result = num1 * num2
+                break;
+            case '/':
+                result = num1 / num2
+                break;
+            default:
+                break;
+        }
+        // 将结果显示到屏幕上
+        display.innerHTML += '=' + result
+    }
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是数组?
+    // 存储一组数据的一个容器
+
+    // 声明数组
+    // 使用脚本形式声明数组
+    let arr1 = []
+    // 声明并初始化数组
+    let arr2 = [1, true, 'hello', 'world']
+
+    // 对象形式的声明方法
+    let arr3 = new Array()
+    // 声明并初始化
+    let arr4 = new Array(1, true, 'hello', 'world')
+
+
+
+
+    // 访问数组成员
+    // 使用索引值访问数组中的成员
+    // 索引：数组给每个成员的编号称为索引，索引值从零开始一次递增1
+    // 访问数组成员时，若索引超出数组范围，则获取到的结果为 undefined
+    console.log(arr2[2])
+
+
+    // 给数组成员赋值
+    // 使用数组变量名加上索引值进行赋值，可以给指定索引位置的成员进行赋值
+    arr2[1] = false
+
+
+
+    // 数组长度（指的就是数组成员的个数）
+    // 若赋值的时候索引若不是正整数，该值将被视为数组对象的属性值，不计入数组成员，所以不会影响数组长度
+    console.log(arr2.length)
+</script>
+
+</html>

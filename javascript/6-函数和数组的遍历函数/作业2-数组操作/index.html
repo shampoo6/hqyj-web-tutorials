@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = []
+    // 循环100生成随机数
+    for (let i = 0; i < 100; i++) {
+        arr.push(Math.floor(Math.random() * 100))
+    }
+    console.log(arr)
+
+    // 获取所有数字减半的新数组
+    let newArr = arr.map((el) => {
+        return el / 2
+    })
+
+    console.log(newArr)
+
+    // 克隆数组
+    let _arr = arr.concat([])
+
+    // 自定义排序，将数字从小到大排序
+    _arr.sort((el1, el2) => {
+        return el1 - el2
+    })
+
+    console.log(_arr)
+
+
+    // 过滤掉不能被3整除的数
+    newArr = arr.filter(el => {
+        if (el % 3 === 0) {
+            return true
+        }
+        return false
+    })
+
+    console.log(newArr)
+
+    // 找到第2个能被5整除的数，打印结果并跳出循环
+
+    let count = 0 // 记录能被5整除数的个数
+    arr.every((el) => {
+        if (el % 5 === 0) {
+            count++
+            if (count === 2) {
+                console.log(el)
+                return false
+            }
+        }
+        return true
+    })
+
+
+    // 求所有数字平均值
+    let sum = 0
+    arr.forEach((el) => {
+        sum += el
+    })
+    console.log(sum / 100)
+</script>
+
+</html>

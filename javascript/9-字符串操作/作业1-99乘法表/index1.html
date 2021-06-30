@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            background-color: red;
+            color: white;
+            padding: 5px;
+            border: 1px solid white;
+            display: inline-block;
+            width: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1x1=1</div>
+</body>
+<script>
+    // 声明html变量，用于存储整个html字符串
+    let html = ''
+    for (let i = 1; i <= 9; i++) { // 循环9次，代表9行
+        html += '<div style="height: 2em">' // 为了换行，使用div
+        for (let j = 1; j <= i; j++) { // 循环渲染列，循环次数不会大于行号
+            html += '<div class="box">' + j + ' x ' + i + ' = ' + (j * i) + ' </div>'
+        }
+        html += '</div>'
+    }
+    document.body.innerHTML = html
+</script>
+
+</html>

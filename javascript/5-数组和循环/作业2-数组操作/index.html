@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = []
+    // 添加10个随机数到数组中
+    for (let i = 0; i < 10; i++) {
+        // 获取随机数
+        let rand = Math.random() * 100
+        rand = Math.floor(rand) // rand 为 0~100 间的整数
+        // 添加随机数到数组中
+        arr.push(rand)
+    }
+    console.log(arr)
+
+
+    // 倒置数组
+    let arr2 = []
+    // 若数组arr存在数组成员则执行循环
+    while (arr.length > 0) {
+        // 倒置的原理就是从末尾取数据放到arr2中
+        let el = arr.pop()
+        arr2.push(el)
+    }
+    console.log(arr2)
+
+
+    let sum = 0 // 奇数和
+    let avg = 0 // 偶数平均值
+    let sum2 = 0 // 偶数和
+    let count = 0 // 偶数个数
+
+    for (let el of arr2) {
+        if (el % 2 === 0) {
+            // 偶数操作
+            sum2 += el
+            count++
+        } else {
+            // 奇数操作
+            sum += el
+        }
+    }
+
+    avg = sum2 / count
+    console.log('所有奇数和：' + sum)
+    console.log('所有偶数的平均值：' + avg)
+
+</script>
+
+</html>

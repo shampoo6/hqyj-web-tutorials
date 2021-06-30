@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 循环是什么？
+    // 循环就是重复执行某一段代码的行为
+
+    // for 循环
+    // 例如按次数进行循环
+    let count = 5 // 循环次数
+    for (let i = 0; i < count; i++) {
+        console.log('hello world')
+    }
+
+    // 语法：
+    // for( 初始化语句; 循环条件; code block 运行一次结束后运行的代码 ) { // code block }
+    // 初始化语句：初始化变量值
+    // 循环条件：循环条件是个布尔表达式，若结果为真，则执行 code block 的代码块
+
+
+    // 循环的继续与跳出
+    // 若打印0~100之间所有的偶数，代码如下
+    // for (let i = 0; i <= 100; i++) {
+    //     if (i % 2 !== 0) {
+    //         // continue 继续：结束本次循环，进入下一次循环
+    //         continue
+    //     }
+
+    //     if (i > 51) {
+    //         // break 终止循环，并跳出循环
+    //         break;
+    //     }
+
+    //     console.log(i)
+    // }
+
+    // 使用for循环遍历数组
+    let arr = [
+        { name: '张三' },
+        true,
+        55,
+        'hello world',
+        [1, 2, 3]
+    ]
+
+    for (let i = 0; i < arr.length; i++) {
+        // 获取每个数组成员
+        let item = arr[i]
+        console.log(item)
+    }
+
+
+    // for in: 用于遍历数组或对象
+    // 语法：
+    // for ( key in arr|obj ) {
+    //     // code block
+    // }
+
+    // 遍历数组
+    // index: 每个被遍历的数组成员的索引值
+    for (let index in arr) {
+        // 获取数组成员
+        let item = arr[index]
+        console.log(index)
+        console.log(item)
+    }
+
+    // 遍历对象
+    let obj = {
+        name: '小红',
+        sex: '妹纸',
+        age: 18
+    }
+    // key: 对象属性名称
+    for (let key in obj) {
+        // 获取属性值
+        let value = obj[key]
+        console.log(key + ' = ' + value)
+    }
+
+
+
+
+    // for of: 用于遍历数组，且不能获取索引值，只能遍历所有成员
+    // element: 数组中每个成员
+    for (let element of arr) {
+        console.log(element)
+    }
+
+
+
+    // while 循环：当。。。时，就循环执行代码
+    // 语法：
+    // condition: while循环的条件，是一个布尔表达式，若成立则执行循环的 code block
+    // while (condition) {
+    //      code block
+    // }
+
+    let index = 0
+    while (index < arr.length) {
+        // 获取数组成员
+        let item = arr[index]
+        console.log(item)
+
+        // 修改循环条件
+        // 若不修改循环条件，则会形成死循环
+        index++
+    }
+
+    // do while 循环：先执行循环代码，再判断循环条件
+    // 语法：
+    // do {
+    //     code block
+    // } while (condition)
+
+    index = 0
+    do {
+        // 获取数组成员
+        let item = arr[index]
+        console.log(item)
+
+        // 修改循环条件
+        // 若不修改循环条件，则会形成死循环
+        index++
+    } while (index < arr.length)
+
+    // 所有的循环语句，都可以使用 break 和 continue
+</script>
+
+</html>

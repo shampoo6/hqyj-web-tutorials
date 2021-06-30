@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clock {
+            display: inline-block;
+            padding: 10px;
+            border: 5px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>北京时间：<div class="clock-beijing"></div>
+    </div>
+    <div>纽约时间：<div class="clock-newyark"></div>
+    </div>
+</body>
+<script>
+    // 声明时钟类
+    class Clock {
+        el // 渲染 clock 的元素
+
+        hour = 0 // 时针
+        minute = 0 // 分针
+        second = 0 // 秒针
+
+        constructor(_el) {
+            // el 由外部传入
+            this.el = _el
+        }
+
+        render() {
+            let html =
+                '<div class="clock">' +
+                '<span class="hour">' + (this.hour < 10 ? '0' + this.hour : this.hour) + '</span>:' +
+                '<span class="minute">' + (this.minute < 10 ? '0' + this.minute : this.minute) + '</span>:' +
+                '<span class="second">' + (this.second < 10 ? '0' + this.second : this.second) + '</span>' +
+                '</div>'
+            this.el.innerHTML = html
+        }
+
+        run() {
+            this.render()
+            setInterval(() => {
+                this.second++
+                if (this.second >= 60) {
+                    this.second = 0
+                    this.minute++
+                    if (this.minute >= 60) {
+                        this.minute = 0
+                        this.hour++
+                        if (this.hour >= 24) {
+                            this.hour = 0
+                        }
+                    }
+                }
+                this.render()
+            }, 1000)
+        }
+        // 设置时间
+        setTime(_hour, _minute, _second) {
+            this.hour = _hour
+            this.minute = _minute
+            this.second = _second
+        }
+    }
+
+    // 创建类实例
+
+    let beijingEl = document.querySelector('.clock-beijing')
+    let newyarkEl = document.querySelector('.clock-newyark')
+
+    // 北京时间
+    let beiJingClock = new Clock(beijingEl)
+    beiJingClock.setTime(17, 43, 45)
+    beiJingClock.run()
+
+    // 纽约时间
+    let newYarkClock = new Clock(newyarkEl)
+    newYarkClock.setTime(17 - 12, 43, 45)
+    newYarkClock.run()
+
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Bird {
+        color
+
+        constructor(_color) {
+            this.color = _color
+        }
+
+        fly() {
+            console.log('鸟在飞')
+        }
+    }
+
+    class Duck extends Bird {
+        taste // 口味
+
+        constructor(_color, _taste) {
+            // super 在子类的构造函数中 代表：父类的构造函数
+            super(_color)
+            this.taste = _taste
+        }
+
+        run() {
+            console.log('鸭子在跑')
+            super.fly() // 当在子类的行为中调用super，那么super指的是父类的实例
+        }
+
+        fly() {
+            super.fly()
+            console.log('鸭子飞了')
+        }
+
+        test() {
+            console.log(super.color) // => undefined
+            console.log(this.color) // => blue
+            console.log(super.color === this.color)
+        }
+    }
+
+    let bird = new Bird('red')
+    let duck = new Duck('blue', '麻辣')
+
+    console.log(bird)
+    console.log(duck)
+
+
+    function Phone(_price) {
+        this.price = _price
+    }
+
+    function iPhone(_price, _color) {
+        // console.log(super.price) // es5语法中不能使用super
+        this.color = _color
+        // es5中给父类实例赋值属性，请使用原型
+        this.__proto__.price = _price
+    }
+
+    iPhone.prototype = new Phone()
+    let ip = new iPhone(123, 'white')
+</script>
+
+</html>

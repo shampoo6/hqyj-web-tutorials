@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+</body>
+<script>
+    // 正则表达式：用于匹配字符串的表达式
+    // 例如：可以写一个正则表达式，用于鉴定一个字符串是否是邮箱格式的字符串
+
+    // 声明
+    // 使用对象声明
+    // 参数是正则表达式
+    let regex = new RegExp('^[\\s\\S]*张[\\s\\S]*$') // 由于对象形式穿的参数是字符串，所以参数中的斜杠需要转义
+    // 脚本方式声明
+    regex = /^[\s\S]*张[\s\S]*$/
+
+    // 使用test函数，去检测字符串
+    let str = '张三'
+    let b = regex.test(str)
+    console.log(b)
+</script>
+
+</html>

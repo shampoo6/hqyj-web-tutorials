@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    let str = '1234444'
+    let regex = /^1234+/
+    
+    // match：从字符串中匹配处符合正则的字符串
+    let result = str.match(regex)
+    console.log(result)
+
+    // 贪婪模式：字符串在匹配正则表达式时，将尽可能多的匹配满足正则规则的字符
+    // 非贪婪模式：字符串在匹配正则表达式时，将尽可能少的匹配满足正则规则的字符
+
+    // 默认情况字符串将执行贪婪模式的匹配
+
+    // 如何开启非贪婪模式
+    // 方法：在表示匹配个数的符号后面加上'?'问号
+
+    regex = /^1234+?/
+    result = str.match(regex)
+    console.log(result)
+</script>
+
+</html>

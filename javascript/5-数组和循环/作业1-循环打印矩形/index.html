@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 声明构造矩形用的参数
+    let width = 50, height = 25
+    // 存储结果字符串
+    let result = ''
+
+    // 按行数循环
+    for (let i = 0; i < height; i++) {
+        // 每一行需要执行的代码写在此代码块中
+
+        // 声明一个行字符串
+        let row = ''
+
+        if (i === 0 || i === height - 1) {
+            // 若为第一行和最后行，执行该代码块
+            for (let j = 0; j < width; j++) {
+                row += '*' // 第一行和最后行，所有字符都为星号
+            }
+        } else {
+            // 不是第一行和最后行的情况
+            for (let j = 0; j < width; j++) {
+                // 若为第一列和最后列
+                if (j === 0 || j === width - 1) {
+                    row += '*'
+                } else {
+                    row += ' '
+                }
+            }
+        }
+        // 拼接换行符
+        row += '\n'
+
+        // 将拼接好的一行存入result缓存中
+        result += row
+    }
+
+    console.log(result)
+
+</script>
+
+</html>

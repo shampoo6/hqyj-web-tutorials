@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button my-data="这是我的自定义属性">点击</button>
+</body>
+<script>
+    let obj = {
+        // lamda表达式中并未绑定this的值
+        // this值是定义该箭头函数时所在的那个对象
+        fn1: () => {
+            console.log(this)
+        },
+        fn2: function () {
+            console.log(this)
+        }
+    }
+
+    document.querySelector('button').addEventListener('click', function () {
+        // 若此函数用lamda表达式声明，则this的值就不是按钮本身了
+        // 若使用addEventListener，且回调函数用的式function声明的，
+        // 那么此处的this，指的就是绑定了该事件的对象
+        console.log(this)
+        console.log(this.getAttribute('my-data'))
+    })
+
+
+    class MyClass {
+        name = '张三'
+        wallet = 15 // 钱包
+        // 假设一个购物函数，购买东西金额为money
+        buy(money) {
+            this.wallet -= money
+            // 一个类内部若存在辅助函数，该辅助函数想要使用该实例对应的this的话，请使用lamda表达式
+            let reward = () => {
+                this.wallet += 10
+            }
+            reward()
+            // function reward() {
+            //     this.wallet += 10
+            // }
+        }
+
+        waitToPrint() {
+            myClock(() => {
+                console.log(this.name)
+            }, 1000)
+        }
+    }
+
+    // 声明一个计时函数
+    // 第一个参数: 回调函数，该函数将在经过 delay 长度的时间后被调用
+    // 第二个参数：计时器需要经过的时间
+    function myClock(callback, delay) {
+        callback = callback.bind(123)
+        setTimeout(function () {
+            callback()
+        }, delay)
+    }
+
+    let mc = new MyClass()
+    mc.buy(15)
+    mc.waitToPrint()
+</script>
+
+</html>

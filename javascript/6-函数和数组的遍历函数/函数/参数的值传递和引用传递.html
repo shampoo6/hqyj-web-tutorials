@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+
+    let a = 1, b = 2
+
+    function add(x, y) {
+        x++
+        y--
+        return x + y
+    }
+
+    // 值传递：当变量是值类型时，调用函数传递变量时，变量将容器中的内容直接传入了函数
+    // 所以在函数中修改了值类型的值，不会影响外部的实参
+    console.log(add(a, b))
+
+    let obj = {
+        name: '张三',
+        age: 27
+    }
+
+    function rename(o, newName) {
+        o.name = newName
+    }
+
+    // 引用传递：当变量是引用类型时，调用函数传递变量时，变量将整个容器作为参数传给了函数
+    // 所以在函数中修改了引用类型的值，会影响外部的实参
+    rename(obj, '王麻子')
+
+    console.log(obj)
+</script>
+
+</html>

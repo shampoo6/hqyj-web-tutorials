@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    let str = 'goods gods   __ gooooods'
+    let regex = /go+ds/
+    // str.matchAll(regex) 若使用普通的正则表达式，将得到以下异常结果
+    // --> String.prototype.matchAll called with a non-global RegExp argument
+    // 翻译过来：使用的正则表达式不是一个全局模式的正则表达式
+
+    // 什么是正则表达式的全局模式
+    // 让正则表达式匹配字符串中所有的符合条件的内容
+
+    regex = /go+ds/g // 在正则表达式后面加一个 g 就可以开启全局模式
+    let result = str.matchAll(regex) // 匹配结果是一个迭代器对象
+    console.log(result)
+
+    // 使用迭代器循环显示匹配出来的所有内容
+    let item = result.next()
+    console.log(item)
+    while (item.value) {
+        item = result.next()
+        console.log(item)
+    }
+
+
+    // 全局模式的另一个应用场景
+
+    // 字符串的替换函数
+    str = '共产党万岁，共产党伟大，共产党真牛逼'
+    regex = /共产党/g
+    // 使用replace函数替换字符串
+    // 第一个参数：要被替换掉内容的正则表达式
+    // 第二个参数：替换的新字符串
+    result = str.replace(regex, '***')
+    console.log(result)
+
+
+    // 不用正则，替换字符串的方法
+    result = str.split('共产党')
+    console.log(result)
+    // 使用数组的join函数，用新的字符连接字符串数组
+    result = result.join('***')
+    console.log(result)
+</script>
+
+</html>

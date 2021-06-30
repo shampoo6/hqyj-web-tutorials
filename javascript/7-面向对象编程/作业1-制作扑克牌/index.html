@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>发牌</button>
+</body>
+<script>
+
+    // 声明扑克牌类
+    class Card {
+        point // 点数
+        face // 花色
+
+        constructor(_point, _face) {
+            this.point = _point
+            this.face = _face
+        }
+    }
+
+    // 扑克牌工厂
+    class CardFactory {
+        // 扑克牌花色色谱
+        faces = ['♠', '♥', '♦', '♣']
+        // 每个花色的扑克数量
+        perCount = 13
+        // 扑克牌点数映射表
+        map = {
+            '1': 'A',
+            '11': 'J',
+            '12': 'Q',
+            '13': 'K'
+        }
+
+        // 创建一幅扑克牌
+        create() {
+            let result = [] // 声明一个结果集用于存放生产的扑克牌
+            this.faces.forEach(face => { // 循环生产四种花色的牌
+                for (let i = 1; i <= this.perCount; i++) { // 每种花色循环生产13张
+                    let point = this.map[i] ? this.map[i] : i + '' // 获取扑克牌点数
+                    result.push(new Card(point, face)) // 将扑克牌加入结果集
+                }
+            })
+            result.push(new Card('100', 'BigJoker')) // 大王
+            result.push(new Card('50', 'LittleJoker')) // 小王
+            return result
+        }
+    }
+
+
+    // 声明庄家类
+    class Host {
+        deck // 扑克牌牌堆
+
+        constructor(_deck) {
+            this.deck = _deck
+        }
+
+        // 洗牌函数
+        shuffle() {
+            for (let i = 0; i < 5; i++) {
+                let result = []
+                while (this.deck.length > 0) {
+                    // 随机一个 扑克牌数组的索引
+                    let index = Math.floor(Math.random() * 1000 % this.deck.length)
+                    let card = this.deck.splice(index, 1) // 从牌堆取牌
+                    result.push(card[0]) // 将牌加入数组
+                }
+                this.deck = result
+            }
+        }
+
+        // 发牌
+        getCard() {
+            return this.deck.shift()
+        }
+    }
+
+
+    let factory = new CardFactory()
+    let deck = factory.create()
+    console.log(deck)
+
+    let host = new Host(deck)
+    host.shuffle()
+    console.log(host.deck)
+
+    document.querySelector('button').addEventListener('click', ev => {
+        console.log(host.getCard())
+    })
+
+</script>
+
+</html>

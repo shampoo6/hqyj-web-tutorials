@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    let str = 'hello world !!!'
+
+    // 字符串可以被视为字符数组
+    // 查看字符串长度
+    console.log(str.length)
+
+    // 通过索引访问字符串中的字符
+    console.log(str[0])
+
+    // charAt 函数可以获取指定索引处的字符
+    console.log(str.charAt(0)) // 等价于 str[0]
+
+    // split: 分割字符串
+    // 参数：用于分割字符串的字符
+    // 返回值：字符串数组
+    let strArr = str.split(' ')
+    console.log(strArr)
+
+
+    // 替换字符
+    str = 'hello*&|world*&|!!!'
+    strArr = str.split('*&|')
+    console.log(strArr)
+    str = strArr.join(' ')
+    console.log(str)
+
+
+    // trim: 去掉字符串首尾空格
+    str = '     hello world !!!      '
+    console.log(str)
+    console.log(str.trim())
+
+
+    // substring: 截取子字符串
+    // 第一个参数：截取字符串的起始索引位置
+    // 第二个参数：截取字符串的结束索引位置
+    // 口诀：前截后不截
+    // 返回值：截取出来的子字符串
+    str = 'hello w word world !!!'
+    let subStr = str.substring(0, 5)
+    console.log(subStr)
+    // 第二个参数可以省略，如果只写一个参数，substring将从该参数位置一直截取到字符串末尾
+    subStr = str.substring(6)
+    console.log(subStr)
+
+
+    // indexOf: 查询字符串中指定字符在字符串中的索引位置
+    // 参数：要查询的字符串
+    // 返回值：被查询字符串的索引
+    console.log(str.indexOf('world'))
+
+
+    // startsWith: 用于判断字符串是否以指定字符串开头
+    // 参数：指定开头的字符串
+    // 返回值：bool值，true代表是以指定字符串开头的，false代表不是
+    console.log(str.startsWith('hello'))
+
+    // endsWith: 用于判断字符串是否以指定字符串结尾
+    console.log(str.endsWith('d world !!!'))
+
+
+    // toUpperCase toLowerCase 将字符串中的英文转成全为大写或小写
+    str = str.toUpperCase()
+    console.log(str)
+    str = str.toLowerCase()
+    console.log(str)
+
+    // 补充：
+    // 数字操作：
+    // toFixed 保留小数点后多少位的函数
+    let num = 3.1415927
+    // 参数：指定小数点后保留几位
+    // 返回值：是一个保留了指定小数点位数的字符串
+    num = num.toFixed(6)
+    console.log(num)
+</script>
+
+</html>

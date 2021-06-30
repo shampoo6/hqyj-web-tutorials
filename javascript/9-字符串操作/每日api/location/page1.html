@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <h1>this is page1</h1>
+    <button class="btn1">返回</button>
+</body>
+<script>
+    let btn1 = document.querySelector('.btn1')
+    btn1.addEventListener('click', () => {
+        // history: 历史记录
+        // back函数可以回到上一个页面
+        // forward函数可以前进到下一个页面
+        history.back()
+    })
+
+    // 可以通过location.search获取到浏览器上的问好后的参数
+    // 该参数被进行了浏览器编码（编码方式叫做 urlEncode）
+    let search = location.search
+    console.log(search)
+    // 使用 decodeURI 解码
+    let paramStr = decodeURI(search)
+    console.log(paramStr)
+
+    let result = paramStr.substring(1) // 去掉开头的问号
+
+    let param = {}
+    let splits = result.split('&') // 用 & 符号进行第一次分割
+    splits.forEach(el => {
+        let result = el.split('=') // 用 = 符号进行第二次分割
+        param[result[0]] = result[1]
+    })
+
+    console.log(param)
+
+</script>
+
+</html>

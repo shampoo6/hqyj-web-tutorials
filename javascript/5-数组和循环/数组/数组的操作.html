@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数组的操作
+
+    let arr = [1, 2, true, { name: 'Amy' }]
+    console.log(arr)
+
+    // push 追加数据到数组末尾
+    // 参数：被添加的新数组成员
+    // arr.push(false)
+
+
+    // pop 从尾部取出一个成员
+    // 返回值是取出的成员
+    // let result = arr.pop()
+    // console.log(result)
+
+    // unshift 在头部添加数据
+    // 参数：被添加的新数组成员
+    // arr.unshift(0)
+
+
+    // shift 从头部取出一个成员
+    // 返回值是取出的成员
+    // let result = arr.shift()
+    // console.log(result)
+
+
+    // push 和 unshift 可以批量添加成员
+    // arr.push(1, 2, 3)
+    // arr.unshift(6, 5, 4)
+
+
+    // splice 删除指定位置的成员，并用新成员替换，或插入新成员到指定成员的前面
+    // 第一个参数：删除成员的起始位置
+    // 第二个参数：删除成员的个数
+    // 第三个参数：用于替换被删除成员的新数据，该参数可以省略
+    // 删除一个成员：
+    // result = arr.splice(2, 1, '这是被替换的内容')
+    // console.log(result)
+    // console.log(arr)
+
+    // 在指定成员前追加新数据
+    // 若第二个参数为0，则可以实现在指定位置的前面添加成员的功能
+    // arr.splice(3, 0, '我是被插入到Amy前的新成员')
+
+
+
+
+    // concat 连接数组
+    // 参数：多个被追加进数组的成员，若成员是数组，该数组中每个成员将被加入原数组
+    // concat 返回一个新数组
+    let result = arr.concat([1, 2, 3], 'x', [4, 5, 6]) // => 将以下数据追加到数组末尾 1, 2, 3, 'x', 4, 5, 6
+    console.log(result)
+
+    // concat 的应用场景多用于克隆数组
+    result = arr.concat([])
+    console.log(result)
+
+
+
+    // join 使数组成员用一个字符连接起来
+    arr = ['hello', 123, true, { name: '张三' }, 'world']
+    // join 函数接收一个参数，该参数就是连接数组成员时使用的字符
+    result = arr.join('$*%*$')
+    console.log(result)
+</script>
+
+</html>

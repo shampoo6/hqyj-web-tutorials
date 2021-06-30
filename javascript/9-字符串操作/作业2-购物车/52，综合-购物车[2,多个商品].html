@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.name{
+				background: #abcdef;
+				color :#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<div class="all">
+			商品总数： <span id="allCount">12</span>  商品总价：<span id="allPrice">120000</span> 
+		</div>
+	</body>
+	<script>
+		//自定义本地的数据包
+		var goodData = [
+			['牙膏','1','12.5'],
+			['毛巾','2','6.0'],
+			['电脑','1','4999'],
+			['键盘','3','150'],
+			['鼠标','1','80'],
+			['牙刷','3','10'],
+			['被子','1','200']
+		]
+		var oBox = document.getElementsByClassName('box')[0]
+		//for循环，动态创建结构
+		var str = ''
+		for (var i=0;i<7;i++) {
+			str += '<div class="good">'
+						+'<span class="name">'+goodData[i][0]+'</span>'
+						+'<button class="sub">-</button>'
+						+'<span class="num">'+goodData[i][1]+'</span>'
+						+'<button class="plus">+</button>'
+						+'单价：'+goodData[i][2]+'RMB，小计：￥'
+						+'<span class="price">'+goodData[i][1]*goodData[i][2]+'</span>'
+					+'</div>'
+		}
+		oBox.innerHTML = str
+		//在for循环，生成商品列表后，调用all函数，计算当前的总价和总量
+		all()
+		//创建完成，准备点击事件
+		//获取所有的DOM
+		var aSub = document.getElementsByClassName('sub')
+		var aPlus = document.getElementsByClassName('plus')
+		var aNum = document.getElementsByClassName('num')
+		var aPrice = document.getElementsByClassName('price')
+		
+		for(var i=0;i<7;i++){
+			//自定义变量,记录每一个plus按钮的下标
+			aPlus[i].index = i
+			aSub[i].index = i
+			//增加数量
+			aPlus[i].onclick = function(){
+				//让当前的商品，数量+1
+//				console.log(this)   //plus按钮
+//				console.log(this.index)   //获取当前的下标
+				//在商品的数据包中，找到当前商品，控制数量+1
+				goodData[this.index][1]++
+				console.log(goodData[this.index])
+				//控制标签的中的数字同步
+				aNum[this.index].innerHTML = goodData[this.index][1]
+				aPrice[this.index].innerHTML = goodData[this.index][2] * goodData[this.index][1]
+				
+				//找到数据包中，目前所有的数量   计算总价
+				//动态写给  allCount   allPrice
+				//总数allCount
+//				var allCount = 0
+//				var allPrice = 0
+//				for (var i=0;i<7;i++) {
+//					allCount += Number(goodData[i][1])
+//					allPrice += parseFloat(goodData[i][1])*parseFloat(goodData[i][2])
+//				}
+//				console.log(allCount)
+//				console.log(allPrice)
+//				var oAllCount = document.getElementById('allCount')  //获取总数的DOM对象
+//				var oAllPrice = document.getElementById('allPrice') //获取总价的DOM对象
+//				oAllCount.innerHTML = allCount
+//				oAllPrice.innerHTML = allPrice
+				all()
+			}
+			//减少数量  
+			aSub[i].onclick = function(){
+				goodData[this.index][1]--
+				if(goodData[this.index][1]==0){
+					goodData[this.index][1] = 1
+				}
+				aNum[this.index].innerHTML = goodData[this.index][1]
+				aPrice[this.index].innerHTML = goodData[this.index][2] * goodData[this.index][1]
+				
+				//找到数据包中，目前所有的数量   计算总价
+				//动态写给  allCount   allPrice
+//				var allCount = 0
+//				var allPrice = 0
+//				for (var i=0;i<7;i++) {
+//					allCount += Number(goodData[i][1])
+//					allPrice += parseFloat(goodData[i][1])*parseFloat(goodData[i][2])
+//				}
+//				console.log(allCount)
+//				console.log(allPrice)
+//				var oAllCount = document.getElementById('allCount')  //获取总数的DOM对象
+//				var oAllPrice = document.getElementById('allPrice') //获取总价的DOM对象
+//				oAllCount.innerHTML = allCount
+//				oAllPrice.innerHTML = allPrice
+				//调用封装的函数
+				all()
+			}
+		}
+		//定义一个函数，用来计算总量和总价
+		function all(){
+			//找到数据包中，目前所有的数量   计算总价
+			//动态写给  allCount   allPrice
+			var allCount = 0
+			var allPrice = 0
+			for (var i=0;i<7;i++) {
+				allCount += Number(goodData[i][1])
+				allPrice += parseFloat(goodData[i][1])*parseFloat(goodData[i][2])
+			}
+			console.log(allCount)
+			console.log(allPrice)
+			var oAllCount = document.getElementById('allCount')  //获取总数的DOM对象
+			var oAllPrice = document.getElementById('allPrice') //获取总价的DOM对象
+			oAllCount.innerHTML = allCount
+			oAllPrice.innerHTML = allPrice
+		}
+	</script>
+</html>

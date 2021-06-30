@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // - 有家星巴克店
+    // - 星巴克有三种咖啡，价格分别如下：{ 咖啡A: 9, 咖啡B: 13, 咖啡C: 15 }, 使用类型分别表示这三种咖啡
+    // - 星巴克接收用户的订单，然后计算出用户的消费价格
+    // - 为了促销，推出了以下策略：“消费满30减5元，满50减10元，优惠不叠加，以最高优惠计算”
+    // - 请根据该场景创建 星巴克 类 订单 类，然后声明出计算消费金额的函数，并进行验证
+
+    // 星巴克类
+    class Starbucks {
+        // 计算订单商品总价
+        computePrice(order) {
+            let total = 0 // 用于记录总价格
+            let map = order.map
+            for (let goodsName in map) {
+                let goodsInfo = map[goodsName]
+                // 通过type类型，创建实例，此处的实例一定是咖啡
+                // goodsInfo.type 等价于 CoffeeA或CoffeeB或CoffeeC
+                let coffee = new goodsInfo.type()
+                // 计算价格：价格 = 咖啡单价 * 数量
+                let price = coffee.price * goodsInfo.count
+                total += price
+            }
+
+            // 计算优惠
+            if (total >= 50) {
+                total -= 10
+            } else if (total >= 30) {
+                total -= 5
+            }
+            return total
+        }
+    }
+
+    // 咖啡类
+    class Coffee {
+        price
+
+        constructor(price) {
+            this.price = price
+        }
+    }
+
+    // 声明三种不同的咖啡
+    class CoffeeA extends Coffee {
+        constructor() {
+            super(9)
+        }
+    }
+    class CoffeeB extends Coffee {
+        constructor() {
+            super(13)
+        }
+    }
+    class CoffeeC extends Coffee {
+        constructor() {
+            super(15)
+        }
+    }
+
+    // 顾客
+    class Guest {
+        // 下订单
+        order(order, goodsName, count) {
+            // 让顾客拿一张订单，在上面记录商品数据
+            order.addGoods(goodsName, count)
+        }
+    }
+
+    // 订单
+    class Order {
+
+        // CA * 2
+        // CB * 1
+        // CC * 3
+        // CA * 2
+
+        // 存储下单的商品集合
+        // 使用商品名作为map的key
+        // map的value是一个存储商品类型和数量的对象 {type, count}
+        map = {}
+        // 添加商品
+        addGoods(goodsName, count) {
+            let goodsInfo = this.map[goodsName]
+            // 判断商品信息是否已添加入map中，已经存在的话就增加商品数量，否则新建商品信息
+            if (goodsInfo) {
+                goodsInfo.count += count
+            } else {
+                let type
+                switch (goodsName) {
+                    case 'CoffeeA':
+                        type = CoffeeA
+                        break;
+                    case 'CoffeeB':
+                        type = CoffeeB
+                        break;
+                    case 'CoffeeC':
+                        type = CoffeeC
+                        break;
+                    default:
+                        break;
+                }
+                this.map[goodsName] = {
+                    type,
+                    count
+                }
+            }
+        }
+    }
+
+
+
+    // 创建各个参与者的实例
+
+    let shop = new Starbucks()
+    let guest = new Guest()
+
+    // 顾客下单
+    let order = new Order()
+    guest.order(order, 'CoffeeA', 2)
+    // guest.order(order, 'CoffeeA', 3)
+    // guest.order(order, 'CoffeeB', 1)
+    // guest.order(order, 'CoffeeC', 2)
+
+    // 让星巴克计算订单商品总价
+    let totalPrice = shop.computePrice(order)
+</script>
+
+</html>

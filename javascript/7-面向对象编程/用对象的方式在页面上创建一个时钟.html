@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clock {
+            display: inline-block;
+            padding: 10px;
+            border: 5px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建一个html模板，用于描述时钟的样子 -->
+    <!-- <div class="clock">
+        <span class="hour">14</span>:
+        <span class="minute">13</span>:
+        <span class="second">55</span>
+    </div> -->
+    <div class="app"></div>
+</body>
+
+<script>
+    let app = document.querySelector('.app')
+
+    // 用面向对象的思维，描述一个钟
+    let clock = {
+        hour: 23, // 时针
+        minute: 59, // 分针
+        second: 45, // 秒针
+        render: function () { // 渲染函数，用于将时钟显示到页面上
+            // 此处的 this 关键字代表 clock 这个对象
+            let html = '<div class="clock">' +
+                '<span class="hour">' + (this.hour < 10 ? '0' + this.hour : this.hour) + '</span>:' +
+                '<span class="minute">' + (this.minute < 10 ? '0' + this.minute : this.minute) + '</span>:' +
+                '<span class="second">' + (this.second < 10 ? '0' + this.second : this.second) + '</span>' +
+                '</div>'
+            app.innerHTML = html
+        },
+        run() { // 计时函数
+            this.render()
+
+            setInterval(() => {
+                // 更新时间
+                this.second++
+                // 进位判断
+                if (this.second >= 60) {
+                    this.second = 0
+                    this.minute++
+                    if (this.minute >= 60) {
+                        this.minute = 0
+                        this.hour++
+                        if (this.hour >= 24) {
+                            this.hour = 0
+                        }
+                    }
+                }
+                // 跟新页面
+                this.render()
+            }, 1000)
+        }
+    }
+
+    // clock计时
+    clock.run()
+
+</script>
+
+</html>

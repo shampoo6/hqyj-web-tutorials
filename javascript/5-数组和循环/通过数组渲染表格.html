@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年级</th>
+                <th>班级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 创建html模板 -->
+            <tr>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年级</td>
+                <td>班级</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+    // 创建表格的数据
+    let data = [
+        {
+            id: 0,
+            name: '张三',
+            sex: 'male',
+            grade: '1年级',
+            clazz: '2班'
+        },
+        {
+            id: 1,
+            name: '李四',
+            sex: 'female',
+            grade: '6年级',
+            clazz: '3班'
+        },
+        {
+            id: 2,
+            name: '隔壁老王',
+            sex: 'male',
+            grade: '3年级',
+            clazz: '2班'
+        },
+    ]
+
+    // 声明用于存储tbody标签体的html变量
+    let html = ''
+
+    for (let el of data) {
+        // 通过html模板拼接tbody的标签体
+        html +=
+            '<tr>' +
+            '<td>' + el.id + '</td>' +
+            '<td>' + el.name + '</td>' +
+            '<td>' + el.sex + '</td>' +
+            '<td>' + el.grade + '</td>' +
+            '<td>' + el.clazz + '</td>' +
+            '</tr>'
+    }
+
+    // 将构造好的html插入tbody
+    document.querySelector('tbody').innerHTML = html
+</script>
+
+</html>

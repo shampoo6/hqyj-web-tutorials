@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 什么是对象，js用属性和行为来描述某个物体而产生的一种数据结构，该数据称为对象
+    // 声明对象
+    let duck = {
+        age: 1,
+        weight: 5,
+        color: '', // 年龄 重量 颜色 等 这些称为对象的属性
+        swim: () => {
+            console.log('鸭子正在游泳')
+        },
+        eat: () => {
+            console.log('正在吃东西')
+        },
+        fly: () => {
+            console.log('鸭子飞走了')
+        } // 函数用于描述对象的行为
+    }
+
+    // 访问对象属性
+    console.log(duck.age) // 使用点“.”运算符访问属性
+    duck.fly() // 调用对象行为
+
+    // 我们可以使用序列化和反序列化的方式将对象转换成json格式的字符串
+    // 或者将json格式字符串转换成对象
+    let json = JSON.stringify(duck)
+    console.log(json)
+    let obj = JSON.parse(json)
+    console.log(obj)
+</script>
+
+</html>

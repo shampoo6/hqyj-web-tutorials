@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
+
+    // this 关键字代表什么?
+
+    // 根据不同的场景，this关键字代表东西不同，有以下几种情况
+
+    // 1. 在script标签中的this，代表window对象
+    console.log(this) // => window
+
+    // 2. 在函数内的this，默认情况是window
+    function fn() {
+        console.log(this)
+    }
+
+    // 3. 对象当中，函数内的this，代表对象自身
+    let obj = {
+        fn: function () {
+            console.log(this)
+        }
+    }
+
+    class Car {
+        name
+
+        constructor(_name) {
+            this.name = _name
+        }
+
+        run() {
+            console.log(this)
+            fn()
+
+            function fn() {
+                // 对象内的函数内部声明的函数，其this值为undefined
+                // 若要修改函数内 this 的值，可以使用 函数的bind函数
+                console.log(this)
+            }
+        }
+    }
+
+    let c = new Car('东风')
+    c.run()
+
+
+    function fn1() {
+        console.log(this)
+    }
+
+    fn1()
+    // 用 bind 改变函数内 this 的值
+    // bind 函数调用结束后将返回一个新函数
+    let newFn = fn1.bind('hello world')
+
+    newFn() // => this 为 hello world
+    fn1() // => this 为 window
+    // 所以 调用 bind 函数后，并不会影响 fn1 原有函数的 this
+
+
+
+    // 也可以使用 call、apply 函数，调用函数并赋值函数内的 this
+    // 例如：
+    function fn2(x, y) {
+        console.log(x + y)
+        console.log(this)
+    }
+    // call 和 apply 的第一个参数是传给 this 的值
+    fn2.call('hello', 1, 2) // 参数列表用逗号拼接在后面
+    fn2.apply('world', [3, 4]) // 参数用数组传递
+</script>
+
+</html>

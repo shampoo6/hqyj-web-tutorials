@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 使用数组自带的函数遍历数组
+    let arr = ['a', 'b', 'c', 'd', 'e']
+
+    // forEach 用于遍历数组的函数
+    // 语法：
+    // arr.forEach((element, index, array) => {
+    //     每个数组成员要执行的代码写在此处
+    // })
+
+    // element：被遍历的每个成员
+    // index: 当前被遍历成员的索引
+    // array：正被遍历的数组
+    arr.forEach((element, index, array) => {
+        console.log(element)
+        console.log(index)
+        console.log(array)
+    })
+
+
+    // forEach 无法使用 continue 和 break 控制循环
+    // 所以若想在循环中继续或跳出，需要使用 every 函数
+    // every 的参数和 forEach 相同
+    arr.every((element, index, array) => {
+        console.log(element)
+        if (element === 'c') {
+            return false // return false 相当于循环语句中的 break
+        }
+        return true // return true 相当于循环语句中的 continue
+    })
+
+
+    // map 遍历每个数组成员，且每个数组成员返回一个值映射到新的数组中
+    // 返回值：函数将返映射结果的新数组
+    let newArr = arr.map((element, index, array) => {
+        return 'new Element: ' + element
+    })
+
+    console.log(newArr)
+
+    // filter 过滤器，过滤不需要的数组成员，保留数组成员到一个新数组中
+    // 返回值：返回一个被过滤器保留下来的新数组
+    newArr = arr.filter((element, index, array) => {
+        if (element === 'b' || element === 'd') {
+            return false // return false 表示过滤掉该数组成员
+        }
+        return true // return true 表示保留该数组成员
+    })
+
+    console.log(newArr)
+
+
+    // sort 排序
+    arr.sort()
+    // 若调用 sort 函数不传参数时，会使用浏览器默认的排序规则
+
+    // 自定义排序
+    arr = [
+        {
+            name: '张三',
+            age: 32
+        },
+        {
+            name: '李四',
+            age: 16
+        },
+        {
+            name: '王麻子',
+            age: 55
+        },
+    ]
+
+    // 排序规则：按年龄从小到大排序
+    arr.sort()
+
+    console.log(arr)
+
+    // sort 参数是一个排序规则的函数
+    // el1 和 el2 代表的是排序时两两比较的两个数组成员
+    // 排序原理是，将每个成员都和剩下所有成员进行比较，每一对 el1 和 el2 决定他们的先后顺序
+    // 也叫“冒泡排序”
+    // sort 函数执行完后将返回新数组
+    newArr = arr.sort((el1, el2) => {
+        if (el1.age < el2.age) {
+            return -1 // 返回值小于0，那么 el1 排在 el2 前面
+            // -1 < 0 将小于符号看作左箭头，所以el1应该放在el2坐边
+        }
+        if (el1.age === el2.age) {
+            return 0 // 返回值为0，那么 el1 和 el2 顺序不变
+        }
+        if (el1.age > el2.age) {
+            return 1 // 返回值大于0，那么 el1 排在 el2 后面
+            // 1 > 0 将大于符号看作右箭头，所以el1放在el2右边
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <form onsubmit="return false">
+        <div><label>姓名：<input name="name" /></label></div>
+        <div><label>学号：<input name="no" /></label></div>
+        <div><label>班级：
+                <select name="clazz">
+                    <option>1班</option>
+                    <option>2班</option>
+                    <option>3班</option>
+                </select>
+            </label></div>
+        <div><input type="submit" /></div>
+    </form>
+</body>
+
+<script>
+    function $(selector) {
+        return document.querySelector(selector)
+    }
+
+    function getParams() {
+        let result = {}
+        let qs = decodeURI(location.search.substring(1))
+        let splits = qs.split('&')
+        splits.forEach(str => {
+            let kvPair = str.split('=')
+            result[kvPair[0]] = kvPair[1]
+        })
+        return result
+    }
+
+    function review(_params) {
+        $('form input[name=name]').value = _params.name
+        $('form input[name=no]').value = _params.no
+        $('form select[name=clazz]').value = _params.clazz
+    }
+
+    let params = getParams()
+    console.log(params)
+    review(params)
+
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            background-color: red;
+            color: white;
+            /* padding: 5px; */
+            border: 1px solid white;
+            position: absolute;
+            width: 5em;
+            line-height: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1x1=1</div>
+</body>
+<script>
+    let html = ''
+
+    // 1x1=1   top:0xheight  left:0xwidth
+    // 1x2=2   top:1xheight left:0xwidth
+    // 2x2=4   top:1xheight left:1xwidth
+
+
+    // 循环构造盒子
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j <= i; j++) {
+            let num1 = j + 1, num2 = i + 1
+
+            html +=
+                '<div class="box" style="top:' + (i * 2) + 'em; left: ' + (j * 5) + 'em">' + num1 + 'x' + num2 + '=' + (num1 * num2) + '</div>'
+        }
+    }
+
+    document.body.innerHTML = html
+
+</script>
+
+</html>
