@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        .color1 {
+            background-color: #000;
+        }
+
+        .color2 {
+            background-color: #0f0;
+        }
+
+        /* 按钮未激活时的样式 */
+        .btn-inactive {
+            border-color: gray;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-active {
+            border-color: orange;
+            background-color: yellow;
+            color: red;
+        }
+
+        /* 按钮的基础样式 */
+        .btn {
+            border-color: gray;
+            background-color: black;
+            color: white;
+        }
+
+        /* 按钮被激活的样式 */
+        /* .btn.active 选择器将选择同时具备 btn 和 active 类的元素 */
+        .btn.active {
+            border-color: orange;
+            background-color: yellow;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box color1"></div>
+    <!-- <button class="btn btn-inactive">激活</button> -->
+    <button class="btn">激活</button>
+</body>
+<script>
+    // 任务
+    // 1.鼠标悬停移出改变元素颜色
+    // 2.鼠标点击按钮，激活和取消激活状态改变按钮背景
+
+
+    // 1.鼠标悬停移出改变元素颜色
+    // 获取元素box
+    let box = document.querySelector('.box')
+    // mouseover 鼠标悬停事件
+    box.addEventListener('mouseover', ev => {
+        console.log('鼠标悬停到box上了')
+
+        // 通过className 可以修改元素的class属性值
+        box.className = 'box color2'
+    })
+    // mouseout 鼠标移出事件
+    box.addEventListener('mouseout', ev => {
+        console.log('鼠标移出了box')
+
+        box.className = 'box color1'
+    })
+
+    // 2.鼠标点击按钮，激活和取消激活状态改变按钮背景
+    // 获取按钮
+    let btn = document.querySelector('button')
+    // 声明按钮当前状态
+    let active = false
+
+    // 方法一：分别给按钮添加激活时和未激活的样式
+
+    // // 添加点击事件
+    // btn.addEventListener('click', ev => {
+    //     if (active) {
+    //         // 取消激活状态
+    //         btn.classList.remove('btn-active') // 移出指定的class
+    //         btn.classList.add('btn-inactive') // 添加指定的class
+    //     } else {
+    //         // 激活按钮
+    //         btn.classList.remove('btn-inactive') // 移出指定的class
+    //         btn.classList.add('btn-active') // 添加指定的class
+    //     }
+    //     // active 置反
+    //     active = !active
+    // })
+
+
+    // 方法二：通过active类，来激活元素样式
+    btn.addEventListener('click', ev => {
+        if (active) {
+            // 去掉active 取消激活状态
+            btn.classList.remove('active')
+        } else {
+            // 添加active 增加激活状态
+            btn.classList.add('active')
+        }
+        active = !active
+    })
+
+</script>
+
+</html>

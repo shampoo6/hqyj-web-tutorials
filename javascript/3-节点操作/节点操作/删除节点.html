@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border>
+        <caption>用户表</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>男</td>
+                <td>16</td>
+                <td class="op-td"><button>删除</button></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    // 删除节点
+    let btn = document.querySelector('.op-td button')
+    btn.addEventListener('click', function () {
+        console.dir(this) // 此处的this是button按钮
+        // 获取tr元素
+        // 通过访问父元素获取到tr
+        // let td = this.parentElement
+        let tr = this.parentElement.parentElement
+        console.log(tr)
+
+        // 删除元素有以下两个方法
+        // 方法一:
+        // 调用元素本身的remove函数，可以将元素从文档中删除
+        // tr.remove()
+
+        // 方法二：通过父节点删除子节点
+        let tbody = document.querySelector('tbody')
+        // 调用 removeChild 函数 删除子节点
+        tbody.removeChild(tr)
+    })
+</script>
+
+</html>

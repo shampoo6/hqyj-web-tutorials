@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+</head>
+
+<body></body>
+<script>
+    // switch 语句
+    // 语法：判断value值为多少，如果为constant1则执行其后的代码，
+    // 如果为constant2则执行其后的代码，
+    // 如果不满足所有的case语句，则执行default
+    // switch ( value ) {
+    //     case constant1:
+    //         // code
+    //         break;
+    //     case constant2:
+    //         break;
+    //     ... 可以有任意多个case语句
+    //     default: // default 不是必须要写的
+    //         break;
+    // }
+
+
+    let zhangSan = {
+        age: 15,
+        sex: 'male'
+    }
+
+    // 使用 switch 根据张三的性别，打印输出不同的内容
+    switch (zhangSan.sex) {
+        // case 语句后面的值，必须为常量
+        case 'male':
+            console.log('张三是男的')
+            break; // break作用：用于跳出switch语句
+        case 'female':
+            console.log('张三是女的')
+            break;
+        default:
+            console.log('张三不男不女')
+            break;
+    }
+
+</script>
+
+</html>

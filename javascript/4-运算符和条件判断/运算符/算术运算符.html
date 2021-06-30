@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    算术运算符： + - * / % ++(自增1) --（自减1）
+</body>
+<script>
+    let x = 1
+    let y = 2
+
+    // + 加
+    // 数字之间是加法运算
+    let r = x + y
+    console.log(r)
+
+    // 加号有些特殊，在其他地方有不同的含义
+
+    // 使用加号链接字符串
+    r = 'hello' + 'world'
+    console.log(r)
+
+    // 使用加号强转数字
+    // 使用加号强转数字的效果和Number强转是一样的
+    console.log(+'996')
+
+    // - 减
+    r = x - y
+    console.log(r)
+
+    // * 乘
+    x = 3
+    r = x * y
+    console.log(r)
+
+    // / 除
+    r = x / y
+    console.log(r)
+
+    let a = 10, b = 5
+    // a-10 b-5 x-3 y-2
+    // 算术运算符的运算顺序和数学中的一样：先运算乘除再运算加减
+    r = a - b * y + x / 2
+    console.log(r)
+    // 使用括号可以给运算分组，用括号包裹的内容将先被执行
+    r = (a - b) * (y + x) / 2
+    console.log(r)
+
+    // % 取模运算符
+    // 作用：用于获取前一个数除以后一个数所得的余数
+    // 应用场景：控制数字结果不会超过被除数
+    r = x % y // 3 % 2 = 1
+    console.log(r)
+    
+    x = 5
+    y = 3
+    r = x % y // 5 % 3 = 2
+    console.log(r)
+
+    
+
+    let i = 0
+    // ++ 自增符 自己增加1
+    i++ // 等价于 i+1
+    console.log(i)
+    i++
+    console.log(i)
+
+    i = 0
+    // i++: 先引用后自增
+    r = 3 + i++ // --> 3
+    console.log(r)
+    // i --> 1
+    // ++i: 先自增后引用
+    r = 3 + ++i // --> 5
+    console.log(r)
+
+    // 总结： ++ 自增的运算顺序：始终优先于四则运算，
+    // 加号在前时，先自增再引用参与运算；
+    // 加号在后时，先引用参与运算，再自增
+    
+
+    // -- 自减 自己减少1
+    i = 0
+    i--
+    console.log(i)
+    i--
+    console.log(i)
+
+    // 其他特性与 ++ 自增相同
+
+
+    // 经验：能用乘法的地方就不要使用除法，原因是计算机计算乘法要比计算除法更快
+</script>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+        }
+
+        .editor {
+            height: 60px;
+            border: 5px solid black;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            margin-bottom: 15px;
+        }
+
+        .display-content {
+            height: 200px;
+            border: 5px solid black;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        /* 选择所有按钮且包含class为active的元素 */
+        button.active {
+            background-color: yellow;
+        }
+
+        .b {
+            font-weight: bolder;
+        }
+
+        .i {
+            transform: skewX(-15deg);
+        }
+
+        .u {
+            text-decoration: solid underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 编辑区域 -->
+        <div class="editor">
+            <input />
+            <button>B</button>
+            <button>I</button>
+            <button>U</button>
+            <button>添加</button>
+        </div>
+        <!-- 显示的内容区域 -->
+        <div class="display-content"></div>
+    </div>
+</body>
+
+<script>
+    //获取元素
+    let inp = document.querySelector('input')
+    let bBtn = document.querySelector('.editor>button:nth-of-type(1)')
+    let iBtn = document.querySelector('.editor>button:nth-of-type(2)')
+    let uBtn = document.querySelector('.editor>button:nth-of-type(3)')
+    let addBtn = document.querySelector('.editor>button:nth-of-type(4)')
+    let content = document.querySelector('.display-content')
+
+    // 声明按钮的激活状态
+    let bActive = false, iActive = false, uActive = false
+
+    // 给按钮绑定事件
+    bBtn.addEventListener('click', ev => {
+        // 切换显示样式并记录激活状态
+        if (!bActive) {
+            // 激活流程
+            bBtn.classList.add('active')
+        } else {
+            // 取消激活流程
+            bBtn.classList.remove('active')
+        }
+        // 状态置反
+        bActive = !bActive
+    })
+    iBtn.addEventListener('click', ev => {
+        // 切换显示样式并记录激活状态
+        if (!iActive) {
+            // 激活流程
+            iBtn.classList.add('active')
+        } else {
+            // 取消激活流程
+            iBtn.classList.remove('active')
+        }
+        // 状态置反
+        iActive = !iActive
+    })
+    uBtn.addEventListener('click', ev => {
+        // 切换显示样式并记录激活状态
+        if (!uActive) {
+            // 激活流程
+            uBtn.classList.add('active')
+        } else {
+            // 取消激活流程
+            uBtn.classList.remove('active')
+        }
+        // 状态置反
+        uActive = !uActive
+    })
+
+    addBtn.addEventListener('click', ev => {
+        // 读取用户输入
+        let msg = inp.value
+
+        // 创建标签存储用户输入
+        let span = document.createElement('span')
+        span.innerHTML = msg
+        // 为了增加倾斜样式，改元素必须具备块级元素的特征
+        span.style.display = 'inline-block'
+
+        // 判断选择 BIU 按钮，感觉按钮添加样式
+        if (bActive) {
+            span.classList.add('b')
+        }
+        if (iActive) {
+            // let i = document.createElement('i')
+            // // 用i标签包裹span标签
+            // i.appendChild(span)
+            // span = i
+
+            // 用span标签包裹i标签
+            // i.innerHTML = msg
+            // span.innerHTML = ''
+            // span.appendChild(i)
+
+            // 通过样式设置加斜
+            span.classList.add('i')
+        }
+        if (uActive) {
+            span.classList.add('u')
+        }
+
+        // 插入到显示区域
+        content.appendChild(span)
+    })
+</script>
+
+</html>

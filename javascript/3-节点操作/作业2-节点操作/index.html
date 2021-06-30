@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <div>
+            <label>x: <input name="x" type="number" /></label>
+        </div>
+        <div>
+            <label>y: <input name="y" type="number" /></label>
+        </div>
+        <div>
+            <button>确定</button>
+        </div>
+    </form>
+</body>
+
+<script>
+    let btn = document.querySelector('button')
+    let form = document.querySelector('form')
+
+    btn.addEventListener('click', ev => {
+        // 读取x和y的值
+        let fd = new FormData(form)
+        let x = fd.get('x')
+        let y = fd.get('y')
+
+        // 创建图片
+        let img = document.createElement('img')
+        img.src = './1.jpg'
+        img.style.width = '100px'
+        img.style.height = '100px'
+
+        // 设置图片坐标
+        img.style.position = 'absolute'
+        img.style.top = y + 'px'
+        img.style.left = x + 'px'
+
+        // 插入文档
+        document.body.appendChild(img)
+    })
+</script>
+
+</html>

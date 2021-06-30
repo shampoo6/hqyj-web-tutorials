@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="title">hello world</div>
+    <button>点击按钮，异步加载js，修改helloworld</button>
+</body>
+<script>
+    // 异步加载js文件 是什么意思？
+    // 页面刷新时不加载js文件，当要使用的时候，动态的去加载该文件
+
+    let btn = document.querySelector('button')
+
+    btn.addEventListener('click', () => {
+        console.log('click')
+
+        // 创建 script 标签
+        let script = document.createElement('script')
+        // 给src属性赋值
+        script.src = './utils.js'
+        // 脚本加载完成后，调用脚本
+        // 通过事件，捕获资源加载完成时
+        script.addEventListener('load', () => {
+            console.log('我的脚本 utils.js 加载完成了！')
+            console.log($)
+
+            // 使用$修改hello world
+            $('.title').innerHTML = 'utils 脚本加载成功'
+        })
+
+        // 文件还没加载，此处的$是undefined
+        // console.log($)
+
+        // 插入文档
+        document.body.appendChild(script)
+    })
+</script>
+
+</html>

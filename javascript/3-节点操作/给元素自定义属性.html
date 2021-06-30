@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 自定义属性名称可以随便写，单字母都为小写，若有两个或以上英文单词组成，中间用短横线隔开 -->
+    <button id="btn1" goods-name="衣服" goods-price="100">衣服100元</button>
+
+    <!-- 设置自定义属性的按钮 -->
+    <button id="btn2">给按钮添加属性</button>
+</body>
+
+<script>
+    let btn1 = document.querySelector('#btn1')
+    let btn2 = document.querySelector('#btn2')
+    btn1.addEventListener('click', ev => {
+        // 使用getAttribute来获取元素上的属性
+        // 参数：属性名
+        console.log(btn1.getAttribute('id'))
+        let goodsName = btn1.getAttribute('goods-name')
+        let goodsPrice = btn1.getAttribute('goods-price')
+        console.log(goodsName)
+        console.log(goodsPrice)
+
+        // 注意：自定义属性的值，始终是字符串类型
+    })
+
+    btn2.addEventListener('click', ev => {
+        // 设置属性
+        // 第一个参数：属性名
+        // 第二个参数：属性值，该属性值无论写什么类型，最终都会被转换成字符串
+        btn2.setAttribute('class', 'my-btn')
+        btn2.setAttribute('my-data', { name: '小红' })
+    })
+</script>
+
+</html>

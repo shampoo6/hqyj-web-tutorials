@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .item {
+            width: 50%;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 商店 -->
+        <div class="item">
+            <h1>商店</h1>
+            <div class="btn-list">
+                <button name="衣服" price="100">衣服100</button>
+                <button name="包包" price="1000">包包1000</button>
+                <button name="肥宅快乐水" price="200">肥宅快乐水200</button>
+            </div>
+        </div>
+        <!-- 购物记录表 -->
+        <div class="item">
+            <table border>
+                <caption>购物记录表</caption>
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>衣服</td>
+                        <td>100</td>
+                    </tr> -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>总金额：</td>
+                        <td class="amount">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 获取所有按钮
+    let btn1 = document.querySelector('.btn-list>button:nth-child(1)')
+    let btn2 = document.querySelector('.btn-list>button:nth-child(2)')
+    let btn3 = document.querySelector('.btn-list>button:nth-child(3)')
+    // 获取其他元素
+    let tbody = document.querySelector('tbody')
+    let amountEl = document.querySelector('.amount')
+
+    // 金额
+    let amount = 0
+
+    btn1.addEventListener('click', ev => {
+        // 获取按钮上的属性值
+
+        // 使用函数如下
+        // let result = getAttribute(btn1)
+
+        let name = btn1.getAttribute('name')
+        let price = btn1.getAttribute('price')
+
+        // 构造表格中的数据行
+        let tr = document.createElement('tr')
+        let tdName = document.createElement('td')
+        let tdPrice = document.createElement('td')
+        tdName.innerText = name
+        tdPrice.innerText = price
+
+        // 插入元素
+        tr.appendChild(tdName)
+        tr.appendChild(tdPrice)
+
+        tbody.appendChild(tr)
+
+        // 统计金额
+        amount = amount + Number(price)
+        // 跟新页面
+        amountEl.innerText = amount
+    })
+    btn2.addEventListener('click', ev => {
+        // 获取按钮上的属性值
+
+        // 使用函数如下
+        // let result = getAttribute(btn1)
+
+        let name = btn2.getAttribute('name')
+        let price = btn2.getAttribute('price')
+
+        // 构造表格中的数据行
+        let tr = document.createElement('tr')
+        let tdName = document.createElement('td')
+        let tdPrice = document.createElement('td')
+        tdName.innerText = name
+        tdPrice.innerText = price
+
+        // 插入元素
+        tr.appendChild(tdName)
+        tr.appendChild(tdPrice)
+
+        tbody.appendChild(tr)
+
+        // 统计金额
+        amount = amount + Number(price)
+        // 跟新页面
+        amountEl.innerText = amount
+    })
+    btn3.addEventListener('click', ev => {
+        // 获取按钮上的属性值
+
+        // 使用函数如下
+        // let result = getAttribute(btn1)
+
+        let name = btn3.getAttribute('name')
+        let price = btn3.getAttribute('price')
+
+        // 构造表格中的数据行
+        let tr = document.createElement('tr')
+        let tdName = document.createElement('td')
+        let tdPrice = document.createElement('td')
+        tdName.innerText = name
+        tdPrice.innerText = price
+
+        // 插入元素
+        tr.appendChild(tdName)
+        tr.appendChild(tdPrice)
+
+        tbody.appendChild(tr)
+
+        // 统计金额
+        amount = amount + Number(price)
+        // 跟新页面
+        amountEl.innerText = amount
+    })
+
+    // 获取属性
+    // el: 需要获取name和price属性的元素
+    // 返回值：获取到的name和price属性所构成的对象
+    let getAttribute = (el) => {
+        let name = el.getAttribute('name')
+        let price = el.getAttribute('price')
+        // {   
+        //     name: name,
+        //     price: price
+        // }
+        // 若属性名和属性值的变量名相同，那么可以缩写省略冒号后面的部分
+        return {
+            name,
+            price
+        }
+    }
+</script>
+
+</html>

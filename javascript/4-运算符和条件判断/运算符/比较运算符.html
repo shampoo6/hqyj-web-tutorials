@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    比较运算符： >, &lt;,>=, &lt;=, ==, !=, ===, !==
+</body>
+<script>
+    // 比较运算符用于对运算符左右两个值进行比较
+    // 比较运算符的运算结果为boolean值，用于指示比较结果为真或者假
+    let a = 1
+    let b = 2
+
+    // > 大于
+    console.log(a > b)
+
+    // < 小于
+    console.log(a < b)
+
+    // >= 大于等于
+    console.log(a >= b)
+    console.log(a >= 1)
+
+    // <= 小于等于
+    console.log(a <= b)
+    console.log(a <= 1)
+
+    // == 等于 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness
+    console.log(a == b)
+    let str = 'hello world'
+    console.log(str == 'hello world')
+
+    let obj = { name: '张三' }
+    console.log(obj.name == '张三') // --> true
+
+    // 由于对象存储的是内存地址，所以两个看似相同的对象，实际上地址不同，所以结果为false
+    console.log(obj == { name: '张三' }) // --> false
+
+    console.log(0 == '') // --> true
+    console.log(false == 0) // --> true
+
+    // false 无法转换为 null 或 undefined
+    console.log(false == null) // --> false
+    console.log(false == undefined) // --> false
+
+
+    // != 不等于
+    console.log( 1 != 2 )
+    console.log(str != 'hello world')
+
+
+    // === 全等于
+    // 判断类型与值是否都相同
+
+    console.log( a === 1 ) // --> true
+    console.log( a == 1 ) // --> true
+    console.log(0 == '') // --> true
+    console.log(0 === '') // --> false 两端的类型不同
+
+
+    // !== 不等于 判断类型或值是否都不同
+    console.log( 0 != '' ) // --> false
+    console.log( 0 !== '' ) // --> true
+</script>
+
+
+</html>

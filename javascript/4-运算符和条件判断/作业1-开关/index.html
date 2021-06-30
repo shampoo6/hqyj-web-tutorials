@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button>打开</button>
+</body>
+<script>
+    // box 是否打开
+    let isOpen = false
+
+    // 获取box
+    let box = document.querySelector('.box')
+
+    // 绑定开关的点击事件
+    let btn = document.querySelector('button')
+    btn.addEventListener('click', () => {
+        // 判断box的当前状态，通过当前状态执行不同的代码
+        if (isOpen) {
+            // 如果box是打开状态，将进入此代码块
+            box.style.backgroundColor = 'black'
+            // 修改btn的文本提示
+            btn.innerText = '打开'
+            // 状态扭转
+            isOpen = false
+        } else {
+            // 如果box是关闭状态，将进入此代码块
+            box.style.backgroundColor = 'yellow'
+            // 修改btn的文本提示
+            btn.innerText = '关闭'
+            // 状态扭转
+            isOpen = true
+        }
+    })
+</script>
+
+</html>

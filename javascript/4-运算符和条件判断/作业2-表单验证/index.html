@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <form onsubmit="return false">
+        <div>
+            <label>账号: <input name="account" /></label>
+        </div>
+        <div>
+            <label>密码: <input type="password" name="pwd" /></label>
+        </div>
+        <div>
+            <label><input type="checkbox" name="p" /> 同意《用户协议》</label>
+        </div>
+        <div>
+            <button>提交</button>
+        </div>
+    </form>
+</body>
+<script>
+
+    // 获取输入元素
+    let accountEl = document.querySelector('form input[name=account]')
+    let pwdEl = document.querySelector('form input[name=pwd]')
+    let pEl = document.querySelector('form input[name=p]')
+
+    // 绑定按钮事件
+    let btn = document.querySelector('form button')
+    btn.addEventListener('click', () => {
+        // 根据不同规则验证用户输入
+        // trim 函数，是字符串的函数，用于去掉字符串的首尾空格
+        // 下面if语句，整句话的含义是：如果value不存在或者value的值是空字符串
+        // if (!accountEl.value || accountEl.value.trim() === '') {
+        //     alert('请输入账号')
+        //     // return 标准流程下这里应该使用return
+        // } else if (pwdEl.value.length < 6 || pwdEl.value.length > 10) {
+        //     alert('请输入6~10位的密码')
+        // } else if (!pEl.checked) {
+        //     alert('请同意用户协议')
+        // } else {
+        //     alert('提交成功')
+        // }
+
+
+        // 标准验证流程
+        if (!accountEl.value || accountEl.value.trim() === '') {
+            alert('请输入账号')
+            return
+        }
+        if (pwdEl.value.length < 6 || pwdEl.value.length > 10) {
+            alert('请输入6~10位的密码')
+            return
+        }
+        if (!pEl.checked) {
+            alert('请同意用户协议')
+            return
+        }
+        alert('提交成功')
+    })
+</script>
+
+</html>

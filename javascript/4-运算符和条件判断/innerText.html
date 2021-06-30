@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+<script>
+    // 获取box
+    let box = document.querySelector('.box')
+    // innerHTML 标签体的内容将被解析为 html 代码
+    // box.innerHTML = '<h1>hello world</h1>'
+
+    // innerText: 同样是标签体，但是赋值的字符串将被当作纯文本显示
+    box.innerText = '<h1>hello world</h1>'
+</script>
+
+</html>

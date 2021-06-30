@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>追加一个div</button>
+</body>
+<script>
+    let btn = document.querySelector('button')
+    btn.addEventListener('click', () => { 
+        // 点击按钮后，使用js追加节点
+        // 使用 document.createElement 创建一个标签
+        // 参数：标签名称
+        // 返回值：对应标签的bom对象
+        let div = document.createElement('div')
+        console.log(div)
+
+
+        // 创建节点完成后，节点并不会显示到页面上，需要进行插入节点的操作
+    })
+</script>
+
+</html>

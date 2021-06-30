@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 点击下载按钮，动态下载文件 -->
+    <button>下载</button>
+
+    <!-- a标签中 href填入要下载的文件路径即可，可以是网络路径 -->
+    <!-- <a href="./pull.7z">pull.7z</a> -->
+</body>
+
+<script>
+    // 下载文件的实现方式，实际上就是使用 <a> 标签
+
+    let btn = document.querySelector('button')
+    btn.addEventListener('click', () => {
+        console.log('click')
+
+        // 创建 a 标签
+        let a = document.createElement('a')
+        // 给 a 标签的 href 属性赋值
+        a.href = './pull.7z'
+        // 插入a标签
+        document.body.appendChild(a)
+        // 使用js代码触发a标签的点击事件
+        a.click()
+        // 删除节点
+        a.remove()
+    })
+</script>
+
+</html>

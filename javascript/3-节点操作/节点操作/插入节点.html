@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 30px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn1">追加一个div</button>
+    <button class="btn2">在两个按钮中间插入div</button>
+</body>
+<script>
+    let btn = document.querySelector('.btn1')
+    btn.addEventListener('click', () => {
+        // 点击按钮后，使用js追加节点
+        // 使用 document.createElement 创建一个标签
+        // 参数：标签名称
+        // 返回值：对应标签的bom对象
+        let div = document.createElement('div')
+        console.log(div)
+        // div.className = 'box'
+        div.classList.add('box')
+
+
+        // 插入创建好的节点
+
+        // appendChild : 该函数可以将元素插入到子节点的末尾处
+        // 以追加到body标签为例：
+
+        let body = document.body
+        // 在body的子节点末尾处追加div
+        body.appendChild(div)
+        // 使用 appendChild 追加元素时，参数为：要追加的元素
+    })
+
+
+    let btn2 = document.querySelector('.btn2')
+    btn2.addEventListener('click', () => {
+        // 创建节点
+        let div = document.createElement('div')
+        console.log(div)
+        div.classList.add('box')
+
+        let body = document.body
+        // 调用 insertBefore 将元素插入到另一个子节点前面
+        // 第一个参数：要插入的元素
+        // 第二个参数：插入位置的子节点
+        body.insertBefore(div, btn2)
+    })
+
+
+    // 注意: 
+    // 若：appendChild 和 insertBefore 语法如下
+    // parent.appendChild(el) 和 parent.insertBefore(el, child)
+    // parent: 要插入元素的父节点
+    // 所以调用这两个函数时，一定要在父节点中插入子节点
+</script>
+
+</html>

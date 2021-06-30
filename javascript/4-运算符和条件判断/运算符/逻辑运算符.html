@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    逻辑运算符：&&与 ||或 !非 ~异或 &按位与 |按位或
+</body>
+<script>
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators
+
+    // 逻辑运算符：符合逻辑条件时将返回真或假
+
+    // bool expression 的意思是：布尔表达式
+    // 什么是布尔表达式？整个js代码运算结果是一个布尔值，这样的代码片段叫做布尔表达式
+    // 举例如下：
+    console.log(1 === '') // 所有比较判断都是布尔表达式
+    console.log(true)
+
+    // && 与
+    // 语法：bool expression && bool expression
+    // 两个表达式都为真，结果返回真；任一一个表达式为假，结果返回假
+    // 例如：
+    console.log(true && true)
+    console.log(true && false)
+    console.log(0 == 0 && 0 == '')
+    console.log( 1+2>5 && 5-4<0)
+
+    // || 或
+    // 语法：bool expression || bool expression
+    // 两个表达式任一一个为真，结果返回真；否则为假
+    console.log(false || false)
+    console.log(false || true)
+
+    // && 和 || 开发人员称为短路运算
+    // 短路运算的应用场景：赋值默认值
+    let a
+    let b = a || 1
+
+    // !非 作用是取反
+    // 语法： !(tool express)
+    console.log(!true)
+    console.log(!false)
+
+</script>
+
+</html>

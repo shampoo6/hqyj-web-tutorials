@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年级</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 创建一个html模板，用于接下来对innerHTML进行赋值 -->
+            <tr>
+                <td>0</td>
+                <td>张三</td>
+                <td>其他</td>
+                <td>1年级</td>
+                <td>1班</td>
+                <!-- 下面的this代表的是button的dom对象 -->
+                <td><button onclick="remove(this)">删除</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <form onsubmit="return false">
+        <div>
+            <label>学号：<input name="id" /></label>
+        </div>
+        <div>
+            <label>姓名：<input name="name" /></label>
+        </div>
+        <div>
+            性别：
+            <label><input name="sex" type="radio" value="男" checked />男</label>
+            <label><input name="sex" type="radio" value="女" />女</label>
+            <label><input name="sex" type="radio" value="其他" />其他</label>
+        </div>
+        <div>
+            <label>
+                年级：
+                <select name="grade">
+                    <option value="1年级">1年级</option>
+                    <option value="2年级">2年级</option>
+                    <option value="3年级">3年级</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                班级：
+                <select name="class">
+                    <option value="1班">1班</option>
+                    <option value="2班">2班</option>
+                    <option value="3班">3班</option>
+                </select>
+            </label>
+        </div>
+        <button>提交</button>
+    </form>
+</body>
+
+<script>
+    let btn = document.querySelector('form button')
+    let form = document.querySelector('form')
+    let tbody = document.querySelector('tbody')
+
+    btn.addEventListener('click', ev => {
+        // 获取表单中填写的数据
+        let fd = new FormData(form)
+        // 读取表单中的数据
+        // 通过 get 函数获取表单中的数据
+        // get 的参数是表单中表单元素上的name属性值
+        let id = fd.get('id')
+        let name = fd.get('name')
+        let sex = fd.get('sex')
+        let grade = fd.get('grade')
+        let clazz = fd.get('class')
+
+        // 通过表单填写的数据构造 一行 tr 标签
+
+        // 方法一：通过使用tbody标签的innerHTML构造一行新数据
+
+
+        // tbody.innerHTML = tbody.innerHTML +
+        //     '<tr>' +
+        //     '<td>' + id + '</td>' +
+        //     '<td>' + name + '</td>' +
+        //     '<td>' + sex + '</td>' +
+        //     '<td>' + grade + '</td>' +
+        //     '<td>' + clazz + '</td>' +
+        //     '<td><button onclick="remove(this)">删除</button></td>' +
+        //     '</tr>'
+
+
+        // 方法二：使用createElement和insertBefore或appendChild来添加数据
+
+        // 创建元素
+        let tr = document.createElement('tr')
+        let td1 = document.createElement('td')
+        let td2 = document.createElement('td')
+        let td3 = document.createElement('td')
+        let td4 = document.createElement('td')
+        let td5 = document.createElement('td')
+        // 操作列
+        let td6 = document.createElement('td')
+
+        // 将表单数据添加到元素里
+        td1.innerText = id
+        td2.innerText = name
+        td3.innerText = sex
+        td4.innerText = grade
+        td5.innerText = clazz
+
+        // 给tr追加单元格
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        tr.appendChild(td4)
+        tr.appendChild(td5)
+        tr.appendChild(td6)
+
+
+        // 给操作列添加删除按钮
+        let delBtn = document.createElement('button')
+        delBtn.innerText = '删除'
+        delBtn.addEventListener('click', (ev) => {
+            remove(delBtn)
+        })
+
+        // 将按钮插入td6
+        td6.appendChild(delBtn)
+
+
+        // 将新的tr标签插入 tbody
+        tbody.appendChild(tr)
+    })
+
+    let remove = (btn) => {
+        console.log(btn)
+        // 通过查找按钮的父节点的父节点，也就是按钮所在的tr标签
+        let parent = btn.parentElement
+        console.log(parent)
+        let tr = parent.parentElement
+        console.log(tr)
+        // 删除节点
+        tr.remove()
+    }
+</script>
+
+</html>

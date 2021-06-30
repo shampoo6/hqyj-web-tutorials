@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border>
+        <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+            <td>1-3</td>
+        </tr>
+        <tr class="tr">
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>4-1</td>
+            <td>4-2</td>
+            <td>4-3</td>
+        </tr>
+    </table>
+</body>
+<script>
+    // 查询节点
+    // dom对象中可以查询其父节点和子节点
+
+    // 获取tr
+    let tr = document.querySelector('.tr')
+    console.dir(tr)
+
+    // 访问子节点使用 children 属性
+    console.log(tr.children)
+    // children 属性包含一个子节点的集合
+    // 所以访问具体子节点可以使用索引值
+    console.dir(tr.children[0])
+
+
+    // 访问父节点使用 parentElement 属性
+    // 例如 访问tr树节点 tbody 如下：
+    console.dir(tr.parentElement)
+</script>
+
+</html>

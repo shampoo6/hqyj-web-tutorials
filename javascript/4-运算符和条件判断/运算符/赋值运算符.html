@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    赋值运算符 ：  =   +=    -=    *=   /=
+
+    <div class="box">
+        hello wrold
+    </div>
+</body>
+<script>
+    // 所有赋值操作的运算优先级始终最低
+
+    // = 赋值符
+    let a = 1
+    console.log(a)
+
+    // += 自增赋值，将等号右侧的内容，与等号左面内容相加，再赋值给等号左面的变量
+    a += 2
+    // 等价于 a = a + 2
+    console.log(a)
+
+    let box = document.querySelector('.box')
+    box.innerHTML += '&nbsp;<span style="color: red">祖国万岁</span>'
+
+
+    // -= 自减赋值
+    a = 2
+    let b = 1
+    a -= b
+    console.log(a)
+
+    let x = 0
+    x++
+    x++
+    x++
+    console.log(x)
+    x = 0
+    x+=2 //step=2
+    x+=2 //step
+    x+=2 //step
+    console.log(x)
+
+    // *= 自乘赋值
+    x = 3
+    let y = 2
+    x *= y
+    console.log(x)
+
+    // /= 自除赋值
+    x = 3
+    x /= y
+    console.log(x)
+
+    // %= 自模赋值
+    x = 7
+    x %= y
+    console.log(x)
+
+</script>
+
+</html>
