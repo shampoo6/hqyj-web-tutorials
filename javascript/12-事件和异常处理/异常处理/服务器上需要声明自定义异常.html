@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是自定义异常?
+    // 开发人员自己创建的异常类就是自定义异常
+    // 作用？
+    // 给异常分类，告诉开发人员哪些异常是需要处理的，哪些是系统异常不需要处理
+
+
+    // 声明自定义异常
+    // 继承浏览器自带异常类即可
+    class RuntimeError extends Error {
+        code // 异常码
+
+        // 异常码列表
+        // 1 : 被除数被能为0
+        // 2 : 字符串中不能有 “共产党” 几个字
+
+        constructor(message, code) {
+            super(message)
+            this.code = code
+        }
+    }
+
+    // 除法
+    function div(x, y) {
+        // 模拟系统异常
+        // console.log(obj.name)
+        if (y === 0) {
+            throw new RuntimeError('被除数不能为0', 1)
+        }
+        return x / y
+    }
+
+    try {
+        div(1, 0)
+    } catch (error) {
+        // 判断是否是需要处理的异常
+        if (error instanceof RuntimeError) {
+            console.log(error.message)
+        } else {
+            // 若该异常是不该开发人员自己处理的异常，那么重新抛出即可
+            throw error
+        }
+    }
+</script>
+
+</html>

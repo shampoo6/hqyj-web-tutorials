@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 不必包，将变量 _sum 声明到函数外
+    // let _sum = 0
+    // 求平均值的函数
+    // arr：数字数组
+    // const avg = (arr) => {
+    //     arr.forEach(el => {
+    //         _sum += el
+    //     })
+    //     return _sum / arr.length
+    // }
+
+    // 闭包的写法：
+    // 通过调用一个匿名函数，返回一个值，值的类型不限
+    // 一般来说返回类型是函数或对象
+
+    // 写法：
+    // 先写两对圆括号，第一个圆括号用于声明函数，第二个圆括号代表调用函数
+    const avg = (() => {
+        // 闭包中的变量将一直存在于页面的内存中，除非关闭页面或刷新页面，否则该数据将一直存在
+        // 因此会导致一个现象，当重复调用avg的时候，由于以下代码没有清空内存中的_sum所以平均值会越来越大
+        let _sum = 0
+        return (arr) => {
+            _sum = 0 // 清空内存中的 _sum
+            arr.forEach(el => {
+                _sum += el
+            })
+            return _sum / arr.length
+        }
+    })()
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/an1.jpg" />
+</body>
+
+<script>
+    // 声明透明度递增或递减的速度
+    // let speed = 0.1
+
+    // 计时器id
+    let handler = -1
+
+    let img = document.querySelector('img')
+
+    // 绑定鼠标进入和移出事件
+
+    img.addEventListener('mouseover', () => {
+        clearTimeout(handler) // 停止上一个为完成计时器
+        setOpacity(-0.1)
+    })
+    
+    img.addEventListener('mouseout', () => {
+        clearTimeout(handler)
+        setOpacity(0.1)
+    })
+
+    // 声明设置透明度的函数
+    // speed：透明度的渐变速度
+    function setOpacity(speed) {
+        // 设置初始的透明度
+        if (img.style.opacity === '') img.style.opacity = '1'
+
+        let sign = Math.sign(speed)
+        if (sign < 0 && Number(img.style.opacity) + speed <= 0) {
+            // 当速度为负数时，且当前图片透明度已经为0或更小时就会进入该if语句
+            img.style.opacity = '0'
+            return
+        } else if (sign > 0 && Number(img.style.opacity) + speed >= 1) {
+            // 当速度为正数时，且当前图片透明度已经为1或更大时就会进入该if语句
+            img.style.opacity = '1'
+            return
+        }
+
+        img.style.opacity = Number(img.style.opacity) + speed + ''
+
+        handler = setTimeout(() => {
+            setOpacity(speed)
+        }, 300)
+    }
+
+</script>
+
+</html>

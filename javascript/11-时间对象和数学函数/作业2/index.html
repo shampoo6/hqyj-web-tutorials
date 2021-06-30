@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    function dateFormat(date) {
+        let dateStr = ''
+        // 函数的处理逻辑写在此处
+
+        let year = date.getFullYear()
+        let month = date.getMonth() + 1
+        let day = date.getDate()
+
+        dateStr += year + '-' + month + '-' + day
+
+        return dateStr
+    }
+
+    let date = new Date(2000, 11, 15)
+    // 调用dateFormat完后 dateStr 为 2000-12-15
+    let dateStr = dateFormat(date)
+    console.log(dateStr) // --> 2000-12-15
+</script>
+
+</html>

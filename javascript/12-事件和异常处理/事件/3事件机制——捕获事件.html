@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button>点我</button>
+    </div>
+</body>
+<script>
+    // 事件机制
+    
+
+    let btn = document.querySelector('button')
+    let div = document.querySelector('div')
+    let body = document.body
+
+    btn.addEventListener('click', () => {
+        console.log('btn click')
+    })
+    // 捕获事件，可以让指定元素，先获取到事件对象，再执行事件冒泡
+    // addEventListener，第三个参数，可以加入一个布尔值
+    // true：代表捕获事件
+    // false：代表不捕获
+    div.addEventListener('click', () => {
+        console.log('div click')
+    }, true)
+    body.addEventListener('click', () => {
+        console.log('body click')
+    })
+    
+</script>
+
+</html>

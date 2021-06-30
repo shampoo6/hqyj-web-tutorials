@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+
+    // Math.random() * n // 0 ~ n
+    // m ~ n // m + Math.random() * (n - m)
+
+    // Math.round()
+
+    // 声明一个随机数函数，用于获取到 m~n 之间的随机数
+
+    function random(m, n) {
+        let result = m // 赋值一个保底的下限
+        let space = n - m // 随机数区间
+        result += Math.random() * space // 使用基数加上随机数区间的值，生成一个随机数
+        result = Math.floor(result) // 向下取整
+        return result
+    }
+
+    console.log(random(0, 100)) // 随机 0~100
+    console.log(random(50, 100)) // 随机 50~100
+
+</script>
+
+</html>

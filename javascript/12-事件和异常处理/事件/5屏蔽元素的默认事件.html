@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <button>提交</button>
+    </form>
+</body>
+<script>
+    // 什么是元素的默认事件处理程序？
+    // 开发人员不指定事件操作时，默认触发的操作，就是默认事件处理程序
+
+    let btn = document.querySelector('button')
+    btn.addEventListener('click', ev => {
+        ev.preventDefault()
+
+        // 若不阻止默认事件处理程序，该console日志，无法正确显示
+        console.log('button click')
+    })
+
+    btn.addEventListener('contextmenu', ev => {
+        ev.preventDefault()
+    })
+</script>
+
+</html>

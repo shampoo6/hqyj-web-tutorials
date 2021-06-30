@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <button name="add">添加</button>
+        <button name="removeMany">批量删除</button>
+    </div>
+
+    <!-- 表格 -->
+    <table border>
+        <caption>学生信息表</caption>
+        <thead>
+            <tr>
+                <th>全选<input type="checkbox" onclick="selectAll()" /></th>
+                <th>姓名</th>
+                <th>学号</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>张三</td>
+                <td>00</td>
+                <td>1班</td>
+            </tr> -->
+        </tbody>
+    </table>
+</body>
+<script>
+    // 编辑功能的实现原理:
+    // 1. 跳转到编辑页面，需要传递需要编辑的数据id
+    // 2. 在编辑页面中进行数据回显
+    // 3. 修改并保存
+
+
+
+    // 构造测试数据
+    let data = [
+        {
+            name: '张三',
+            no: '00',
+            clazz: '1班',
+        },
+        {
+            name: '李四',
+            no: '01',
+            clazz: '2班',
+        },
+        {
+            name: '王麻子',
+            no: '03',
+            clazz: '3班',
+        }
+    ]
+
+
+    // 定义一个用于存储多选结果的数组
+    let selection = []
+
+    // 从 localStorage 获取数据
+    let json = localStorage.getItem('students')
+    // 非空判断
+    if (!json) {
+        data = [] // 若数据不存在，就初始化
+    } else {
+        // 反序列化学生数组
+        data = JSON.parse(json)
+    }
+
+
+    // 封装querySelector函数
+    function $(selector) {
+        return document.querySelector(selector)
+    }
+
+    // 获取文档元素
+    let tbody = $('tbody')
+    let addBtn = $('.toolbar>button[name=add]')
+    let removeManyBtn = $('.toolbar>button[name=removeMany]')
+
+
+
+    // 事件绑定
+    addBtn.addEventListener('click', () => {
+        // 跳转到添加数据的页面
+        location.href = './add.html'
+    })
+
+    // 批量删除
+    removeManyBtn.addEventListener('click', () => {
+        data = data.filter((item, index) => {
+
+            // 遍历selection，如果selection中存在和当前成员索引相同的元素时
+            // 返回 false，将该元素过滤掉
+            for (let i = 0; i < selection.length; i++) {
+                let _index = selection[i]
+                if (_index === index) {
+                    return false // 过滤掉该成员
+                }
+            }
+
+            return true
+        })
+
+        console.log(data)
+
+        // 再次给localStorage赋值
+        localStorage.setItem('students', JSON.stringify(data))
+
+        render()
+    })
+
+
+
+    // 声明渲染函数
+    // 该函数作用是，将data数组显示到页面中
+    function render() {
+        let html = ''
+        // 循环数组数据
+        data.forEach((student, index) => {
+            // 追加每一行信息
+            html +=
+                '<tr>' +
+                '<td><input type="checkbox" onclick="onCheckboxSelect(' + index + ')" /></td>' +
+                '<td>' + student.name + '</td>' +
+                '<td>' + student.no + '</td>' +
+                '<td>' + student.clazz + '</td>' +
+                '<td><button onclick="remove(' + index + ')">删除</button><button onclick="edit(' + index + ')">编辑</button></td>' +
+                '</tr>'
+        })
+        // 插入到tbody中
+        tbody.innerHTML = html
+    }
+
+    // 删除数组成员
+    function remove(index) {
+        console.log(index)
+
+        // 从数组中移除
+        data.splice(index, 1)
+
+        // 给localStorage设置删除后的数组
+        localStorage.setItem('students', JSON.stringify(data))
+
+        // 更新视图
+        render()
+    }
+
+    // 编辑
+    function edit(index) {
+        // 通过index来充当数据id
+        console.log(index)
+        
+        // 跳转到编辑页面
+        // 传递数据id给编辑页
+        location.href = './edit.html?id=' + index
+    }
+
+    // 当checkbox被点击时，触发该事件
+    function onCheckboxSelect(index) {
+        // 声明一个变量，用于存储在selection中找到的index的索引值
+        let _index = -1
+
+        for (let i = 0; i < selection.length; i++) {
+            let item = selection[i]
+            if (item === index) {
+                // 记录索引值在selection中的位置
+                _index = i
+                break;
+            }
+        }
+
+        // 判断查询到的结果是否存在
+        if (_index != -1) {
+            // 执行删除操作
+            selection.splice(_index, 1)
+        } else {
+            selection.push(index)
+        }
+
+        console.log(selection)
+    }
+
+    function selectAll() {
+        let checkboxs = document.querySelectorAll('table input[type=checkbox]')
+        for (let i = 0; i < checkboxs.length; i++) {
+            if (i === 0) continue
+            let checkbox = checkboxs[i]
+            checkbox.click()
+        }
+    }
+
+    render()
+</script>
+
+</html>

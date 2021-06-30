@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <table border>
+        <caption>学生信息表</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>学号</th>
+                <th>班级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>张三</td>
+                <td>00</td>
+                <td>1班</td>
+            </tr> -->
+        </tbody>
+    </table>
+</body>
+<script>
+    // 构造测试数据
+    let data = [
+        {
+            name: '张三',
+            no: '00',
+            clazz: '1班',
+        },
+        {
+            name: '李四',
+            no: '01',
+            clazz: '2班',
+        },
+        {
+            name: '王麻子',
+            no: '03',
+            clazz: '3班',
+        }
+    ]
+
+    // 封装querySelector函数
+    function $(selector) {
+        return document.querySelector(selector)
+    }
+
+    // 获取文档元素
+    let tbody = $('tbody')
+
+
+    // 声明渲染函数
+    // 该函数作用是，将data数组显示到页面中
+    function render() {
+        let html = ''
+        // 循环数组数据
+        data.forEach(student => {
+            // 追加每一行信息
+            html +=
+                '<tr>' +
+                '<td>' + student.name + '</td>' +
+                '<td>' + student.no + '</td>' +
+                '<td>' + student.clazz + '</td>' +
+                '</tr>'
+        })
+        // 插入到tbody中
+        tbody.innerHTML = html
+    }
+
+    render()
+</script>
+
+</html>

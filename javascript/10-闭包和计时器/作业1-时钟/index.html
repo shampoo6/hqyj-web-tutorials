@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <h1><span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span></h1>
+</body>
+<script>
+    // 声明相关变量
+    let hour = 23
+    let minute = 59
+    let second = 55
+    let hourEl = document.querySelector('.hour')
+    let minuteEl = document.querySelector('.minute')
+    let secondEl = document.querySelector('.second')
+
+    // 声明计时函数
+    function countTime() {
+        setTimeout(() => {
+            second++
+            // 进位判断
+            if (second >= 60) {
+                minute++
+                // 重置秒钟
+                second = 0
+
+                // 分针的进位判断
+                if (minute >= 60) {
+                    hour++
+                    // 重置分针
+                    minute = 0
+
+                    if (hour >= 24) {
+                        // 重置时针
+                        hour = 0
+                    }
+                }
+            }
+            console.log('hour:' + hour + ';minute:' + minute + ';second:' + second)
+            // 每次计时后，更新显示
+            render()
+            countTime()
+        }, 1000)
+
+    }
+
+    // 渲染时间
+    function render() {
+        hourEl.innerHTML = hour < 10 ? '0' + hour : hour
+        minuteEl.innerHTML = minute < 10 ? '0' + minute : minute
+        secondEl.innerHTML = second < 10 ? '0' + second : second
+    }
+
+    countTime()
+</script>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: gold;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../作业2/1.jpg" />
+    </div>
+    <form onsubmit="return false">
+        <div><label>姓名：<input name="name" /></label></div>
+        <div><label>班级：
+                <select name="clazz">
+                    <option>1班</option>
+                    <option>2班</option>
+                    <option>3班</option>
+                </select>
+            </label></div>
+    </form>
+    <div>
+        <button class="btn1">点我</button>
+    </div>
+    <div class="box">
+        <div class="box2"></div>
+    </div>
+</body>
+<script>
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/Events
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
+
+    function $(selector) {
+        return document.querySelector(selector)
+    }
+
+    // 资源事件
+
+    // load: 资源加载完成后就会触发
+    $('img').addEventListener('load', (event) => {
+        console.log(event)
+        console.log('图片加载完成')
+    })
+
+    // error: 资源加载失败时触发
+    $('img').addEventListener('error', (event) => {
+        console.log(event)
+        console.log('图片加载失败')
+    })
+
+
+
+
+
+
+    // 焦点事件
+    // 焦点事件只用于表单元素
+
+    // focus : 获取焦点事件
+    let inp = $('form input[name=name]')
+    // inp.addEventListener('focus', (event) => {
+    //     console.log(event)
+    //     console.log('获取到焦点了')
+    // })
+
+    // blur: 失去焦点事件
+    // inp.addEventListener('blur', (event) => {
+    //     console.log(event)
+    //     console.log('失去焦点了')
+    // })
+
+
+
+
+
+
+    // 鼠标事件
+
+    // click：鼠标左键点击事件
+    let btn1 = $('.btn1')
+    btn1.addEventListener('click', (event) => {
+        // event 对象是一个 MouseEvent 对象
+        // 其中有以下几个可用属性
+        // clientX：点击鼠标时，鼠标的横坐标
+        // clientY：点击鼠标时，鼠标的纵坐标
+        // 坐标原点为页面左上角
+        console.log(event)
+        console.log('点击事件触发了')
+    })
+
+    // contextmenu: 鼠标右键点击事件
+    let box = $('.box')
+    let box2 = $('.box2')
+    box.addEventListener('contextmenu', (event) => {
+        console.log(event)
+        console.log('鼠标右键被点击了')
+    })
+
+    // dblclick: 双击事件
+    box.addEventListener('dblclick', (event) => {
+        console.log(event)
+        console.log('双击事件触发了')
+    })
+
+    // mousedown: 鼠标按下事件
+    // box.addEventListener('mousedown', (event) => {
+    //     // event.button: 描述点击的是哪个按钮
+    //     console.log(event)
+    //     console.log('mousedown')
+    // })
+
+    // mouseenter\mouseover 鼠标移入事件
+    // box2.addEventListener('mouseenter', (event) => {
+    //     console.log(event)
+    //     console.log('mouseenter')
+    // })
+
+    // box2.addEventListener('mouseover', (event) => {
+    //     console.log(event)
+    //     console.log('mouseover')
+    // })
+
+    // mouseleave\mouseout 鼠标移出事件
+    // box2.addEventListener('mouseleave', (event) => {
+    //     console.log(event)
+    //     console.log('mouseleave')
+    // })
+
+    // box2.addEventListener('mouseout', (event) => {
+    //     console.log(event)
+    //     console.log('mouseout')
+    // })
+
+    // mousemove: 鼠标移动事件
+    // box.addEventListener('mousemove', (event) => {
+    //     console.log(event)
+    //     console.log('mousemove')
+    // })
+
+    // mouseup: 鼠标抬起事件
+    // box.addEventListener('mouseup', (event) => {
+    //     console.log(event)
+    //     console.log('mouseup')
+    // })
+
+    // wheel : 鼠标滚轮事件
+    box.addEventListener('wheel', (event) => {
+        console.log(event)
+        console.log('wheel')
+    })
+
+
+
+
+
+    // 拖动事件: 详见《drag.html》
+
+    // 媒体事件：和多媒体播放相关事件，详细请查文档
+
+    // 存储事件
+
+    // change：当值发生变化时触发，多用于表单元素
+    let select = document.querySelector('form select')
+    select.addEventListener('change', (ev) => {
+        console.log(ev)
+        console.log('change')
+    })
+
+    // inp.addEventListener('change', (ev) => {
+    //     console.log(ev)
+    //     console.log('input change')
+    // })
+
+    // input: 输入框输入字符时触发该事件
+    // inp.addEventListener('input', (ev) => {
+    //     console.log(ev)
+    //     // ev.data: 触发输入时，输入的字符
+    //     console.log(ev.data)
+    //     console.log('input')
+    // })
+
+
+
+
+
+    // 按键事件
+
+    // keydown: 按钮按下事件
+    document.body.addEventListener('keydown', ev => {
+        // ev: 是一个KeyBoardEvent
+        // 其中我们可以通过：code、key、keyCode 这三个属性来判断我们点击的按键是哪一个
+        console.log(ev)
+        console.log('keydown')
+    })
+
+    // box.addEventListener('keydown', ev => {
+    //     console.log(ev)
+    //     console.log('keydown')
+    // })
+
+    inp.addEventListener('keydown', ev => {
+        console.log(ev)
+        console.log('keydown')
+    })
+
+    // keyup：按钮抬起事件
+    document.body.addEventListener('keyup', ev => {
+        console.log(ev)
+        console.log('keyup')
+    })
+
+    // keypress: 按钮按住不放事件
+    document.body.addEventListener('keypress', ev => {
+        console.log(ev)
+        console.log('keypress')
+    })
+
+    // 如果要给div绑定 keydown 或 focus 事件，请参考 《给div元素增加keydown和focus事件.html》
+
+</script>
+
+</html>

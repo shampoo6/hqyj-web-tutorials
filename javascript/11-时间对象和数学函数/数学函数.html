@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 数学函数：专门用于处理数学运算的函数
+    // 数学函数可以通过浏览器内置对象Math进行直接调用
+
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+    // 三角函数
+    // 需要注意的是，三角函数 sin()、cos()、tan()、asin()、acos()、atan() 和 atan2() 返回的值是弧度而非角度。
+    // 若要转换，弧度除以 (Math.PI / 180) 即可转换为角度，同理，角度乘以这个数则能转换为弧度。
+
+    // 三角函数中所有和角度相关值都是弧度制
+    // 例如：计算30度的正弦值，如下：
+    console.log(Math.sin(30 * (Math.PI / 180)))
+
+    // 反三角函数就在三角函数前加上a就可以了
+    console.log(Math.asin(0.5))
+
+
+    // abs: 获取数字的绝对值
+    console.log(Math.abs(12))
+    console.log(Math.abs(-12))
+
+    // ceil: 一个小数向上取整
+    console.log(Math.ceil(1.5))
+
+    // floor: 一个小数向下取整
+    console.log(Math.floor(1.5))
+
+    // round：四舍五入
+    console.log(Math.round(1.4))
+
+    // max: 取参数中较大数
+    console.log(Math.max(2, 4, 9, 1))
+
+    // min: 取参数中较小数
+    console.log(Math.min(2, 4, 9, 1))
+
+    // pow：返回x的y次方
+    // 语法：Math.pow(x, y)
+    console.log(Math.pow(2, 3))
+
+    // sqrt: 返回一个数的平方根
+    console.log(Math.sqrt(25))
+
+
+    // random: 取随机数，范围在[0~1)之间，能取到0但取不到1
+    console.log(Math.random())
+
+    // sign: 取符号
+    console.log(Math.sign(25))
+    console.log(Math.sign(-25))
+
+
+</script>
+
+</html>

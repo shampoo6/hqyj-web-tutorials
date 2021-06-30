@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button>点我</button>
+    </div>
+</body>
+<script>
+    let btn = document.querySelector('button')
+    let div = document.querySelector('div')
+    let body = document.body
+
+    btn.addEventListener('click', () => {
+        console.log('btn click')
+    })
+    div.addEventListener('click', (event) => {
+        console.log('div click')
+        // event.stopPropagation 阻止冒泡
+        event.stopPropagation()
+    })
+    body.addEventListener('click', () => {
+        console.log('body click')
+    })
+</script>
+
+</html>

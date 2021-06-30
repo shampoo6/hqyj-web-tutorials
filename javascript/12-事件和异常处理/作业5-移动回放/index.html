@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: greenyellow;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button>回放</button>
+    <div class="box"></div>
+</body>
+
+<script>
+    // 声明point用于记录初始状态
+    let point = {
+        x: 0,
+        y: 0,
+        top: 0,
+        left: 0
+    }
+
+    let drag = false // 用于判断用户是否在拖动的flag
+
+    let path = [] // 用于记录box经过路径的坐标点
+    let handler = -1 // 计时器的id
+
+    let box = document.querySelector('.box')
+    let btn = document.querySelector('button')
+
+    box.addEventListener('mousedown', ev => {
+        // 记录初始状态
+        point.x = ev.clientX
+        point.y = ev.clientY
+
+        point.top = box.offsetTop
+        point.left = box.offsetLeft
+
+        // 重置录像的状态
+        path = []
+        // 记录初始坐标
+        path.push({
+            x: point.left + 'px',
+            y: point.top + 'px'
+        })
+        // 若正在回放，终止回放
+        clearTimeout(handler)
+
+        drag = true
+    })
+    box.addEventListener('mousemove', ev => {
+        if (!drag) return
+
+        // 获取鼠标当前位置
+        let x = ev.clientX
+        let y = ev.clientY
+
+        // 计算鼠标移动的增量
+        let offsetX = x - point.x
+        let offsetY = y - point.y
+
+        // 计算跟随鼠标后的最终位置
+        box.style.top = point.top + offsetY + 'px'
+        box.style.left = point.left + offsetX + 'px'
+
+        // 记录box的坐标
+        path.push({
+            x: box.style.left,
+            y: box.style.top
+        })
+    })
+    box.addEventListener('mouseup', ev => {
+        drag = false
+    })
+
+    btn.addEventListener('click', ev => {
+        playBack()
+    })
+
+    // 倒放
+    function playBack() {
+        if (path.length === 0) return
+        let point = path.pop() // 从路径的末尾取出一个坐标点
+        // 还原box位置
+        box.style.top = point.y
+        box.style.left = point.x
+
+        // 声明一个计时器，用于回放下一帧
+        handler = setTimeout(() => {
+            playBack()
+        }, 30)
+    }
+
+</script>
+
+</html>

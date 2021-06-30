@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在div上加入一个tabindex，可以让div成为一个表单元素 -->
+    <!-- tabindex 可以指定使用tab按键切换焦点元素时的顺序，顺序由大到小排列 -->
+    <div tabindex="0"></div>
+    <input tabindex="1"/>
+</body>
+
+<script>
+    let div = document.querySelector('div')
+    div.addEventListener('keydown', ev => {
+        console.log('keydown')
+    }, true)
+
+    div.addEventListener('focus', ev => {
+        console.log('focus')
+    })
+</script>
+
+</html>

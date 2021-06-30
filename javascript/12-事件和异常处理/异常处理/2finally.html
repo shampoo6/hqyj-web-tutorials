@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <form>
+        <input/>
+        <input type="submit"/>
+    </form>
+</body>
+<script>
+    // 这是个除法函数
+    function chufa(n, m) {
+        if (m === 0) {
+            let error = new Error('分母不能为0') // 创建异常对象, 参数是异常信息
+            throw error // 通过 throw 关键字，手动抛出异常
+        }
+        return n / m
+    }
+
+    try {
+        // chufa(5, 0)
+        chufa(5, 1)
+    } catch (e) {
+        console.error(e) // 打印异常信息
+        console.warn(e) // 打印警告信息
+    } finally { // finally 代码块中的代码，将在 try 和 catch 执行完后，接着执行
+        // 无论try 中的代码是否存在异常，最终finally都会被执行
+        console.log('finally 被执行了')
+    }
+</script>
+
+</html>

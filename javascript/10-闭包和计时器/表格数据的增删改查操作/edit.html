@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./js/utils.js"></script>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <div><label>姓名：<input name="name" /></label></div>
+        <div><label>学号：<input name="no" type="number" /></label></div>
+        <div>
+            <label>班级：
+                <select name="clazz">
+                    <option value="1班">1班</option>
+                    <option value="2班">2班</option>
+                    <option value="3班">3班</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <button class="cancel">取消</button><button class="submit">提交</button>
+        </div>
+    </form>
+</body>
+<script>
+    // 获取元素
+    let nameEl = $('form input[name=name]')
+    let noEl = $('form input[name=no]')
+    let clazzEl = $('form select[name=clazz]')
+    let cancelBtn = $('.cancel')
+    let submitBtn = $('.submit')
+
+    // 数据回显
+
+    // 获取编辑数据的id值
+    let params = location.search
+
+    let id = params.substring(params.indexOf('?id=') + '?id='.length)
+
+    // 通过获取到的id值查询数据
+    let students = localStorage.getItem('students')
+    students = JSON.parse(students)
+
+    console.log(students)
+
+    // 获取对应id的数据
+    let student = students[id]
+
+    // 将数据显示到页面上
+    nameEl.value = student.name
+    noEl.value = student.no
+    clazzEl.value = student.clazz
+
+
+
+    // 绑定按钮事件
+    // 取消按钮
+    cancelBtn.addEventListener('click', () => {
+        // 返回上一页面
+        history.back()
+    })
+    // 提交按钮
+    submitBtn.addEventListener('click', () => {
+        // 获取数据
+        let name = nameEl.value
+        let no = noEl.value
+        let clazz = clazzEl.value
+
+        // 可以在此处进行表单验证
+
+        // 构造学生数据对象
+        let student = {
+            name,
+            no,
+            clazz
+        }
+
+        // 修改数组成员
+        students[id] = student
+
+        // 存入 localStorage 中
+        let json = JSON.stringify(students) // 将数组序列化成字符串
+        localStorage.setItem('students', json)
+
+        location.href = './5.数据编辑.html'
+    })
+</script>
+
+</html>

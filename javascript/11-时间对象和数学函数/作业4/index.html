@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 用if判断，完成定界
+    function clamp(x, min, max) {
+        if (x < min) {
+            return min
+        } else if (x >= min && x < max) {
+            return x
+        } else {
+            return max
+        }
+    }
+
+    // 使用数学函数进行定界
+    function clamp2(x, min, max) {
+        // let result = Math.max(x, min) // 先和min判断谁更大
+        // result = Math.min(result, max) // 后和max判断谁更小
+        // return result
+
+        // 可以缩写为
+        return Math.min(Math.max(x, min), max)
+    }
+
+
+</script>
+
+</html>

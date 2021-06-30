@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // 异常处理
+
+    // 什么是异常？当程序运行时，运行不下去了，碰到了问题，该问题就是一个异常
+    // 异常的特点：当程序抛出异常后，代码将停止运行
+
+    // 什么是异常处理？当程序出现异常时，开发人员进行的一个手动处理
+    // 异常处理的方法叫做捕获异常
+
+    // 只有运行时异常(runtime error)需要进行捕获
+    // 运行时异常：程序稳定运行时，可能出现的异常（例如用户输入）
+
+
+    // 异常演示如下：
+    // JSON.stringify(obj)
+    // fn()
+    // console.log('hello world')
+
+
+    // function fn() {
+    //     JSON.stringify(obj)
+    // }
+
+
+    // 捕获异常如下：
+
+    // 通过 try catch 捕获异常，手动排除异常，并让程序能够继续运行
+    // 语法如下：
+    // try {
+    //      // 代码块: 该代码块中可以写入你想要尝试运行的代码
+    // } catch(e) { // e：该参数是一个 Error 对象
+    // 当 try 代码块中的容抛出异常时，将触发 catch 代码块的内容
+    //      // 代码块: 对异常进行处理的逻辑写在这里
+    // }
+    // 注意：try catch 代码块 必须同时存在
+
+    try {
+        fn()
+    } catch (e) {
+        console.error(e)
+        // 若在try中抛出异常，将进入catch的代码块中
+        console.error('fn函数内部有异常')
+    }
+
+    console.log('hello world')
+
+    function fn() {
+        console.log('这是fn')
+        fn2()
+    }
+
+    function fn2() {
+        JSON.stringify(obj) // 异常的特点：若没有 try catch 捕获异常，异常将往上一级抛出
+    }
+
+
+
+
+    // Error ： 异常对象
+    // 当程序出现了系统异常是，程序回自动抛出一个 Error 对象
+    try {
+        x + y
+    } catch (e) { // 该参数e就是被抛出的异常对象
+        console.dir(e)
+        // Error, 包含两个属性：
+        // stack（栈）：用于显示异常所经过的代码（异常的足迹）
+        // message: 异常的提示信息
+    }
+
+    // 可以手动创建异常对象
+
+    // 这是个除法函数
+    function chufa(n, m) {
+        if(m === 0) {
+            let error = new Error('分母不能为0') // 创建异常对象, 参数是异常信息
+            throw error // 通过 throw 关键字，手动抛出异常
+        }
+        return n / m
+    }
+
+    chufa(5, 0)
+
+    console.log('chufa后面的代码')
+</script>
+
+</html>

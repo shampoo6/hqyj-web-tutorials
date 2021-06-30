@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <button>+</button>
+    </div>
+    <table border>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- html 模板 -->
+            <tr>
+                <td>0</td>
+                <td>张三</td>
+                <td>1班</td>
+                <td>
+                    <button onclick="edit(0)">编辑</button>
+                    <button onclick="remove(0)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="./js/utils.js"></script>
+<script src="./js/db.js"></script>
+<script>
+    // 元素获取
+    let tbody = $('tbody')
+    let addBtn = $('.toolbar>button:nth-of-type(1)')
+
+    let datas = db.list()
+
+    addBtn.addEventListener('click', () => {
+        // 跳转到添加页面
+        location.href = './add.html'
+    })
+
+    // 渲染表格函数
+    function renderTable() {
+        let html = ''
+        datas.forEach((el, index) => {
+            html +=
+                '<tr>' +
+                '<td>' + el.id + '</td>' +
+                '<td>' + el.name + '</td>' +
+                '<td>' + el.clazz + '</td>' +
+                '<td>' +
+                '<button onclick="edit(' + index + ')">编辑</button>' +
+                '<button onclick="remove(' + index + ')">删除</button>' +
+                '</td>' +
+                '</tr>'
+        })
+        tbody.innerHTML = html
+    }
+
+    function edit(index) {
+        console.log(index)
+        location.href = './add.html?index=' + index
+    }
+
+    function remove(index) {
+        db.remove(index)
+        // 刷新列表
+        renderTable()
+    }
+
+    renderTable()
+
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+<script>
+    // 如何实现元素拖动效果
+
+    // 1. 记录点击下鼠标时，鼠标的初始位置
+    // 2. 捕获移动后的位置
+    // 3. 计算初始位置和移动后鼠标位置的坐标差（鼠标移动的增量）
+    // 4. 让box移动和鼠标一样的增量即可
+
+    // 声明一个point变量存储鼠标的初始位置
+    let point = {
+        x: 0,
+        y: 0,
+        top: 0,
+        left: 0
+    }
+
+    // 记录鼠标点下的状态
+    let down = false
+
+    let box = document.querySelector('.box')
+    box.addEventListener('mousedown', (ev) => {
+        // 记录鼠标点下时的初始位置
+        point.x = ev.clientX
+        point.y = ev.clientY
+        point.top = box.offsetTop
+        point.left = box.offsetLeft
+        down = true
+    })
+
+    box.addEventListener('mousemove', (ev) => {
+        if (!down) return
+
+        // 捕获移动后的位置
+        let clientX = ev.clientX
+        let clientY = ev.clientY
+        // 计算坐标差
+        let x = clientX - point.x
+        let y = clientY - point.y
+
+        // 移动box
+        box.style.top = point.top + y + 'px'
+        box.style.left = point.left + x + 'px'
+    })
+
+    box.addEventListener('mouseup', () => {
+        down = false
+    })
+
+</script>
+
+</html>

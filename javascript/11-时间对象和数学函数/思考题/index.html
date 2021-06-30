@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .src {
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 5px;
+
+            position: absolute;
+            top: 300px;
+            left: 300px;
+        }
+
+        .target {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 5px;
+
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="src"></div>
+</body>
+<script>
+    // 求点坐标
+    // srcPoint：原点坐标，是一个包含x，y属性的对象 {x, y}
+    // r：半径
+    // d：角度
+    function getPoint(srcPoint, r, d) {
+        // 计算偏移量
+        let x = Math.sin(d * (Math.PI / 180)) * r
+        let y = Math.cos(d * (Math.PI / 180)) * r
+        // 计算目标点
+        let targetX = srcPoint.x + x
+        let targetY = srcPoint.y - y
+
+        return {
+            x: targetX,
+            y: targetY
+        }
+    }
+
+    // 创建小红点
+    function createRedPoint(point) {
+        let div = document.createElement('div')
+        div.className = 'target'
+        div.style.top = point.y + 'px'
+        div.style.left = point.x + 'px'
+        document.body.appendChild(div)
+        return div
+    }
+
+    // let target = getPoint({ x: 300, y: 300 }, 100, 300)
+    // createRedPoint(target)
+
+    // 模拟秒针旋转
+    function clockRun() {
+        let d = 0
+        let step = 360 / 60
+
+        // 初始化秒针
+        let target = getPoint({ x: 300, y: 300 }, 100, d)
+        let red = createRedPoint(target)
+
+        setInterval(() => {
+            // 修改角度
+            d += step
+            let target = getPoint({ x: 300, y: 300 }, 100, d)
+            red.style.left = target.x + 'px'
+            red.style.top = target.y + 'px'
+        }, 1000)
+    }
+
+    clockRun()
+
+</script>
+
+</html>

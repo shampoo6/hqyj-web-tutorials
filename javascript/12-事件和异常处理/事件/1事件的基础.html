@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div>
+        <button class="btn1">点我</button>
+        <button class="btn2">解绑事件按钮</button>
+    </div>
+</body>
+<script>
+    // 什么是事件？
+    // 事件就是某种事情
+    // 在js中，事件就是：当某种情况发生的时候，能够触发一段代码，这个发生的情况就是事件
+    // 简单的理解，事件就是：（当 。。。。时；就。。。。样）
+
+
+    // 事件在js中以对象形式存在
+
+    // 什么绑定事件？
+    // 将自定义的函数和某个事件进行绑定，绑定后的效果就是：（当。。。时，发生的时候，就会触发我们绑定的函数）
+
+    // 绑定事件的方法：
+    // 使用元素对象的addEventListener函数进行事件绑定
+    // mdn文档 https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
+    let btn1 = document.querySelector('.btn1')
+    // 第一个参数：要绑定的事件名称
+    // 第二个参数：当事件发生时，触发的函数
+    // 第二个参数的函数，不是有开发人员调用的，当事件发生时由浏览器调用的
+    // btn1.addEventListener('click', (event) => { // 此处的event是浏览器调用该函数时，浏览器传入的参数，这个参数是事件对象 （Event）
+    //     console.log(event)
+    //     console.log('点击事件click被触发了')
+    // })
+
+    // 解绑事件
+
+    // 声明一个点击处理程序
+    let clickHandler = () => {
+        console.log('按钮被点击了')
+    }
+
+    let btn2 = document.querySelector('.btn2')
+
+    btn1.addEventListener('click', clickHandler)
+
+    btn2.addEventListener('click', () => {
+        // 调用removeEventListener来解绑事件
+        // 参数一：要解绑的事件名称
+        // 参数二：要解绑的事件处理程序
+        btn1.removeEventListener('click', clickHandler)
+    })
+
+
+    // 补充：
+    // 我们可以使用元素上带有on开头的属性进行事件绑定，例如onclick:
+    // btn1.onclick = () => { console.log('按钮被点击了') }
+    // 解绑onclick函数，如下：
+    // btn1.onclick = null
+
+</script>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .frame {
+            width: 200px;
+            height: 150px;
+            border: 5px solid red;
+            margin-top: 200px;
+            margin-left: 300px;
+            /* 当父元素中的position设置了relative */
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            /* 子元素中的绝对定位的参考物就不是窗口，而是父元素了 */
+            top: 0;
+            left: -200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建相框 -->
+    <div class="frame">
+        <img src="./img/an1.jpg" />
+        <img src="./img/an2.jpg" />
+        <img src="./img/an3.jpg" />
+        <img src="./img/an4.jpg" />
+    </div>
+</body>
+
+<script>
+    // 图片类
+    class Image {
+        el // 页面元素
+        speed = 2 // 图片移动速度
+        left // 图片当前left属性的值
+        isPlay = false // 用于指示图片是否正在运动
+
+        constructor(_el, _left) {
+            this.el = _el
+            this.reset(_left)
+        }
+
+        // 进入相框
+        enter() {
+            // 若正在播放移动动画则退出函数
+            if (this.isPlay) return
+            this.reset(-200)
+            this.move(0)
+        }
+
+        // 离开相框
+        // animationOverCallback: 动画播放结束的回调函数
+        leave(animationOverCallback) {
+            // 若正在播放移动动画则退出函数
+            if (this.isPlay) return
+            this.reset(0)
+            this.move(200, animationOverCallback)
+        }
+
+        // 重置图片到初始位置
+        reset(num) {
+            this.el.style.top = '0'
+            this.left = num
+            this.el.style.left = this.left + 'px'
+        }
+
+        // 移动函数
+        // endX ：移动结束时的位置
+        move(endX, animationOverCallback) {
+            function _move() {
+                // 判断是否已到终点
+                if (this.left >= endX) {
+                    this.left = endX
+                    this.el.style.left = this.left + 'px'
+                    this.isPlay = false
+                    if (animationOverCallback && typeof animationOverCallback === 'function')
+                        animationOverCallback()
+                    return
+                }
+
+                // 移动
+                this.left += this.speed
+                this.el.style.left = this.left + 'px'
+                setTimeout(() => {
+                    _move()
+                }, 10)
+            }
+
+            _move = _move.bind(this)
+            this.isPlay = true
+            _move()
+        }
+    }
+
+    // 播放器类
+    class Player {
+        // 所有图片
+        images = []
+        // 当前显示图片的索引值
+        currentIndex = 0
+
+        constructor() {
+            let imgs = document.querySelectorAll('img')
+            // 构建 Image 类实例的数组
+            imgs.forEach(el => {
+                this.images.push(
+                    new Image(el)
+                )
+            })
+            // 重置第一个图片的位置
+            this.images[0].reset(0)
+            // 给第一个图片绑定点击事件
+            this.bindClick(this.images[0])
+        }
+
+        // 绑定点击事件
+        // image: Image 类实例
+        bindClick(image) {
+            const onClick = () => {
+                // 获取下一个图片
+                let nextImage = this.images[(this.currentIndex + 1) % this.images.length]
+                nextImage.enter()
+                // 当前成员离开
+                image.leave(() => {
+                    // 动画播放结束后执行的内容
+                    this.currentIndex = ++this.currentIndex % this.images.length
+                    // 移出事件
+                    image.el.removeEventListener('click', onClick)
+                    // 给下一个成员添加事件
+                    this.bindClick(nextImage)
+                })
+            }
+            image.el.addEventListener('click', onClick)
+        }
+
+        // 下一个
+        next() {
+
+        }
+
+        // 上一个
+        pre() {
+
+        }
+    }
+
+    let player = new Player()
+
+</script>
+
+</html>

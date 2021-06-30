@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ad {
+            width: 500px;
+            height: 400px;
+            background-color: violet;
+            /* 由于广告不因该占据页面的位置，所以使用absolute，让其浮出整个页面 */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .tip {
+            width: 200px;
+            height: 2em;
+            margin-left: auto;
+            position: relative;
+        }
+
+        .bg {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            opacity: 0.2;
+        }
+
+        .tip-word {
+            width: 100%;
+            line-height: 2em;
+            text-align: center;
+            position: absolute;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad">
+        <div class="tip">
+            <!-- 半透明背景 -->
+            <div class="bg"></div>
+            <!-- 文字提示 -->
+            <div class="tip-word"><span class="timer">5</span>秒后，将自动关闭</div>
+        </div>
+    </div>
+    <h1>
+        title
+    </h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+
+    let timer = document.querySelector('.timer')
+    let ad = document.querySelector('.ad')
+
+
+    count(timer, 5, () => {
+        console.log('倒计时结束了')
+        // move(ad, -25, 500, 'x', 0)
+        setOpacity(ad, -0.05)
+    })
+
+    function setOpacity(el, speed) {
+        if (el.style.opacity === '') el.style.opacity = '1'
+
+        function _setOpacity() {
+            let sign = Math.sign(speed)
+            if (sign > 0 && Number(el.style.opacity) + speed >= 1) {
+                el.style.opacity = '1'
+                return
+            } else if (sign < 0 && Number(el.style.opacity) + speed <= 0) {
+                el.style.opacity = '0'
+                return
+            }
+
+            el.style.opacity = Number(el.style.opacity) + speed + ''
+
+            setTimeout(() => {
+                _setOpacity()
+            }, 100)
+        }
+
+        _setOpacity()
+    }
+
+    // 计时函数
+    // el: 用于显示倒计时的元素
+    // duration: 计时时长
+    // callback: 在计时器倒计时结束以后，触发的回调函数
+    function count(el, duration, callback) {
+        // 倒计时的当前时间
+        let current = duration
+        el.innerHTML = current
+
+        function _count() {
+            setTimeout(() => {
+                // 判断是否进行下一轮的计时
+                if (current <= 0) {
+                    // 倒计时结束时
+                    if (callback && typeof callback === 'function')
+                        callback()
+                    return
+                }
+                current--
+                el.innerHTML = current
+                _count()
+            }, 1000)
+        }
+
+        _count()
+    }
+
+    // 移动函数
+    function move(el, speed, distance, axis, offset) {
+        let current = 0 // 当前移动距离
+        function _move() {
+            if (Math.abs(current + speed) >= distance) {
+                current = Math.sign(speed) * distance + offset
+                if (axis === 'x') el.style.left = current + 'px'
+                else if (axis === 'y') el.style.top = current + 'px'
+                return
+            }
+
+            current += speed
+            if (axis === 'x') el.style.left = current + offset + 'px'
+            else if (axis === 'y') el.style.top = current + offset + 'px'
+
+            setTimeout(() => {
+                _move()
+            }, 30)
+        }
+        _move()
+    }
+</script>
+
+</html>

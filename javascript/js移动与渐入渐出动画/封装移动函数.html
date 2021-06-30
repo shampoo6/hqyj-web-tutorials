@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            margin-left: 500px;
+            margin-top: 200px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+        }
+
+        .box1 {
+            left: 150px;
+            margin-top: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="box"></div>
+        <div class="box box1"></div>
+    </div>
+</body>
+<script>
+    // 思路
+
+    // 一定是使用计时器来播放动画
+
+    // 步骤如下：
+
+    // 声明移动速度
+
+    // 使用计时器，每帧让元素移动指定速度的距离
+
+    // 在每一帧移动后，判断是否到达了终点位置， 若已经到达了终点位置，应该停止计时器
+
+    // 若最后一帧位置超出了终点位置，应该将元素设置到终点位置上
+
+
+    // 封装移动函数
+    // el: 要移动的元素
+    // speed: 移动速度 带符号
+    // distance: 移动距离 无符号
+    // axis: 要在哪个坐标轴上移动 待选项：x, y
+    // duration: 经过多少毫秒刷新一帧
+    // offset: 初始时候元素的偏移量
+    function move(el, speed, distance, axis, duration, offset) {
+        let current = 0 // 当前移动距离
+        let _move = () => {
+            // 判断是否已经抵达终点
+            if (Math.abs(current + speed) >= distance) {
+                current = Math.sign(speed) * distance + offset // 若超出了终点位置，应该重置到终点位置
+                if (axis === 'x') {
+                    el.style.left = current + 'px'
+                } else if (axis === 'y') {
+                    el.style.top = current + 'px'
+                }
+                return
+            }
+
+            // 按照速度添加current距离值
+            current += speed
+            // 移动元素
+            if (axis === 'x') {
+                el.style.left = offset + current + 'px'
+            } else if (axis === 'y') {
+                el.style.top = offset + current + 'px'
+            }
+
+            setTimeout(() => {
+                _move()
+            }, duration)
+        }
+
+        _move()
+    }
+
+    let box = document.querySelector('.box')
+    let box1 = document.querySelector('.box1')
+
+    move(box, 10, 500, 'y', 100, 0)
+    move(box1, 10, 500, 'x', 100, 0)
+
+</script>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .info {
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <div><label>账号：<input name="account" /></label></div>
+        <div><label>密码：<input type="password" name="pwd" /></label></div>
+        <div><button>提交</button></div>
+    </form>
+    <div class="info">
+        验证通过
+    </div>
+</body>
+
+<script>
+
+    // 给按钮绑定点击事件
+    let subBtn = document.querySelector('button')
+    subBtn.addEventListener('click', () => {
+        // 验证表单
+
+        // 获取表单元素
+        let accountEl = document.querySelector('form input[name=account]')
+        let pwdEl = document.querySelector('form input[name=pwd]')
+        let info = document.querySelector('.info')
+
+        let valid = true // 用于判断验证是否通过
+
+        try {
+            validate(accountEl.value, pwdEl.value)
+        } catch (e) {
+            console.log(e.message)
+            info.style.color = 'red'
+            info.innerHTML = e.message
+            valid = false
+        } finally {
+            info.style.display = 'block'
+            if (valid) {
+                info.style.color = 'green'
+                info.innerHTML = '验证通过'
+            }
+        }
+    })
+
+    // 验证表单的函数
+    function validate(account, pwd) {
+        if (account.length < 10) {
+            // 若长度小于10
+            throw new Error('请输入至少10位的账号')
+        }
+
+        // 验证至少有一个数字
+        let regex = /\d+/
+        if (!regex.test(account)) {
+            throw new Error('账号中请至少包含一个数字')
+        }
+
+        // 判断密码长度
+        if (pwd.length < 6) {
+            throw new Error('请输入至少6位的密码')
+        }
+
+        regex = /\D+/
+        if (!regex.test(pwd)) {
+            throw new Error('密码中请至少包含一个不是数字的字符')
+        }
+
+        // 从头到尾都没有抛出异常的话，说明验证通过
+    }
+</script>
+
+</html>

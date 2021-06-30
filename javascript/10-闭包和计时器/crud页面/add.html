@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <div>
+            <label>学号：<input name="id" /></label>
+        </div>
+        <div>
+            <label>姓名：<input name="name" /></label>
+        </div>
+        <div>
+            <label>班级：
+                <select name="clazz">
+                    <option value="1班">1班</option>
+                    <option value="2班">2班</option>
+                    <option value="3班">3班</option>
+                </select>
+            </label>
+        </div>
+        <div class="btns">
+            <button>取消</button>
+            <button>提交</button>
+        </div>
+    </form>
+</body>
+<script src="./js/utils.js"></script>
+<script src="./js/db.js"></script>
+<script>
+    let params = getParams()
+
+    let cancelBtn = $('.btns>button:nth-of-type(1)')
+    let submitBtn = $('.btns>button:nth-of-type(2)')
+    let form = $('form')
+    let idEl = $('form input[name=id]')
+    let nameEl = $('form input[name=name]')
+    let clazzEl = $('form select[name=clazz]')
+
+    cancelBtn.addEventListener('click', () => {
+        // 返回
+        history.back()
+    })
+    submitBtn.addEventListener('click', () => {
+        // 获取表单数据
+        let fd = new FormData(form)
+        // 获取数据构造学生对象
+        let student = {
+            id: fd.get('id'),
+            name: fd.get('name'),
+            clazz: fd.get('clazz')
+        }
+
+        // 判断是添加还是编辑
+        if (params.index) {
+            edit(params.index, student)
+        } else {
+            add(student)
+        }
+    })
+
+
+    // 编辑数据的回显
+    if (params.index) {
+        let student = db.list()[params.index]
+        idEl.value = student.id
+        nameEl.value = student.name
+        clazzEl.value = student.clazz
+    }
+
+    function add(student) {
+        // 保存对象
+        db.save(student)
+        location.href = './list.html'
+    }
+
+    // index: 修改那个学生
+    // student：新数据
+    function edit(index, student) {
+        db.edit(index, student)
+        location.href = './list.html'
+    }
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <button class="btn1">停止 timeout 计时</button>
+    <button class="btn2">停止 interval 计时</button>
+</body>
+<script>
+    // 计时器
+
+    // 什么是计时器？当经过指定时间后触发一段代码的函数就是一个计时器
+
+    // 声明一个计时器：
+    // 第一个参数：计时器计时结束后触发的函数
+    // 第二个参数：计时时长，单位:毫秒
+    // setTimeout(function() {
+    //     console.log('hello')
+    // }, 3000)
+
+    // setTimeout 调用后返回一个计时器id
+    // 计时器id 主要用于停止计时
+    // let handler = setTimeout(function () {
+    //     console.log('hello')
+    // }, 3000)
+
+    // console.log(handler)
+
+
+    let num = 0
+    let handler
+    // 声明一个count函数，该函数每秒进行一次计数
+    function count() {
+        console.log(num)
+        // 计时1秒
+        handler = setTimeout(() => {
+            // 1秒后触发的内容
+            num++
+
+            throw new Error('count 里面出异常了')
+
+            // 递归调用count自己
+            count()
+        }, 1000)
+    }
+
+    count()
+
+    document.querySelector('.btn1').addEventListener('click', () => {
+        // 调用函数停止计时
+        // 参数：计时器的唯一标识
+        clearTimeout(handler)
+    })
+
+
+    // 循环计时函数
+    // setInterval 函数，每次经过指定时间，触发一次指定的函数
+    // 参数和返回值 与 setTimeout 相同
+    // handler = setInterval(() => {
+    //     console.log(num)
+    //     num++
+    //     throw new Error('手动抛出异常')
+    // }, 1000)
+
+    document.querySelector('.btn2').addEventListener('click', () => {
+        // 停止循环计时
+        clearInterval(handler)
+    })
+
+    // 不推荐使用 setInterval
+    // 理由：setInterval 可能由于人为原因忘了关闭，或者内部出现异常，导致代码死循环
+</script>
+
+</html>

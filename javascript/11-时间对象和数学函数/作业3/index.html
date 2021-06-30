@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    let students = [
+        {
+            name: '王麻子',
+            sex: 'male',
+            birthday: {
+                year: 2001,
+                month: 4,
+                day: 15
+            }
+        },
+        {
+            name: '王小二',
+            sex: 'female',
+            birthday: {
+                year: 2001,
+                month: 4,
+                day: 28
+            }
+        },
+        {
+            name: '张三',
+            sex: 'male',
+            birthday: {
+                year: 2000,
+                month: 1,
+                day: 15
+            }
+        },
+        {
+            name: '李四',
+            sex: 'female',
+            birthday: {
+                year: 2001,
+                month: 1,
+                day: 15
+            }
+        }
+    ]
+
+    // 方法一：通过出生的先后顺序的时间大小来进行排序
+
+    // 调用数组排序函数
+    // students.sort((stu1, stu2) => {
+    //     // 求出两个学生各自的生日的格林威治毫秒时
+    //     let date1 = new Date(stu1.birthday.year, stu1.birthday.month - 1, stu1.birthday.day)
+    //     let timeStamp1 = date1.getTime() // 获取格林威治毫秒时
+    //     let date2 = new Date(stu2.birthday.year, stu2.birthday.month - 1, stu2.birthday.day)
+    //     let timeStamp2 = date2.getTime() // 获取格林威治毫秒时
+
+    //     if (timeStamp1 < timeStamp2) {
+    //         return 1
+    //     } else if (timeStamp1 > timeStamp2) {
+    //         return -1
+    //     } else {
+    //         return 0
+    //     }
+    // })
+
+    // console.log(students)
+
+
+    // 方法二：先计算出年龄，再根据年龄排序
+    for (let i = 0; i < students.length; i++) {
+        let stu = students[i] // 获取每个学生
+        // 获取生日
+        let birthday = new Date(stu.birthday.year, stu.birthday.month - 1, stu.birthday.day)
+        // 获取当前时间
+        let now = Date.now()
+        // 计算年龄
+        let age = now - birthday.getTime() // 该年龄的单位是毫秒
+        // 换算成年
+        age = age * 0.001 / 60 / 60 / 24 / 365
+        students[i].age = age
+    }
+
+    
+    // 按照年龄排序
+    students.sort((stu1, stu2) => {
+        if (stu1.age < stu2.age) {
+            return -1
+        } else if (stu1.age > stu2.age) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+    
+    console.log(students)
+
+</script>
+
+</html>

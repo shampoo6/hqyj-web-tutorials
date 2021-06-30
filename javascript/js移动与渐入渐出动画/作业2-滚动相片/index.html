@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .frame {
+            width: 200px;
+            height: 150px;
+            border: 5px solid red;
+            margin-top: 200px;
+            margin-left: 300px;
+            /* 当父元素中的position设置了relative */
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            /* 子元素中的绝对定位的参考物就不是窗口，而是父元素了 */
+            top: 0;
+            left: -200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建相框 -->
+    <div class="frame">
+        <img src="./img/an1.jpg" />
+        <img src="./img/an2.jpg" />
+        <img src="./img/an3.jpg" />
+        <img src="./img/an4.jpg" />
+    </div>
+</body>
+
+<script>
+    let arr = []
+
+    // 存入所有图片
+    let img1 = document.querySelector('div>img:nth-of-type(1)')
+    let img2 = document.querySelector('div>img:nth-of-type(2)')
+    let img3 = document.querySelector('div>img:nth-of-type(3)')
+    let img4 = document.querySelector('div>img:nth-of-type(4)')
+
+    arr.push(img1) // 0
+    arr.push(img2) // 1
+    arr.push(img3) // 2
+    arr.push(img4) // 3
+
+    console.log(arr)
+
+    // 声明变量，做移动前的准备
+    // 当前相框中的图片
+    let current = 0
+    let next = 1
+
+
+    img1.addEventListener('click', onImageClick)
+    img2.addEventListener('click', onImageClick)
+    img3.addEventListener('click', onImageClick)
+    img4.addEventListener('click', onImageClick)
+
+    // 归零当前图片的横向坐标
+    let currentImg = arr[current]
+    currentImg.style.left = 0 + ''
+
+    prepare()
+
+
+    // 图片点击函数
+    function onImageClick() {
+        move(arr[current], 10, 200, 'x', 30, 0)
+        move(arr[next], 10, 200, 'x', 30, -200)
+        // 移动完图片后设置下一轮图片的索引
+        current++
+        current = current % arr.length
+        next = current + 1
+        next = next % arr.length
+        // 再次准备下一轮图片
+        prepare()
+    }
+
+
+    // 将当前图片和下一张图片，放到开始动画前的初始位置
+
+    // 动画前准备
+    function prepare() {
+        let nextImg = arr[next]
+        nextImg.style.left = '-200px'
+    }
+
+    // 封装移动函数
+    // el: 要移动的元素
+    // speed: 移动速度 带符号
+    // distance: 移动距离 无符号
+    // axis: 要在哪个坐标轴上移动 待选项：x, y
+    // duration: 经过多少毫秒刷新一帧
+    // startValue: 移动前的初始值
+    function move(el, speed, distance, axis, duration, startValue) {
+        let current = 0 // 当前移动距离
+        let _move = () => {
+            // 判断是否已经抵达终点
+            if (Math.abs(current + speed) >= distance) {
+                current = startValue + Math.sign(speed) * distance // 若超出了终点位置，应该重置到终点位置
+                if (axis === 'x') {
+                    el.style.left = current + 'px'
+                } else if (axis === 'y') {
+                    el.style.top = current + 'px'
+                }
+                return
+            }
+
+            // 按照速度添加current距离值
+            current += speed
+            // 移动元素
+            if (axis === 'x') {
+                el.style.left = startValue + current + 'px'
+            } else if (axis === 'y') {
+                el.style.top = startValue + current + 'px'
+            }
+
+            setTimeout(() => {
+                _move()
+            }, duration)
+        }
+
+        _move()
+    }
+</script>
+
+</html>

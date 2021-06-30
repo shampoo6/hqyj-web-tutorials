@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+</body>
+<script>
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+    // 时间字符串的参考：https://www.w3.org/TR/NOTE-datetime
+
+
+
+
+    // 时间对象
+
+    // 时间数据如何表示？如何创建一个时间数据
+    let timeStr = '2000-01-01T19:08:26+08:00' // 时间格式字符串
+
+    // 表示时间的数字
+    // 含义：表示格林威治1970-1-1开始以后，经过的毫秒时间
+    let timeNum = 1613697531762
+
+    // 日期对象，该对象包含年月日和时分秒的信息
+    let date = new Date()
+
+
+
+    // 创建时间对象的方法
+    // 语法：new Date(params)
+
+    // 1. 当前系统时间
+    date = new Date()
+
+    // 2. 创建指定时间字符串的时间
+    date = new Date('1997-07-01') // 不推荐使用，因为这是个非标准时间字符串，不同浏览器解析方式可能不同
+
+    // 3. 通过格林威治毫秒时创建时间
+    date = new Date(timeNum)
+
+    // 4. 通过年月日时分秒创建时间
+    // 参数分别代表 年月日时分秒
+    // 注意：月份是从0开始计算的
+    date = new Date(2021, 1, 19, 9, 40, 55)
+    // 参数至少写前两个参数，后续参数可以省略
+    date = new Date(2021, 0)
+    date = new Date(2021, 0, 23)
+
+    // 如何读取时间？如何设置时间？
+    date = new Date(1999, 11, 1, 20, 30, 15)
+    // 读取时间
+    let year = date.getFullYear() // 获取年份
+    let month = date.getMonth() // 获取月份 月份值从0开始
+    // getDay 函数 获取的是当前date对象代表星期中的第几天， 取值范围（0~6）
+    // 从零开始取值，且一周的第一天是星期日（值为0）
+    let day = date.getDay()
+    let _date = date.getDate() // 获取当前date对象代表一个月中的第几天
+    let hours = date.getHours() // 获取小时
+    let minutes = date.getMinutes() // 获取分钟
+    let seconds = date.getSeconds() // 获取秒
+    let m = date.getMilliseconds() // 获取毫秒
+
+    // 设置时间
+    date.setFullYear(2021) // 设置年
+    date.setMonth(1) // 设置月
+    date.setDate(19) // 设置日
+    date.setHours(10) // 设置小时
+    date.setMinutes(28) // 设置分钟
+    date.setSeconds(30) // 设置秒
+    date.setMilliseconds(999) // 设置毫秒值
+
+
+    // 其他常用时间函数
+    Date.now() // 获取当前系统时间的格林威治毫秒时
+    date.getTime() // 获取date对象代表的格林威治毫秒时
+
+</script>
+
+</html>

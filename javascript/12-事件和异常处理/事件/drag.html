@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: violet;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 需要给要拖动的元素增加 draggable="true" -->
+    <div class="box" draggable="true"></div>
+</body>
+<script>
+    let box = document.querySelector('.box')
+    // drag: 拖动时持续触发
+    box.addEventListener('drag', (ev) => {
+        console.log(ev)
+        console.log('drag')
+    })
+    // dragstart: 开始拖动时触发
+    box.addEventListener('dragstart', (ev) => {
+        console.log(ev)
+        console.log('dragstart')
+    })
+    // dragend: 结束拖动时触发
+    box.addEventListener('dragend', (ev) => {
+        console.log(ev)
+        console.log('dragend')
+    })
+</script>
+
+</html>

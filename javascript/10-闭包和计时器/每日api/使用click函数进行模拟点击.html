@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <button class="btn1">按钮1</button>
+    <button class="btn2">按钮2</button>
+    <input type="file" style="display:none" />
+</body>
+<script>
+    let btn1 = document.querySelector('.btn1')
+    let btn2 = document.querySelector('.btn2')
+
+    btn1.addEventListener('click', () => {
+        console.log('按钮1被点击了')
+        // 通过click函数，可以实现元素的模拟点击，触发元素绑定的点击事件
+        btn2.click()
+
+        document.querySelector('input').click()
+    })
+
+    btn2.addEventListener('click', () => {
+        console.log('按钮2被点击了')
+    })
+
+</script>
+
+</html>

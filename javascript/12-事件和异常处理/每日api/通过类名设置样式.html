@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+
+        .color1 {
+            background-color: red;
+        }
+
+        .color2 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box color1">
+
+    </div>
+</body>
+
+<script>
+    let box = document.querySelector('.box')
+
+    box.addEventListener('mouseover', () => {
+        // console.log('mouseover')
+        // box.style.backgroundColor = 'blue'
+
+        // 方法一：通过className直接赋值class属性
+        // className 代表元素的 class 属性
+        box.className = 'box color2'
+
+
+        // 方法二：通过classList的add和remove函数进行类的添加和删除
+
+        // classList: 代表元素身上的所有class属性的数组
+      
+        box.classList.remove('color1') // 移除一个指定的类
+        box.classList.add('color2') // 添加一个指定的类
+    })
+
+    box.addEventListener('mouseout', () => {
+        // console.log('mouseout')
+        // box.style.backgroundColor = 'red'
+
+        box.className = 'box color1'
+
+        box.classList.remove('color2') // 移除一个指定的类
+        box.classList.add('color1') // 添加一个指定的类
+    })
+
+</script>
+
+</html>

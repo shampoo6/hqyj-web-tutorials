@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .menu {
+            width: 200px;
+            height: 300px;
+            background-color: plum;
+            position: absolute;
+        }
+
+        .cover {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>form表单</h1>
+    <form>
+        <div><label>账号：<input name="account" /></label></div>
+        <div><label>密码：<input type="password" name="pwd" /></label></div>
+        <div>
+            <button class="btn1">提交</button>
+        </div>
+    </form>
+    <h1>div表单</h1>
+    <div class="form">
+        <div><label>账号：<input name="account" /></label></div>
+        <div><label>密码：<input type="password" name="pwd" /></label></div>
+        <div>
+            <button class="btn2">提交</button>
+        </div>
+    </div>
+
+
+
+    <!-- 自定义菜单 -->
+
+    <!-- 遮罩 -->
+    <div class="cover">
+        <div class="menu">
+            这是我的自定义菜单
+        </div>
+    </div>
+
+</body>
+
+<script>
+    // 
+
+    function $(selector) {
+        return document.querySelector(selector)
+    }
+
+    let btn1 = $('.btn1')
+    let form = $('form')
+    let btn2 = $('.btn2')
+    let div = $('.form')
+    let menu = $('.menu')
+    let cover = $('.cover')
+
+
+    btn1.addEventListener('click', ev => {
+        // 屏蔽默认提交事件
+        ev.preventDefault()
+        ev.stopPropagation()
+
+        // 使用FormData对象获取表单中的参数
+
+        // 创建formData
+        // 参数是一个表单的标签
+        let fd = new FormData(form)
+
+        // 调用get方法获取参数
+        // 参数：form表单中，具有name属性的表单元素的name值
+        console.log(fd.get('account'))
+        console.log(fd.get('pwd'))
+
+    })
+
+
+    // div表单
+
+    let onSubmit = () => {
+        let accountEl = $('.form input[name=account]')
+        let pwdEl = $('.form input[name=pwd]')
+        console.log(accountEl.value)
+        console.log(pwdEl.value)
+    }
+
+    // 给提交按钮绑定事件
+    btn2.addEventListener('click', onSubmit)
+
+    // 给div表单绑定按键事件
+    div.addEventListener('keyup', ev => {
+        if (ev.keyCode === 13) { // 判断是否按下的是回车键
+            onSubmit()
+        }
+    })
+
+
+
+
+    // 给body添加自定义菜单
+
+    document.body.addEventListener('contextmenu', ev => {
+        // 屏蔽原本的菜单显示
+        ev.preventDefault()
+
+        // 获取鼠标的位置
+        let x = ev.clientX
+        let y = ev.clientY
+
+        // 给菜单设置位置
+        menu.style.top = y + 'px'
+        menu.style.left = x + 'px'
+
+        // 显示菜单
+        cover.style.display = 'block'
+    })
+
+    // 点击遮罩层，关闭菜单
+    cover.addEventListener('click', () => {
+        cover.style.display = 'none'
+    })
+
+    // 为了避免点击菜单关掉遮罩，可以阻止点击事件冒泡
+    menu.addEventListener('click', ev => {
+        ev.stopPropagation()
+    })
+
+</script>
+
+</html>
