@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 访问器是什么？访问属性用的函数，访问有两重含义，读值和赋值
+
+    // 作用：可以控制读取属性的结果，可以控制赋值属性的内容（控制访问）
+
+    let zhangSan = {
+        name: '张三',
+        _sex: 'male',
+
+        // 声明读取属性的访问器，也叫做 getter
+        get sex() {
+            // getter中要返回一个值
+            return this._sex === 'male' ? '男' : '女'
+        },
+
+        // 声明赋值访问器，也叫做 setter
+        set sex(newValue) {
+            this._sex = newValue
+        }
+
+        // 上述 get 和 set 后面的 sex 是访问器的名称，
+        // 我们可以通过读取sex的值来触发getter，给sex赋值来触发setter
+    }
+
+
+
+
+
+
+    // 在类中声明访问器
+    class Human {
+        name
+        _sex
+        constructor(name, sex) {
+            this.name = name
+            this._sex = sex
+        }
+
+        // 给_sex添加访问器
+        get sex() {
+            return this._sex === 'male' ? '男' : (this._sex === 'female' ? '女' : '其他')
+        }
+
+        set sex(newValue) {
+            // 控制赋值的内容，不允许输入 male female 和 other 意外的内容
+            if (newValue !== 'male' && newValue !== 'female' && newValue !== 'other') {
+                return
+            }
+            this._sex = newValue
+        }
+    }
+
+    let liSi = new Human('李四', 'female')
+    console.log(liSi)
+</script>
+
+</html>

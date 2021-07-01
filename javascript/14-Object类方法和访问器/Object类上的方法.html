@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Object 的常用类型函数
+
+
+
+    // Object.assign : 拓展对象
+    // 将一个对象的属性复制到另一个对象中，且返回一个新对象
+
+    let x = {
+        a: 1,
+        b: 2
+    }
+
+    let y = {
+        c: 3,
+        d: 4
+    }
+
+    console.log(x)
+    console.log(y)
+
+    // 第一个参数：要拓展属性的对象
+    // 第二个参数：拓展的属性源对象
+    // Object.assign(x, y) 这句话的含义就是，将y中的属性拷贝到x中，且返回x对象
+    let z = Object.assign(x, y)
+    console.log(z)
+
+    // Object.assign 该函数常用于深度拷贝对象
+
+    // 拷贝数组
+    let arr = [1, 2, 3]
+    let newArr = [].concat(arr)
+    console.log(newArr)
+
+    // 拷贝对象
+    let newObj = Object.assign({}, z)
+    console.log(newObj)
+
+    // 参考地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+    // Object.defineProperty : 定义属性
+
+    let obj = {}
+    obj.x = 1
+    obj['y'] = 2
+    console.log(obj)
+
+    // 通过 Object.defineProperty 定义属性
+    // 第一个参数：要定义属性的对象
+    // 第二个参数：要定义的属性名称
+    // 第三个参数：关于指定属性的配置，是一个json对象
+    Object.defineProperty(obj, 'z', {
+        // 属性初始值
+        value: '这是z属性的初始值',
+        // 是否可写（也就是是否可以给属性赋值）
+        writable: false
+        // 是否只读（只要有readOnly属性，无论值是什么，该属性z都是只读的）
+        // readOnly: 'abc'
+    })
+
+    console.log(obj)
+
+
+    // Object 对象上的 toString 函数
+    // toString 函数 可以将对象转换为字符串
+
+    // let obj = {
+    //     x: 1,
+    //     y: 2
+    // }
+
+    // // 调用 toString 函数
+    // let str = obj.toString()
+    // console.log(str)
+
+    // let num = Number(0)
+    // console.log(num.toString())
+
+    // let bool = false
+    // console.log(bool.toString())
+
+    // // 重写 toString
+    // obj.toString = function () {
+    //     return JSON.stringify(this)
+    // }
+</script>
+
+</html>

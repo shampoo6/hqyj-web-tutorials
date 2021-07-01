@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // instanceof : 用于判断一个实例是否属于某个类型
+    // 语法：object instanceof class
+    // 该表达式返回一个布尔值，true：代表object属于class的类型，否则不属于
+
+    class Human {
+        name
+        sex
+        constructor(name, sex) {
+            this.name = name
+            this.sex = sex
+        }
+    }
+
+    let xiaoHong = new Human('小红', '女')
+    let zhangSan = new Object()
+
+    // 判断小红是否属于人类
+    console.log(xiaoHong instanceof Human) // --> true
+    console.log(xiaoHong instanceof Object) // --> true
+
+    // 判断张三是否属于人类
+    console.log(zhangSan instanceof Human) // --> false
+    console.log(zhangSan instanceof Object) // --> true
+</script>
+
+</html>

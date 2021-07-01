@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 什么是包装类?
+    // 将我们熟知的基本的数据类型用类来进行包装，这种类就是包装类
+
+    // 作用，多用于类型转换
+
+    // 包装类有以下几种
+    Boolean
+    Number
+    String
+    Object
+    Array
+    Function
+
+    // 包装类还包含一些可以调用的函数
+    // 例如 用 Array.isArray 来判断一个变量是否是数组
+    let arr = []
+    console.log(Array.isArray(arr)) // ---> true
+
+    // 将变量转换为整数
+    console.log(Number.parseInt(0.5)) // ---> 0
+
+    // 将变量转化为浮点数（小数）
+    console.log(Number.parseFloat('2.9')) // ---> 2.9
+
+    // 保留数字小数点后指定位数
+    console.log(Number(0).toFixed(2))
+</script>
+
+</html>

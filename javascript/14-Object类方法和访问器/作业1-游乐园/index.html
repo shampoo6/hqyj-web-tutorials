@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // - 请模拟游乐园入场检票的过程
+    // - 声明顾客类，分为成年人和儿童，声明票类，票分为成人票和儿童票
+    // - 声明游乐园类，游乐园有卖票功能和检票功能
+    // - 业务流程如下：
+    //     - 顾客买票
+    //     - 顾客入场，游乐园检票
+    //     - 儿童必须持有儿童票，成人必须持有成人票才能入场
+    //     - 检票入场后，删除顾客手里的票
+
+    // 按需驱动: 按照需求或需要，去写代码，不需要的就不写
+
+    // 顾客
+    class Guest {
+        ticket
+
+        // 买票
+        // park: 游乐园，票的卖家
+        // ticketType: 票的类型
+        buyTicket(park, ticketType) {
+            // 让卖家卖票，同时告诉卖家要什么票
+            // 卖家卖完以后，将票持有到自己手里，所以使用this.ticket保存买来的票
+            this.ticket = park.sellTicket(ticketType)
+        }
+    }
+
+    // 成年顾客
+    class AdultGuest extends Guest {
+        // 重写父类买票方法
+        buyTicket(park) {
+            // 调用父类方法
+            super.buyTicket(park, AdultTicket)
+            // super.buyTicket(park, 'adult')
+        }
+    }
+
+    // 儿童顾客
+    class ChildGuest extends Guest {
+        buyTicket(park) {
+            super.buyTicket(park, ChildTicket)
+            // super.buyTicket(park, 'child')
+        }
+    }
+
+    // 票
+    class Ticket {
+
+    }
+
+    // 成人票
+    class AdultTicket {
+
+    }
+
+    // 儿童票
+    class ChildTicket {
+
+    }
+
+    // 游乐园
+    class Park {
+        // 买票
+        // ticketType: 票的类型
+        // 若 ticketType 为 'adult' 就卖成人票，若为 'child' 就买儿童票
+        sellTicket(ticketType) {
+            // 方法一：
+            // 根据不同的参数，卖不同票
+            // if (ticketType === 'adult') {
+            //     return new AdultTicket()
+            // } else if (ticketType === 'child') {
+            //     return new ChildTicket()
+            // }
+
+            // 方法二：
+            // 还可以这样升级：ticketType 参数直接接收票的类型
+            return new ticketType()
+        }
+
+        // 检票
+        // target: 检查的目标顾客
+        // 返回 true 代表检票成功，否则代表失败
+        checkTicket(target) {
+            let result = false
+
+            // 判断顾客手里是否有票
+            if (!target.ticket) {
+                return result
+            }
+
+            // 判断成年人是否持有成年票
+            if ((target instanceof AdultGuest && target.ticket instanceof AdultTicket)
+                || (target instanceof ChildGuest && target.ticket instanceof ChildTicket)) {
+                result = true
+                delete target.ticket
+            }
+            return result
+        }
+    }
+
+
+    // 执行业务
+    let park = new Park()
+    let a = new AdultGuest()
+    let b = new ChildGuest()
+    let c = new ChildGuest()
+    b.ticket = new AdultTicket()
+    console.log(a)
+    // 买票
+    a.buyTicket(park)
+    console.log(a)
+    let result = park.checkTicket(a)
+    console.log(result)
+    result = park.checkTicket(b)
+    console.log(result)
+    result = park.checkTicket(c)
+    console.log(result)
+</script>
+
+</html>

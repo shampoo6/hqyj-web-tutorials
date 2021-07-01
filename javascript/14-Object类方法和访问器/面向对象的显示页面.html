@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 给定时钟对象一个显示用的区域 -->
+    <div id="clock"></div>
+    <form id="form">
+        <fieldset>
+            <legend>设置时间</legend>
+            <div><label>时：<input type="number" name="hour" /></label></div>
+            <div><label>分：<input type="number" name="minute" /></label></div>
+            <div><label>秒：<input type="number" name="second" /></label></div>
+        </fieldset>
+        <div>
+            <button class="set-time">设置时间</button>
+            <button class="start">开始计时</button>
+            <button class="stop">停止计时</button>
+        </div>
+    </form>
+</body>
+<script>
+
+    // 时钟类
+    class Clock {
+        el // 显示用的元素
+        hour
+        minute
+        second
+
+        constructor(el) {
+            this.el = el
+            // 创建指针
+            this.hour = new Hour()
+            this.minute = new Minute(this.hour)
+            this.second = new Second(this, this.minute)
+
+            this.render()
+        }
+
+        // 设置时间
+        setHour(hour) {
+            this.hour.setTime(hour)
+            this.render()
+        }
+
+        setMinute(minute) {
+            this.minute.setTime(minute)
+            this.render()
+        }
+
+        setSecond(second) {
+            this.second.setTime(second)
+            this.render()
+        }
+
+        // 开始计时
+        start() {
+            this.second.run()
+        }
+
+        // 停止计时
+        stop() {
+            this.second.stop()
+        }
+
+        getTime() {
+            return this.hour.time + ':' + this.minute.time + ':' + this.second.time
+        }
+
+        // 渲染函数
+        // 用于告诉浏览器我们的时钟长什么样子
+        render() {
+            let html =
+                '<span style="color:red">' + this.formatTime(this.hour.time) + '</span>' +
+                ':' +
+                '<span style="color:green">' + this.formatTime(this.minute.time) + '</span>' +
+                ':' +
+                '<span style="color:blue">' + this.formatTime(this.second.time) + '</span>'
+            this.el.innerHTML = html
+        }
+
+        formatTime(time) {
+            return time < 10 ? ('0' + time) : time
+        }
+    }
+
+    // 指针类
+    class Pointer {
+        // 存储当前时间
+        time = 0
+
+        // 运行
+        run() {
+
+        }
+
+        // 调整设置时间
+        setTime(time) {
+            this.time = time
+        }
+    }
+
+    // 时针
+    class Hour extends Pointer {
+        run() {
+            this.time++
+            if (this.time === 24) {// 进位判断
+                this.time = 0
+            }
+        }
+    }
+
+    // 分针
+    class Minute extends Pointer {
+        hour
+
+        constructor(hour) {
+            super()
+            this.hour = hour
+        }
+
+        run() {
+            this.time++
+            if (this.time === 60) { // 进位判断
+                this.time = 0
+                this.hour.run()
+            }
+        }
+    }
+
+    // 秒针
+    // 驱动：驱使东西运动的力量
+    class Second extends Pointer {
+        clock
+        minute // 分针
+        handler // 用于记录计时器
+
+        constructor(clock, minute) {
+            super()
+            this.clock = clock
+            this.minute = minute
+        }
+
+        run() {
+            this.handler = setTimeout(() => {
+                this.time++ // 一秒以后时间+1
+                if (this.time === 60) { // 走完一圈，需要进位
+                    this.time = 0 // 重置时间
+                    this.minute.run() // 调用分针的运行方法
+                }
+                this.clock.render() // 时间发生改变后，跟新视图
+                this.run() // 递归调用，每秒执行依次run
+            }, 1000)
+        }
+
+        // 停止运行
+        stop() {
+            clearTimeout(this.handler)
+        }
+    }
+
+
+    // 获取时钟的显示区域
+    let el = document.querySelector('#clock')
+    let setTimeBtn = document.querySelector('.set-time')
+    let startBtn = document.querySelector('.start')
+    let stopBtn = document.querySelector('.stop')
+    let form = document.querySelector('#form')
+
+    let clock = new Clock(el)
+
+    // 设置时间按钮
+    setTimeBtn.addEventListener('click', ev => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        // 获取用户输入
+        let fd = new FormData(form)
+        clock.setHour(fd.get('hour'))
+        clock.setMinute(fd.get('minute'))
+        clock.setSecond(fd.get('second'))
+    })
+
+    // 开始和停止按钮事件
+    startBtn.addEventListener('click', ev => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        clock.start()
+    })
+
+    stopBtn.addEventListener('click', ev => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        clock.stop()
+    })
+
+</script>
+
+</html>
