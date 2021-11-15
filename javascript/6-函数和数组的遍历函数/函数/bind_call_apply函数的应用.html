@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script> // script 标签内部的作用域叫做 javascript 执行上下文 context
+    // 在执行上下文中的this是window
+    console.log(this);
+
+    function fn() {
+        // 全局函数中的this指的是window
+        console.log(this);
+    }
+
+    class A {
+        fn() {
+            // 该类型实例对象内的this是该对象自己
+            console.log(this);
+        }
+    }
+
+    fn()
+    const a = new A()
+    a.fn()
+
+    const b = {
+        fn() {
+            // json对象内的this是它自己
+            console.log(this)
+        }
+    }
+    b.fn()
+
+    function add(x, y) {
+        console.log(this);
+        return x + y
+    }
+
+
+    // 可以使用 bind call apply 函数来修改函数内this的指代
+
+    // bind 修改函数内的this并返回修改后的新函数
+    // 参数是新指定的this值
+    fn = fn.bind(123)
+
+    // call 调用对应函数并指定this的值和函数的参数
+    // 第一个参数：this值
+    // 后续参数：函数的参数列表
+    let result = add.call('这是call传入的this值', 1, 2)
+    console.log(result);
+
+    // apply 应用指定this值和参数调用函数
+    // apply 作用和call一摸一样 只是参数不同
+    // apply 在传入参数列表时，使用的是数组
+    result = add.apply('这是apply传入的this值', [5, 7])
+    console.log(result);
+</script>
+
+</html>

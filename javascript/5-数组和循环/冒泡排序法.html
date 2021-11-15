@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+</body>
+<script>
+    // 冒泡排序
+    // 原理：此处以排序出一个从小到大的序列为例
+    // 令数组长度为 lenght
+    // 排序过程将进行 length - 1 次
+    // 每一次排序过程中，将对数组中每个成员从左到右进行两两比较，较大的数字将被挤到后面去
+    // 每执行完一次循环，将在数组末尾确定一个数字的位置
+    // 最后直到数组的第一个成员和第二个成员进行排序为止，排序结束
+    let arr = [5, 2, 1, 3, 7, 0, 9, 4]
+
+    // 使用 i 代表循环次数和每次循环时的数组长度
+    for (let i = arr.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            // 前一个数
+            // let pre = arr[j]
+            // 后一个数
+            // let next = arr[j + 1]
+
+            // 若从小到大排列数组，那么前一个数大于后一个数时就交换两个数字
+            if (arr[j] > arr[j + 1]) {
+                // 交换数字
+                let temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+
+                // let temp = pre
+                // pre = next
+                // next = temp
+            }
+        }
+    }
+
+    console.log(arr)
+
+    // 排序函数
+    // arr: 需要排序的数组
+    // compare: 排序函数
+    function sort(arr, compare) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            for (let j = 0; j < i; j++) {
+                // 若从小到大排列数组，那么前一个数大于后一个数时就交换两个数字
+                if (compare(arr[j], arr[j + 1]) > 0) {
+                    // 交换数字
+                    let temp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = temp
+                }
+            }
+        }
+    }
+
+    let students = [
+        {
+            name: '张三',
+            score: 60
+        },
+        {
+            name: '李四',
+            score: 40
+        },
+        {
+            name: '老王',
+            score: 80
+        }
+    ]
+
+    // students.sort((item1, item2) => {
+    //     if (item1.score < item2.score) {
+    //         return 1
+    //     } else if (item1.score > item2.score) {
+    //         return -1
+    //     } else {
+    //         return 0
+    //     }
+    // })
+
+    sort(students, (item1, item2) => {
+        if (item1.score < item2.score) {
+            return 1
+        } else if (item1.score > item2.score) {
+            return -1
+        } else {
+            return 0
+        }
+    })
+
+    console.log(students)
+</script>
+</html>

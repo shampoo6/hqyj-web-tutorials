@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 200px;
+            background-color: #0f0;
+            margin-top: 50px;
+        }
+
+        .mini-box {
+            width: 50px;
+            height: 50px;
+            background-color: #f00;
+            margin-top: 100px;
+        }
+
+        .container {
+            border: 5px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <!-- 第一个子元素的margin-top将穿透到父元素的外面 -->
+            <div class="mini-box"></div>
+            <div class="mini-box"></div>
+            <div class="mini-box"></div>
+        </div>
+        <div class="box">2</div>
+    </div>
+</body>
+
+</html>

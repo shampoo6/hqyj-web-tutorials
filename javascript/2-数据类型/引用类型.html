@@ -5,9 +5,13 @@
 
 <body></body>
 <script>
-    // 引用类型包括 object 类型和 function 类型
+    // 引用类型包括 object 类型和 function 类型等
+    // 特别注意 符号类型 Symbol 也是引用类型
 
     // object（对象） 类型
+    // 所有能被构造的（包含constructor构造器）类型都是对象
+    // 所以 函数 数组 本质上也是对象
+
     // 变量赋值时使用的花括号包裹的数据类型，我们称为json对象
     // json(JavaScript Object Notation, JS 对象简谱) : 轻量化js数据结构
     let obj = {
@@ -28,6 +32,7 @@
 
     // null 是个对象类型的特殊值
     // 代表空引用
+    // 但是 null 本质上不是 Object 类型，而是 7 个原始类型种的一个
 
     obj = null
     console.log(obj)
@@ -41,6 +46,9 @@
 
 
     // function（函数） 类型
+    // 函数本质上还是对象：
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E6%A0%87%E5%87%86%E7%9A%84_%E5%AF%B9%E8%B1%A1_%E5%92%8C%E5%87%BD%E6%95%B0
+
     // 使用function声明的数据是函数类型
     let add = function (a, b) {
         return a + b

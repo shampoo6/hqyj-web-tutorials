@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let students = [
+        {id: 0, name: '张三', sex: 'male', age: 16},
+        {id: 1, name: '李四', sex: 'female', age: 20},
+        {id: 2, name: '隔壁老王', sex: 'other', age: 30}
+    ]
+
+    // 以下所有的遍历函数的参数都是相同的回调函数
+    // 回调函数接收以下参数
+    // el 被遍历的当前数组成员
+    // index 被遍历的当前成员的索引
+    // arr 被遍历的数组对象
+
+
+    // forEach 循环遍历每一个数组成员
+    // students.forEach((el, index, arr) => {
+    //     console.log(el)
+    //     console.log(index)
+    //     console.log(arr)
+    // })
+    // every 和 forEach 一样遍历每个数组成员，但是中途可以跳出循环
+    // students.every((el, index, arr) => {
+    //     console.log(index)
+    //
+    //     // 回调函数内部返回一个布尔值用于指示是否停止遍历
+    //     if (el.id === 1) {
+    //         console.log(el)
+    //         // 返回 false 类似 for 循环的 break
+    //         return false
+    //     }
+    //
+    //     return true // 返回 true 类似 for 循环的 continue
+    // })
+    // map 映射数组到新数组中
+    // map 的回调函数将返回一个值，代表当前被遍历的数组成员在新数组中的投影
+    // map 函数将返回一个新的投影数组
+    let arr = students.map((el, index, arr) => {
+        return el.name
+    })
+    console.log(arr)
+    // filter 过滤器
+    // filter 返回过滤完后的新数组
+    arr = students.filter((el, index, arr) => {
+        // 回调函数中返回一个bool值用来指示是否保留或过滤掉当前数组成员
+        if (el.name === '张三') {
+            return false // 返回 false 代表过滤掉该成员
+        }
+        return true // 返回 true 代表保留当前成员
+    })
+    console.log(arr)
+
+
+    // find 查找
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+
+    // some 查询是存在满足条件的成员
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+
+
+    // find 查找符合回调函数条件的数组成员并返回它
+    // 返回值为查询结果
+    let result = students.find((el, index, arr) => {
+        // 函数内返回bool值 代表是否返回当前成员作为查询结果
+
+        // 假设此处返回 姓名为 隔壁老王 的数据
+        return el.name === '隔壁老王'
+    })
+    console.log(result)
+
+    // findIndex 查找对应成员所在索引
+    let index = students.findIndex((el, index, arr) => {
+        // 函数内返回bool值 代表是否返回当前成员作为查询结果
+        return el.name === '李四'
+    })
+    console.log(index)
+
+    // some 方法测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。
+    let arr1 = ['x', 'y', 'z']
+    let arr2 = ['x', 'z']
+
+    result = arr1.some((el, index, arr) => {
+        // 给出一个判断条件，some 函数将对每个成员都做出相同的判断
+        // 任意成员符合条件返回 true 时 some函数则返回true 否则为 false
+
+        // 以下例子用于判断 arr2 中的成员是否至少有一个 被 arr1 所包含
+        return arr2.includes(el)
+    })
+    console.log(result)
+
+
+    // sort 排序
+    arr.sort()
+    // 若调用 sort 函数不传参数时，会使用浏览器默认的排序规则
+
+    // 自定义排序
+    
+    // 排序规则：按年龄从小到大排序
+    arr.sort()
+    console.log(arr)
+
+    // sort 参数是一个排序规则的函数
+    // el1 和 el2 代表的是排序时两两比较的两个数组成员
+    // 排序原理是，将每个成员都和剩下所有成员进行比较，每一对 el1 和 el2 决定他们的先后顺序
+    // 也叫“冒泡排序”
+    // sort 函数执行完后将返回新数组
+    newArr = arr.sort((el1, el2) => {
+        if (el1.age < el2.age) {
+            return -1 // 返回值小于0，那么 el1 排在 el2 前面
+            // -1 < 0 将小于符号看作左箭头，所以el1应该放在el2坐边
+        }
+        if (el1.age === el2.age) {
+            return 0 // 返回值为0，那么 el1 和 el2 顺序不变
+        }
+        if (el1.age > el2.age) {
+            return 1 // 返回值大于0，那么 el1 排在 el2 后面
+            // 1 > 0 将大于符号看作右箭头，所以el1放在el2右边
+        }
+    })
+</script>
+</html>

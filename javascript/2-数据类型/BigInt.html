@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // mdn 数据类型：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B
+
+    // BigInt 是可以表达任意长度的正数的类型
+    // 作用：用来运算超长整数 类似 java 中的 BigDecimal
+
+    // 声明
+    let bNum = BigInt(123)
+    bNum = 123n // 在数字后加 n 也能声明 BigInt 类型值
+
+    let num = 123
+
+    console.log(bNum === num); // 类型不同 所以不全等
+    console.log(bNum == num); // 隐式转换后被认为相等
+
+    console.log(Number.MAX_SAFE_INTEGER) // js 能安全使用的最大整数值
+    // BigInt 可以声明超过 Number.MAX_SAFE_INTEGER 范围的数字
+    bNum = 2n ** 128n
+    console.log(bNum);
+
+    // BigInt 类型值不能跨类型运算
+    bNum = bNum - 123
+</script>
+</html>

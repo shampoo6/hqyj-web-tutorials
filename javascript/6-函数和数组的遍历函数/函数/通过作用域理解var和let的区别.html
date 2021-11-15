@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 现象1：
+    // 定义 i 时使用 var 定义
+    // for (var i = 0; i < 10; i++) {
+    //     debugger
+    //     // setTimeout 是异步函数
+    //     // 这里只要理解成调用完setTimeout函数，里面的console.log函数还没有执行就可以了
+    //     // 只有当前script标签内容执行完后，才会执行 setTimeout 函数里的 console.log
+    //     setTimeout(() => {
+    //         debugger
+    //         console.log(i)
+    //     }, 0)
+    // }
+
+    // 现象2：
+    // 定义 i 时使用 let 定义
+    // for (let i = 0; i < 10; i++) {
+    //     debugger
+    //     setTimeout(() => {
+    //         debugger
+    //         console.log(i)
+    //     }, 0)
+    // }
+
+
+    // var 定义的 i 被打印了 10 次 10
+    // 而 let 定义的 i 打印了 0~9 10 个数字
+
+    // 产生上述现象的原因在于 var 声明的变量存在于局部（Local）或全局（Global）作用域上
+    // 在此作用域中修改 var 声明的变量，将修改到同一个变量
+    // 而 let 声明的变量具有独特的块（Block）作用域
+    // 若有嵌套的块作用域，那么内外作用域中的变量都是独立存在的互相不影响
+    // 例如：现象2中有 for 循环的块作用域，setTimeout中箭头函数的块作用域，i在此两个块中不会互相影响
+
+
+</script>
+
+</html>

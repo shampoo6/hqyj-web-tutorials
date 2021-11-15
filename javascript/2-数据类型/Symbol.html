@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // mdn 数据类型：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B
+
+    // Symbol 的意思为符号，专用来创建类中的匿名属性或函数
+
+    // Symbol.for Symbol.keyFor 可以访问全局Symbol注册表
+    // 全局注册表上可以存放全局可访问的 Symbol 值
+
+    // Symbol 作为 key 声明的对象属性 无法被枚举
+    // Symbol 作为 key 声明的对象属性 只能通过相同的 Symbol 值访问
+
+    class A {
+        text = 'hello world'
+        #msg = '被你发现了'
+        #symbol = Symbol()
+
+        constructor() {
+            this[this.#symbol] = function () {
+                console.log('这是个匿名函数');
+            }
+        }
+
+        test() {
+            console.log(this.#msg);
+            console.log(this[Symbol.for('add')](1, 2));
+            this[this.#symbol]()
+        }
+
+        // Symbol.for Symbol.keyFor 是访问的全局Symbol注册表
+        [Symbol.for('add')](x, y) {
+            return x + y
+        }
+    }
+
+    let a = new A()
+    for (const key in a) {
+        console.log(key);
+    }
+</script>
+
+</html>

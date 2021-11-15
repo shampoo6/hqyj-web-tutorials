@@ -9,78 +9,103 @@
 </head>
 
 <body>
-
+<button>click me</button>
 </body>
 <script>
-
     // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
 
     // this 关键字代表什么?
 
     // 根据不同的场景，this关键字代表东西不同，有以下几种情况
 
-    // 1. 在script标签中的this，代表window对象
-    console.log(this) // => window
 
-    // 2. 在函数内的this，默认情况是window
+
+    // 非严格模式下的this
+
+    console.log(this) // --> window 对象
+
     function fn() {
-        console.log(this)
+        console.log(this) // --> window 对象
     }
 
-    // 3. 对象当中，函数内的this，代表对象自身
     let obj = {
-        fn: function () {
-            console.log(this)
+        fn() {
+            console.log(this) // --> obj 对象自身
+
+            fn2()
+
+            // 对象方法中定义的函数
+            function fn2() {
+                console.log(this) // --> window 对象
+            }
         }
     }
 
-    class Car {
-        name
+    class A {
+        fn() {
+            console.log(this) // --> a 的实例对象
 
-        constructor(_name) {
-            this.name = _name
+            fn2()
+
+            // 对象方法中定义的函数
+            function fn2() {
+                console.log(this) // --> 类型中的方法中的函数 this 是 undefined
+            }
         }
+    }
 
-        run() {
+    let a = new A()
+    // 对象调用自身方法时，对象自己会设置方法的this指代
+    a.fn()
+
+    // 若函数声明完成后，若不指定函数的this值，则调用函数时，函数中的this时钟为undefined
+    let fnOfA = a.fn
+    fnOfA()
+
+
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+        // 有些情况下，回调函数中的this可能被其他函数赋值，所以this不是undefined
+        // 此处 事件回调函数被 addEventListener 赋值了其中的 this
+        // 所以这里的this指的是绑定事件的那个dom对象
+        console.log(this)
+    })
+
+</script>
+<script>
+    'use strict' // 代码第一行开启严格模式
+
+    fn3()
+
+    function fn3() {
+        console.log(this) // 严格模式下所有函数内部的this都是undefined
+    }
+
+    let obj2 = {
+        fn() {
+            console.log(this) // 严格模式下所有的对象方法中的this都是对象自己
+            objFn()
+
+            function objFn() {
+                console.log(this) // 函数内的this始终是undefined
+            }
+        }
+    }
+
+    class B {
+        fn() {
             console.log(this)
-            fn()
+            bFn()
 
-            function fn() {
-                // 对象内的函数内部声明的函数，其this值为undefined
-                // 若要修改函数内 this 的值，可以使用 函数的bind函数
+            function bFn() {
                 console.log(this)
             }
         }
     }
 
-    let c = new Car('东风')
-    c.run()
-
-
-    function fn1() {
+    let fn4 = function () {
         console.log(this)
     }
-
-    fn1()
-    // 用 bind 改变函数内 this 的值
-    // bind 函数调用结束后将返回一个新函数
-    let newFn = fn1.bind('hello world')
-
-    newFn() // => this 为 hello world
-    fn1() // => this 为 window
-    // 所以 调用 bind 函数后，并不会影响 fn1 原有函数的 this
-
-
-
-    // 也可以使用 call、apply 函数，调用函数并赋值函数内的 this
-    // 例如：
-    function fn2(x, y) {
-        console.log(x + y)
-        console.log(this)
-    }
-    // call 和 apply 的第一个参数是传给 this 的值
-    fn2.call('hello', 1, 2) // 参数列表用逗号拼接在后面
-    fn2.apply('world', [3, 4]) // 参数用数组传递
 </script>
 
 </html>

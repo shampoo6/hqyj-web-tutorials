@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 防抖
+    // 函数在一次执行还未结束调用时，防止函数被重复调用
+    // 多用于网络请求等异步调用的情况
+
+    // 函数会等待的就是同步，不等待结果的就是异步
+    let a = 1
+
+    setTimeout(() => {
+        console.log(2)
+    }, 100)
+
+    console.log(a)
+
+
+    // 防抖
+    const count = (() => {
+        let ready = true // 用于指示函数是否已经调用完成了
+        let temp = 0
+        return () => {
+            if (!ready) return
+            ready = false
+            console.log(++temp)
+            // 模拟网络请求执行异步函数
+            setTimeout(() => {
+                // 模拟函数执行完成
+                ready = true
+            }, 1000 + Math.random() * 2000) // 模拟网络请求的随机性
+        }
+    })()
+
+
+    // 节流
+    // 拥有固定cd时长的函数
+    const sayHello = (() => {
+        let ready = true // 用于指示是否函数准备好可以调用了
+        let cd = 3000 // 定义 cd 时长
+        return () => {
+            if (!ready) return
+            ready = false
+            // 执行代码逻辑
+            console.log('hello')
+            // 计时
+            setTimeout(() => {
+                ready = true
+            }, cd)
+        }
+    })()
+</script>
+</html>
