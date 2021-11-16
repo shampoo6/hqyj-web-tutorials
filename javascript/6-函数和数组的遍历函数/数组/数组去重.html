@@ -38,6 +38,16 @@
         console.log(value)
         console.log(set)
     })
+
+    // 使用数组api
+    let arr3 = []
+    arr.forEach(el => {
+        // if (arr3.indexOf(el) === -1) {
+        if (!arr3.includes(el)) {
+            arr3.push(el)
+        }
+    })
+    console.log(arr3);
 </script>
 
 </html>

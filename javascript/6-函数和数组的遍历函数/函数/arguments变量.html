@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // arguments 是函数内隐式申明的对象 代表参数列表
+    function fn(x, y) {
+        console.log(arguments) // 隐式声明的对象
+        // 可以通过索引访问参数
+        console.log(arguments[0])
+        console.log(arguments[1])
+        console.log(Array.isArray(arguments)) // 不是数组
+        return x - y
+    }
+
+    fn(2, 1)
+
+    // arguments.callee 代表当前正被调用的函数
+    function fn2() {
+        console.log(arguments.callee) // 代表当前函数 fn2
+        console.log(arguments.callee === fn2)
+    }
+
+    fn2()
+
+    // arguments.callee 最大的用处是在匿名函数中递归调用自身
+
+    // 例如：一个求 m 的 n 次方的函数
+
+    function power(m, n) {
+        let temp = 1 // 中间变量
+        return (function (x, y) {
+            temp *= x
+            y--
+            if (y > 0) return arguments.callee(x, y)
+            else return temp
+        })(m, n)
+    }
+
+    let r = power(2, 4)
+    console.log(r);
+</script>
+
+</html>
