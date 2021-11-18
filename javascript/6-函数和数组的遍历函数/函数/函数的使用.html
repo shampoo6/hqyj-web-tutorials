@@ -53,6 +53,15 @@
     }
 
     console.log(sub(1, 2))
+
+
+    // 定义参数时，可以给参数设置默认值
+    function defaultParam(msg = 'hello world') {
+        console.log(msg)
+    }
+
+    defaultParam() // 当不给函数提供参数时，参数msg将采用默认值
+    defaultParam('this is a msg')
 </script>
 
 </html>
