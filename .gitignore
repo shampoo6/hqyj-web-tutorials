@@ -1,4 +1,6 @@
 debug.log
 .vscode
 .idea
-**/*/node_modules
+dist
+output
+**/node_modules

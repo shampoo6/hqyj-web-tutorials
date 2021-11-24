@@ -60,7 +60,7 @@
     // handler = setInterval(() => {
     //     console.log(num)
     //     num++
-    //     throw new Error('手动抛出异常')
+    //     throw new Error('手动抛出异常') // setInterval 中即使出现异常也不会终止程序调用
     // }, 1000)
 
     document.querySelector('.btn2').addEventListener('click', () => {
@@ -68,8 +68,12 @@
         clearInterval(handler)
     })
 
-    // 不推荐使用 setInterval
+
+    // 注意事项：
+    // 1. 尽量不使用 setInterval
     // 理由：setInterval 可能由于人为原因忘了关闭，或者内部出现异常，导致代码死循环
+    // 2. 若要做大量循环调用甚至是无限循环调用时（例如轮询死循环调用），请使用 setInterval 而不是使用 setTimeout 递归进行循环
+    // 理由：setTimeout 会占用大量内存堆栈，若用 setTimeout 递归实现死循环轮询，则内存必定溢出
 </script>
 
 </html>

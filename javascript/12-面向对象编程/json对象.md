@@ -1,5 +1,5 @@
 # json 对象
-json 对象是js中的对象，且该对象的格式采用json的格式
+json 对象是js中的对象，且该对象的格式采用json的格式（js中也称为朴素对象 plain object）
 
 ## json JavaScript Object Notation （js 对象简谱）
 json是一种js的轻量化交互式数据
