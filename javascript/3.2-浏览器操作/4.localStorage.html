@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // localStorage 数据持久化到浏览器中，关闭窗口或浏览器，都不会消失
+
+    // 设置数据
+    localStorage.setItem('a', JSON.stringify({ x: 1, y: 2 })) // localStorage 只能存字符串
+    localStorage['b'] = JSON.stringify([1, 2, 3]) // 等价于调用 setItem 方法
+
+    // 读取数据
+    console.log(localStorage.getItem('a'))
+    console.log(localStorage['b']); // 等价于调用 getItem 方法
+
+    // sessionStorage 用法和localStorage相同，但是窗口关闭数据就消失了
+    sessionStorage['a'] = 1
+    sessionStorage['b'] = 2
+</script>
+
+</html>

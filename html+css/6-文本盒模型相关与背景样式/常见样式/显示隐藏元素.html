@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            /* visibility 代表可见性，该属性的特点是，显示还是隐藏，元素依然占据文档位置，有以下带选项：
+                visible: 元素正常显示
+                hidden: 隐藏元素，但保留文档位置
+                collapse: 用于 <table> 行、列、列组和行组，隐藏表格的行或列，并且不占用任何空间（与将 display: none 用于表格的行/列上的效果相 当）
+            */
+            visibility: hidden;
+        }
+        
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <table border>
+        <tbody>
+            <tr>
+                <td>1-1</td>
+                <td>1-2</td>
+                <td>1-3</td>
+            </tr>
+            <tr>
+                <!-- 此处对比使用 display: none; visibility: collapse; 就能看出区别 -->
+                <td style="display: none; visibility: collapse;">2-1</td>
+                <td>2-2</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>3-1</td>
+                <td>3-2</td>
+                <td>3-3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

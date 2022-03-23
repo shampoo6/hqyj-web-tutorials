@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        iframe {
+            /* border: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src="./child.html" name="a" width="800" height="600"></iframe>
+
+    <div class="btns">
+        <button>iframe a 打开b站</button>
+        <button>关闭窗口</button>
+        <div class="post"><input type="text"><button>发送</button></div>
+    </div>
+</body>
+<script>
+    // 文档：https://developer.mozilla.org/zh-CN/docs/Web/API/Window#%E6%96%B9%E6%B3%95
+
+    const btn1 = document.querySelector('.btns>button:nth-child(1)')
+    const btn2 = document.querySelector('.btns>button:nth-child(2)')
+    const iframe = document.querySelector('iframe')
+    const inp = document.querySelector('.post>input')
+    const send = document.querySelector('.post>button')
+
+    btn1.addEventListener('click', () => {
+        // 打开窗口
+        // 第一个参数：网址
+        // 第二个参数：iframe名称，没有的话就打开新窗口
+        window.open('https://www.bilibili.com', 'a')
+    })
+    btn2.addEventListener('click', () => {
+        window.close() // 关闭窗口
+    })
+    send.addEventListener('click', () => {
+        // iframe.contentWindow 该属性代表 iframe 内的 window 对象
+        iframe.contentWindow.postMessage(inp.value)
+        inp.value = ''
+    })
+
+
+    window.addEventListener('message', ev => {
+        console.log(ev.data);
+    })
+
+
+    // const w = window.open('http://www.bilibili.com')
+    // setTimeout(()=>{
+    //     w.close()
+    // }, 3000)
+</script>
+
+</html>

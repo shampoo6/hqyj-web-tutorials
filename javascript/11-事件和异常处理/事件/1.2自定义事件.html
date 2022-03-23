@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 创建事件对象
+    let e = new Event('open-my-world') // 参数是自定义事件名称
+
+    // 监听事件
+    document.addEventListener('open-my-world', ev => {
+        console.log(ev);
+    })
+
+    // 给指定元素派发事件
+    document.dispatchEvent(e)
+</script>
+
+</html>

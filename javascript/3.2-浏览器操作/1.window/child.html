@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>child</h1>
+    <div class="message"></div>
+</body>
+<script>
+    const message = document.querySelector('.message')
+
+    window.addEventListener('message', ev => {
+        console.log(ev);
+        message.innerHTML += ev.data + '<br/>'
+
+        parent.postMessage('收到')
+    })
+</script>
+
+</html>

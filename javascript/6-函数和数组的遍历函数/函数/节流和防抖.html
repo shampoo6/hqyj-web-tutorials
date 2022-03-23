@@ -1,61 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
 </head>
+
 <body>
 
 </body>
 <script>
     // 防抖
-    // 函数在一次执行还未结束调用时，防止函数被重复调用
-    // 多用于网络请求等异步调用的情况
-
-    // 函数会等待的就是同步，不等待结果的就是异步
-    let a = 1
-
-    setTimeout(() => {
-        console.log(2)
-    }, 100)
-
-    console.log(a)
+    // 函数将在一个固定时间后被调用，若计时未完成又执行该函数，则取消上次计时，重新开始计时
+    // 用于限制频繁的网络请求，例如：搜索功能，用户停止输入的一段时间后才会执行搜索任务
 
 
     // 防抖
-    const count = (() => {
-        let ready = true // 用于指示函数是否已经调用完成了
-        let temp = 0
+    const fdDemo = () => {
+        let time = 3000 // 多长时间后执行程序，单位：毫秒
+        let timer
         return () => {
-            if (!ready) return
-            ready = false
-            console.log(++temp)
-            // 模拟网络请求执行异步函数
-            setTimeout(() => {
-                // 模拟函数执行完成
-                ready = true
-            }, 1000 + Math.random() * 2000) // 模拟网络请求的随机性
+            // 取消计时，重新计时
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                // 此处执行想要运行的代码
+                console.log('防抖函数被运行了')
+            }, time)
         }
-    })()
+    }
+
+
+    // 封装防抖函数
+    // 这样任何函数都能被添加防抖功能
+    const fd = (fn, args, delay = 1000) => {
+        let timer
+        return () => {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn(args) // 执行函数
+            }, delay)
+        }
+    }
 
 
     // 节流
-    // 拥有固定cd时长的函数
-    const sayHello = (() => {
-        let ready = true // 用于指示是否函数准备好可以调用了
-        let cd = 3000 // 定义 cd 时长
+    // 固定时间内只能调用一次的函数，可以使用时间戳或计时器的方式实现
+    // 作用同样是限制用户频繁的网络请求，例如：发送验证码
+
+    // 时间戳
+    const jlDemo1 = () => {
+        let lastTime // 上次执行代码的时间
+        let delay = 1000 // 执行完函数后的冷却时间，这段时间中无法再次执行该函数
         return () => {
-            if (!ready) return
-            ready = false
-            // 执行代码逻辑
-            console.log('hello')
-            // 计时
-            setTimeout(() => {
-                ready = true
-            }, cd)
+            const now = Date.now()
+            // 没有lastTime说明该函数是第一次被调用
+            if (!lastTime || now - lastTime >= delay) {
+                console.log('执行节流函数')
+                lastTime = now
+            }
         }
-    })()
+    }
+
+    // 计时器
+    const jlDemo2 = () => {
+        let timer = null // 用于存储计时器id
+        let delay = 1000 // 执行完函数后的冷却时间，这段时间中无法再次执行该函数
+        return () => {
+            // 若存在计时器id则结束函数
+            if (timer) return
+            console.log('执行节流函数')
+            // 计时
+            timer = setTimeout(() => {
+                timer = null
+            }, delay)
+        }
+    }
+
+    // 封装节流函数
+    const jl = (fn, args, delay = 1000) => {
+        let timer = null
+        return () => {
+            if (timer) return
+            fn(args) // 执行函数
+            timer = setTimeout(() => {
+                timer = null
+            }, delay)
+        }
+    }
 </script>
+
 </html>

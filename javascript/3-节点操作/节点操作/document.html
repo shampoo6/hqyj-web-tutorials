@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+    <style>
+        .color1 {
+            color: #0f0;
+        }
+    </style>
+    <style>
+        .font1 {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box color1 font1">Hello World !!!</div>
+</body>
+<script>
+    // 文档：https://developer.mozilla.org/zh-CN/docs/Web/API/Document
+    // Document 接口表示任何在浏览器中载入的网页，并作为网页内容的入口，也就是DOM 树。DOM 树包含了像 <body> 、<table> 这样的元素，以及大量其他元素。
+
+    console.log(document.body) // body 元素
+
+    // document.styleSheets 文档中的 style 标签列表
+
+    // 修改样式
+    document.styleSheets[0].cssRules[0].style.backgroundColor = '#00f'
+</script>
+
+</html>
