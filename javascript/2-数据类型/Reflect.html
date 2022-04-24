@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 文档: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+
+    let obj = {b: 2, c: 3}
+
+    // 定义对象属性
+    // 作用和 Object.defineProperty 相同
+    Reflect.defineProperty(obj, 'a', {value: 7})
+    console.log(obj);
+
+    // 删除属性
+    // 等价于 delete obj['b']
+    Reflect.deleteProperty(obj, 'b')
+    console.log(obj);
+
+    // 返回对象的所有 key 数组
+    console.log(Reflect.ownKeys(obj))
+
+    // 判断对象是否存在某属性
+    console.log(Reflect.has(obj, 'c'))
+</script>
+</html>
