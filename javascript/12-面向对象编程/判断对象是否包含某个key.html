@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let obj = { a: 1, b: 2, c: '' };
+
+    // 方法一: 使用 boolean 值的隐式转换
+    obj.c && console.log("方法一 obj 对象存在 c");
+
+    // 上述方法的缺点是: 若 c 的值是空字符串，0或者false 都会被认为 “c 不存在”，然而 c 这个 key 是存在的
+
+    // 方法二: 使用 in 关键字判断
+    'c' in obj && console.log("方法二 obj 对象存在 c");
+
+    // 方法三: 使用 Reflect 反射
+    Reflect.has(obj, 'c') && console.log("方法三 obj 对象存在 c");
+
+    // 方法四: 直接通过类型判断是否存在
+    typeof obj.c === 'number' && console.log("方法四 obj 对象存在 c");
+
+    // 上述方法的缺点是: 必须要预先知道 c 的类型才可以进行检测
+
+
+
+    // 总结:
+    // 1. 绝对不会错的用法是 方法二 和 方法三
+    // 2. 快速开发使用 方法一 但要注意其缺点
+  </script>
+</html>
