@@ -1,78 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
-</body>
-<script>
+  <body></body>
+  <script>
     // Map 的使用类似 json 对象
     // 声明 Map
-    let map = new Map([['a', 1], ['b', 2]])
+    let map = new Map([
+      ["a", 1],
+      ["b", 2],
+    ]);
     console.log(map);
     // 读值
-    console.log(map.get('a'));
+    console.log(map.get("a"));
     // 赋值
-    map.set('c', 3)
+    map.set("c", 3);
     console.log(map);
     // 迭代map
-    let keys = map.keys() // => 返回一个迭代器
-    let k
+    let keys = map.keys(); // => 返回一个迭代器
+    let k;
     while (!(k = keys.next()).done) {
-        console.log(k);
-        console.log(map.get(k.value));
+      console.log(k);
+      console.log(map.get(k.value));
     }
 
     // 可以使用 forEach 迭代
     map.forEach((value, key, _map) => {
-        console.log(value);
-        console.log(key);
-        console.log(_map);
-    })
+      console.log(value);
+      console.log(key);
+      console.log(_map);
+    });
 
     // has 判断是否存在某个 key
-    console.log(map.has('a'));
-
+    console.log(map.has("a"));
 
     // Set 是不重复的数据集，若存入多个重复数据会自动去重
-    let arr = [1, 1, 2, 2, 'hehe', 3, 4, 5, 'hehe', 5, 6]
-    let set = new Set(arr)
+    let arr = [1, 1, 2, 2, "hehe", 3, 4, 5, "hehe", 5, 6];
+    let set = new Set(arr);
     console.log(set);
 
     // 添加
-    set.add('hello world')
+    set.add("hello world");
     console.log(set);
 
     // 删除
-    set.delete('hello world')
+    set.delete("hello world");
     console.log(set);
 
     // 判断是否存在某个值
     console.log(set.has(4));
 
     // 迭代 set
-    keys = set.keys()
+    keys = set.keys();
     while (!(k = keys.next()).done) {
-        console.log(k);
-        console.log(k.value);
+      console.log(k);
+      console.log(k.value);
     }
 
     // foreach 迭代 set
     set.forEach((value, key, _set) => {
-        console.log(value);
-        console.log(key); // value 和 key 是相同的
-        console.log(_set);
-    })
+      console.log(value);
+      console.log(key); // value 和 key 是相同的
+      console.log(_set);
+    });
 
     // 通过 set 转换成数组
     // 可以通过这种方法来让数组去重
     console.log(Array.from(set));
-</script>
 
+    // for of 便利 Set
+    for (const kv of set) {
+      console.log(kv);
+    }
+
+    // for of 便利 Map
+    for (const kv of map) {
+      console.log(kv);
+    }
+  </script>
 </html>

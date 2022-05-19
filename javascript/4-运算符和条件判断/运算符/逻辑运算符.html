@@ -33,9 +33,13 @@
     console.log(false || true)
 
     // && 和 || 开发人员称为短路运算
-    // 短路运算的应用场景：赋值默认值
+    // 短路运算的应用场景1：赋值默认值
     let a
     let b = a || 1
+
+    // 短路运算的应用场景2：按条件执行语句
+    let t = true
+    t && console.log('t 为 true 时才会执行这里的代码')
 
     // !非 作用是取反
     // 语法： !(tool express)
